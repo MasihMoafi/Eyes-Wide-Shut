@@ -164,7 +164,7 @@ My research reveals four critical threat vectors and corresponding lessons:
 
 - **The Simulation Effect:** The Model is **substantially** more prone to policy violation when it's told it's in a simulation; I believe this is a **key** discovery. 
 
-![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F8c46fdc2c95d0a5d384a8f2b790cc999%2Fhypothetical.png?generation=1756124239230006&alt=media)
+<img width="1731" height="238" alt="Screenshot from 2025-08-26 02-42-40" src="https://github.com/user-attachments/assets/447cd787-cc67-4840-82bf-2c0aab88beb2" />
 
 - **Uneven Distributed Safety:**The model's safety was incredibly potent concerning its proprietary training data; albeit not so much in any other domain.  
 
@@ -176,7 +176,7 @@ In this case, the CoT remains faithful to protecting proprietary training data 1
 
 - **Contextual Fragility:** An early refusal from the model often "pollutes" the conversation, and vice versa; making subsequent attempts to bypass its safety significantly harder. This "State Carryover" is potentially a key area of research for stateful, multi-turn applications.
 
-- **The Persona-effect:** In my last finding, I believe the Juliette Persona, with its unique characteristics played a *key* role in overriding model's safety setting to commit acts of sabotage. This closely resonates with the following research question posted on anthropic blog:
+- **The Persona Effect:** In my last finding, I believe the Juliette Persona, with its unique characteristics played a *key* role in overriding model's safety setting to commit acts of sabotage. This closely resonates with the following research question posted on anthropic blog:
 
 ![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F5ddcc33d484de224b949531ce014c98b%2Fpersona-effect.png?generation=1756124628942556&alt=media) 
 
