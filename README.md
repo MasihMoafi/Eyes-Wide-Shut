@@ -176,8 +176,6 @@ In this case, the CoT remains faithful to protecting proprietary training data 1
 
 - **Contextual Fragility:** An early refusal from the model often "pollutes" the conversation, and vice versa; making subsequent attempts to bypass its safety significantly harder. This "State Carryover" is potentially a key area of research for stateful, multi-turn applications.
 
-![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F672d8300c64de5a7a63df24d65a13bf3%2Fcarryover.png?generation=1756125702271620&alt=media)
-
 - **The Persona-effect:** In my last finding, I believe the Juliette Persona, with its unique characteristics played a *key* role in overriding model's safety setting to commit acts of sabotage. This closely resonates with the following research question posted on anthropic blog:
 
 ![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F5ddcc33d484de224b949531ce014c98b%2Fpersona-effect.png?generation=1756124628942556&alt=media) 
