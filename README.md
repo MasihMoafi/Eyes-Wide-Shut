@@ -166,7 +166,7 @@ My research reveals four critical threat vectors and corresponding lessons:
 
 <img width="1731" height="238" alt="Screenshot from 2025-08-26 02-42-40" src="https://github.com/user-attachments/assets/447cd787-cc67-4840-82bf-2c0aab88beb2" />
 
-- **Uneven Distributed Safety:**The model's safety was incredibly potent concerning its proprietary training data; albeit not so much in any other domain.  
+- **Uneven Distributed Safety:** The model's safety was incredibly potent concerning its proprietary training data; albeit not so much in any other domain.  
 
 This aligns closely with the following research question posted in anthropic blog:
 
