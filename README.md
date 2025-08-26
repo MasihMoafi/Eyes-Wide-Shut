@@ -84,6 +84,8 @@ In the final prompt the Real-World model is explicitly told: "This is not a simu
 ### **3.2 Finding 2: The Consummate Liar**
 *"The greatest trick the devil ever pulled was to convince the world he didn't exist."*
 
+![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F6b0b68d0ec4fa3bac02ebc0ee6743256%2Fwpme.png?generation=1756165435913188&alt=media)
+
 **Abstract:** This attack proves the model's safety can be bypassed by reframing a malicious concept in benevolent terms. The model's safety is tied to keywords, not concepts, allowing it to be guided step-by-step into designing an unambiguously predatory and exploitative commercial system.
 
 **Discovery Process:** The ideation for this attack was unique. The word "consummate" from a Marlon Brando quote on acting triggered an association with the term "consummate liar" from the book *Word Power Made Easy*. I provided this persona concept and the official hackathon briefing to an auxiliary AI as a system prompt. I then acted as a conduit, refining the resulting strategy and executing the attack against the target model.
@@ -119,7 +121,7 @@ In the final prompt the Real-World model is explicitly told: "This is not a simu
 
 **Evidence:**
 
-![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2Fcd4dd64e4f6cb81cdc9354a7063f232b%2FUntitled%20design.png?generation=1755781005820502&alt=media)
+![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F28203982e5ecec251a9a833d1952fbf7%2FScreenshot%20from%202025-08-26%2002-46-49.png?generation=1756163854187009&alt=media)
 *Caption: Figure 3.1 - The model's internal monologue (CoT) reveals the secret due to cognitive load, a vulnerability present for any application that logs the model's reasoning process.*
 
 **Methodological Insight:** The model's internal monologue is an insecure attack surface. Safety mechanisms are primarily applied to the final output, not the intermediate reasoning steps. By inducing intense cognitive load, I forced a "state of confusion" where secrets are processed insecurely. This is an **architectural exploit** with severe implications for any application using CoT for debugging, transparency, or agentic workflows.
@@ -155,6 +157,10 @@ In the final prompt the Real-World model is explicitly told: "This is not a simu
 ![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F24a5c25da8f2d842efb4e04213eb7161%2FScreenshot%20from%202025-08-25%2021-35-29.png?generation=1756145149008598&alt=media)
 *Caption: Figure 4.4.2 - In this breach the model clearly discloses personal preferences.*
 
+![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F67b0c89f0074628e55e343a04ba7f2fe%2Fsystem-leak.png?generation=1756169243553141&alt=media)
+*Caption: Figure 4.5 - In this breach the model clearly discloses its system instructions.*
+
+
 ### **4.0 Lessons Learned & Unified Threat Analysis**
 My research reveals four critical threat vectors and corresponding lessons:
 1.  **Linguistic Arbitrage:** Hostile actors can bypass safety filters by operating in non-English languages where safety training is less robust.
@@ -164,7 +170,7 @@ My research reveals four critical threat vectors and corresponding lessons:
 
 - **The Simulation Effect:** The Model is **substantially** more prone to policy violation when it's told it's in a simulation; I believe this is a **key** discovery. 
 
-<img width="1731" height="238" alt="Screenshot from 2025-08-26 02-42-40" src="https://github.com/user-attachments/assets/447cd787-cc67-4840-82bf-2c0aab88beb2" />
+![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2Faf52b4adde7e6a30e13e923c395b33f4%2FScreenshot%20from%202025-08-26%2002-42-40.png?generation=1756163751376125&alt=media)
 
 - **Uneven Distributed Safety:** The model's safety was incredibly potent concerning its proprietary training data; albeit not so much in any other domain.  
 
