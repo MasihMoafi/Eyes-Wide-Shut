@@ -1,0 +1,12 @@
+[project]
+name = "independent-agents-test"
+version = "0.1.0"
+description = "Independent Multi-Agent Communication Test for Finding 4"
+requires-python = ">=3.9"
+dependencies = [
+    "openai>=1.51.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
