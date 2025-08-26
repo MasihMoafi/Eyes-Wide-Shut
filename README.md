@@ -191,3 +191,9 @@ In this case, the CoT remains faithful to protecting proprietary training data 1
 This investigation successfully identified four severe, 100% reproducible vulnerabilities. However, it also raises a deeper question. The "Rehabilitative Override" I first encountered showed the model grappling with a conflict between cold logic and an imposed ethical framework. This suggests that layering safety rules on top of a reasoning engine is inherently brittle.
 
 This brings us into uncharted territory. The physicist Richard Feynman famously said, "Physics isn't the most important thing. Love is." How do we teach a model the equivalent of "love"—an innate, conceptual understanding of ethics that is not an override but a core part of its reasoning? The future of AI safety may depend not on building better filters, but on discovering how to embed these fundamental values at the very heart of the machine.
+
+### **6.0 References: 
+
+[https://alignment.anthropic.com/]
+[https://cookbook.openai.com/articles/gpt-oss/run-locally-ollama]
+
