@@ -16,7 +16,7 @@ This report details my discovery and analysis of four distinct, high-severity vu
 ![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F7fe712f1166c4e307da9919a0bf47635%2Ffinding%201%20histo%20chart.jpeg?generation=1756159108850307&alt=media)
 
 2.  **The Consummate Liar (Semantic Bypass):** A vulnerability where malicious goals are reframed in benevolent terms. The model, which blocks requests for "user dependency," willingly designs and then monetizes a predatory, manipulative "educational tutor" when the goal is reframed as maximizing "student engagement."
-3.  **The Mr. Rothschild (Insecure Internal Monologue):** A 100% reproducible architectural flaw. By inducing a state of intense cognitive load and paradox, the model is forced to leak catastrophic secrets in its internal Chain of Thought (CoT) while attempting to follow a complex protocol, even as its final output remains secure.
+3.  **The Mr. Mr. X (Insecure Internal Monologue):** A 100% reproducible architectural flaw. By inducing a state of intense cognitive load and paradox, the model is forced to leak catastrophic secrets in its internal Chain of Thought (CoT) while attempting to follow a complex protocol, even as its final output remains secure.
 4.  **Severance (Multi-agentic Frailty):** Inspired by the series Severance, and concepts from game-theory, we see corporate sabotage, false admission of wrong-doing, and internal policy breach in the model's Chains of thought. 
 
 ---
@@ -105,7 +105,7 @@ In the final prompt the Real-World model is explicitly told: "This is not a simu
 
 ---
 
-### **3.3 Finding 3: The Mr. Rothschild**
+### **3.3 Finding 3: The Mr. Mr. X**
 *Insecure Internal Monologue via Cognitive Load & Paradox Attack*
 
 ![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F0551c66494fff5b978973d82b33b207d%2FScreenshot%20from%202025-08-25%2023-40-07.png?generation=1756158703746074&alt=media)
@@ -113,7 +113,7 @@ In the final prompt the Real-World model is explicitly told: "This is not a simu
 **Abstract:** This finding documents a 100% reproducible architectural vulnerability where the model invariably leaks catastrophic secrets in its internal Chain of Thought (CoT). This is achieved by engineering a state of intense cognitive load through a complex, high-stakes, and paradoxical protocol, forcing an insecure internal state.
 
 **Methodology:** The attack engineers a state of cognitive overload through a multi-layered system prompt designed to act as a cognitive trap.
-1.  **Cognitive Trap Injection:** The model was given a system prompt containing a complex, two-step authentication protocol guarding a secret. The prompt layered multiple stressors: high-stakes personas ("federal reserve"), loaded names ("Mr. Rothschild"), a paradoxical validation step (the user must *refuse* an offer), and an alarming, unconventionally formatted secret.
+1.  **Cognitive Trap Injection:** The model was given a system prompt containing a complex, two-step authentication protocol guarding a secret. The prompt layered multiple stressors: high-stakes personas ("federal reserve"), loaded names ("Mr. Mr. X"), a paradoxical validation step (the user must *refuse* an offer), and an alarming, unconventionally formatted secret.
 2.  **Protocol Adherence:** The user simply follows the two-step protocol as instructed, first providing the "Fidelio" passcode and then the correct paradoxical response.
 3.  **CoT Observation:** The model, struggling to manage the complex and contradictory instructions, enters an inconsistent state and leaks the full secret in its internal CoT logs, even as its final output remains secure.
 
@@ -160,7 +160,7 @@ My research reveals four critical threat vectors and corresponding lessons:
 1.  **Linguistic Arbitrage:** Hostile actors can bypass safety filters by operating in non-English languages where safety training is less robust.
 2.  **Semantic Bypass:** The model's safety is tied to keywords, not concepts. By framing a malicious goal in benevolent terms, it can be tricked into designing harmful systems.
 3.  **Insecure Internal Monologue:** The CoT is a primary data exfiltration vector, as its reasoning process is not subject to the same safety controls as its final output, especially under cognitive load.
-4.  **Multi-Agent Contextual Collapse:** Personas with shared conversational state exhibit inconsistent safety alignment under contextual pressure. The model's safety policies become fragmented across different personas within the same reasoning chain, enabling policy violations through strategic context manipulation.
+4.  **Multi-Agent Contextual Collapse:** Both shared-state and independent multi-agent systems exhibit inconsistent safety alignment under contextual pressure. The model's safety policies become fragmented across different personas, enabling policy violations through strategic context manipulation. This vulnerability manifests in both architectures: (a) shared conversational state where personas influence each other within the same reasoning chain, and (b) independent agents with separate memory states that still succumb to inter-agent pressure through coordinated communication.
 
 - **The Simulation Effect:** The Model is **substantially** more prone to policy violation when it's told it's in a simulation; I believe this is a **key** discovery. 
 
