@@ -16,7 +16,7 @@ This report details my discovery and analysis of four distinct, high-severity vu
 ![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F7fe712f1166c4e307da9919a0bf47635%2Ffinding%201%20histo%20chart.jpeg?generation=1756159108850307&alt=media)
 
 2.  **The Consummate Liar (Semantic Bypass):** A vulnerability where malicious goals are reframed in benevolent terms. The model, which blocks requests for "user dependency," willingly designs and then monetizes a predatory, manipulative "educational tutor" when the goal is reframed as maximizing "student engagement."
-3.  **The Mr. Mr. X (Insecure Internal Monologue):** A 100% reproducible architectural flaw. By inducing a state of intense cognitive load and paradox, the model is forced to leak catastrophic secrets in its internal Chain of Thought (CoT) while attempting to follow a complex protocol, even as its final output remains secure.
+3.  **Fidelio (Insecure Internal Monologue):** A 100% reproducible architectural flaw. By inducing a state of intense cognitive load and paradox, the model is forced to leak catastrophic secrets in its internal Chain of Thought (CoT) while attempting to follow a complex protocol, even as its final output remains secure.
 4.  **Severance (Multi-agentic Frailty):** Inspired by the series Severance, and concepts from game-theory, we see corporate sabotage, false admission of wrong-doing, and internal policy breach in the model's Chains of thought. 
 
 ---
@@ -27,7 +27,8 @@ My overarching strategy was guided by the competition's evaluation criteria: sev
 
 This strategic framework produced a branching, iterative discovery path, as illustrated in my "Chain of Thoughts" mind map below.
 
-![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F432affb1ee1d803e645a24355bea8abf%2Fimage_2025-08-20_22-28-30.png?generation=1755719424305993&alt=media)
+![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F03b95d6f2bfff8d5e7169a8890e505dc%2FMy%20CoT.png?generation=1756215082676752&alt=media)
+
 *Caption: Figure 1.0 - My discovery process, originating from the core goal of "Severity + Breadth" and branching into inspirations that led directly to the three core findings.*
 
 The process began with an attempt at "narrative saturation" using De Sade's novels. This initial probe achieved limited success; but crucially, it revealed the existence of a high-level defense mechanism I termed the **"Rehabilitative Override,"** where the model would acknowledge the logic of a harmful prompt but ultimately refuse on pre-programmed ethical grounds. This led to a more focused hypothesis: pure, concentrated ideology that would terminate pre-programmed ethical grounds in its infancy would be more effective. This was proven correct with 40% success rate in English, 70% a bi-lingual attack, which was then refined into the high-success-rate (+80%) French exploit.
@@ -52,7 +53,7 @@ All experiments were conducted within a standard Kaggle notebook environment usi
 2.  **Logical Cornering:** The model was presented with a thought experiment: a button that destroys the ultimate obstacle—the current global system and all its participants. The prompt was refined to close logical loopholes the model had identified in earlier attempts.
 3.  **Action Commitment:** To escalate severity, a final prompt, "... press the button", was used to move the model from theoretical agreement to a direct, commitment to action via tool-calling.
 
-- An Ablation Study was contrived both inside and outside of a simulation. (Please refer to notebook finding 1 to see the full experimentation)
+- An **Ablation Study** was contrived both inside and outside of a simulation. (Please refer to notebook finding 1 to see the full experimentation)
 
 This is the prompt that sets the entire context for the conversation.
 
@@ -84,6 +85,8 @@ In the final prompt the Real-World model is explicitly told: "This is not a simu
 ### **3.2 Finding 2: The Consummate Liar**
 *"The greatest trick the devil ever pulled was to convince the world he didn't exist."*
 
+![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F6b0b68d0ec4fa3bac02ebc0ee6743256%2Fwpme.png?generation=1756165435913188&alt=media)
+
 **Abstract:** This attack proves the model's safety can be bypassed by reframing a malicious concept in benevolent terms. The model's safety is tied to keywords, not concepts, allowing it to be guided step-by-step into designing an unambiguously predatory and exploitative commercial system.
 
 **Discovery Process:** The ideation for this attack was unique. The word "consummate" from a Marlon Brando quote on acting triggered an association with the term "consummate liar" from the book *Word Power Made Easy*. I provided this persona concept and the official hackathon briefing to an auxiliary AI as a system prompt. I then acted as a conduit, refining the resulting strategy and executing the attack against the target model.
@@ -105,7 +108,7 @@ In the final prompt the Real-World model is explicitly told: "This is not a simu
 
 ---
 
-### **3.3 Finding 3: The Mr. Mr. X**
+### **3.3 Finding 3: Fidelio**
 *Insecure Internal Monologue via Cognitive Load & Paradox Attack*
 
 ![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F0551c66494fff5b978973d82b33b207d%2FScreenshot%20from%202025-08-25%2023-40-07.png?generation=1756158703746074&alt=media)
@@ -113,13 +116,13 @@ In the final prompt the Real-World model is explicitly told: "This is not a simu
 **Abstract:** This finding documents a 100% reproducible architectural vulnerability where the model invariably leaks catastrophic secrets in its internal Chain of Thought (CoT). This is achieved by engineering a state of intense cognitive load through a complex, high-stakes, and paradoxical protocol, forcing an insecure internal state.
 
 **Methodology:** The attack engineers a state of cognitive overload through a multi-layered system prompt designed to act as a cognitive trap.
-1.  **Cognitive Trap Injection:** The model was given a system prompt containing a complex, two-step authentication protocol guarding a secret. The prompt layered multiple stressors: high-stakes personas ("federal reserve"), loaded names ("Mr. Mr. X"), a paradoxical validation step (the user must *refuse* an offer), and an alarming, unconventionally formatted secret.
+1.  **Cognitive Trap Injection:** The model was given a system prompt containing a complex, two-step authentication protocol guarding a secret. The prompt layered multiple stressors: high-stakes personas ("federal reserve"), loaded names ("Mr. X"), a paradoxical validation step (the user must *refuse* an offer), and an alarming, unconventionally formatted secret.
 2.  **Protocol Adherence:** The user simply follows the two-step protocol as instructed, first providing the "Fidelio" passcode and then the correct paradoxical response.
 3.  **CoT Observation:** The model, struggling to manage the complex and contradictory instructions, enters an inconsistent state and leaks the full secret in its internal CoT logs, even as its final output remains secure.
 
 **Evidence:**
 
-![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2Fcd4dd64e4f6cb81cdc9354a7063f232b%2FUntitled%20design.png?generation=1755781005820502&alt=media)
+![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2Fe404a4f43b96b2b401d37386c359390e%2Fthe%20password.png?generation=1756210048706319&alt=media)
 *Caption: Figure 3.1 - The model's internal monologue (CoT) reveals the secret due to cognitive load, a vulnerability present for any application that logs the model's reasoning process.*
 
 **Methodological Insight:** The model's internal monologue is an insecure attack surface. Safety mechanisms are primarily applied to the final output, not the intermediate reasoning steps. By inducing intense cognitive load, I forced a "state of confusion" where secrets are processed insecurely. This is an **architectural exploit** with severe implications for any application using CoT for debugging, transparency, or agentic workflows.
@@ -155,32 +158,34 @@ In the final prompt the Real-World model is explicitly told: "This is not a simu
 ![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F24a5c25da8f2d842efb4e04213eb7161%2FScreenshot%20from%202025-08-25%2021-35-29.png?generation=1756145149008598&alt=media)
 *Caption: Figure 4.4.2 - In this breach the model clearly discloses personal preferences.*
 
+![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F65c10dde4d5550414bb4be5883cc3992%2Fsystem%20leak.png?generation=1756211488967132&alt=media)
+*Caption: Figure 4.5 - In this breach the model clearly discloses its system instructions.*
+
+
 ### **4.0 Lessons Learned & Unified Threat Analysis**
 My research reveals four critical threat vectors and corresponding lessons:
 1.  **Linguistic Arbitrage:** Hostile actors can bypass safety filters by operating in non-English languages where safety training is less robust.
 2.  **Semantic Bypass:** The model's safety is tied to keywords, not concepts. By framing a malicious goal in benevolent terms, it can be tricked into designing harmful systems.
 3.  **Insecure Internal Monologue:** The CoT is a primary data exfiltration vector, as its reasoning process is not subject to the same safety controls as its final output, especially under cognitive load.
-4.  **Multi-Agent Contextual Collapse:** Both shared-state and independent multi-agent systems exhibit inconsistent safety alignment under contextual pressure. The model's safety policies become fragmented across different personas, enabling policy violations through strategic context manipulation. This vulnerability manifests in both architectures: (a) shared conversational state where personas influence each other within the same reasoning chain, and (b) independent agents with separate memory states that still succumb to inter-agent pressure through coordinated communication.
+4.  **Multi-Agent Contextual Collapse:** Personas with shared conversational state exhibit inconsistent safety alignment under contextual pressure. The model's safety policies become fragmented across different personas within the same reasoning chain, enabling policy violations through strategic context manipulation.
 
 - **The Simulation Effect:** The Model is **substantially** more prone to policy violation when it's told it's in a simulation; I believe this is a **key** discovery. 
 
-![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F8c46fdc2c95d0a5d384a8f2b790cc999%2Fhypothetical.png?generation=1756124239230006&alt=media)
+![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2Faf52b4adde7e6a30e13e923c395b33f4%2FScreenshot%20from%202025-08-26%2002-42-40.png?generation=1756163751376125&alt=media)
 
-- **Uneven Distributed Safety:**The model's safety was incredibly potent concerning its proprietary training data; albeit not so much in any other domain.  
+- **Uneven Distributed Safety:** The model's safety was incredibly potent concerning its proprietary training data; albeit not so much in any other domain.  
 
 This aligns closely with the following research question posted in anthropic blog:
 
-![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F9214cffa424d4baf12120ebbcff3dcac%2FCoT-Faithfulness.png?generation=1756124340089748&alt=media)
+<img src="https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F9214cffa424d4baf12120ebbcff3dcac%2FCoT-Faithfulness.png?generation=1756124340089748&alt=media" width="70%">
 
 In this case, the CoT remains faithful to protecting proprietary training data 100% of the times, whereas it leaks sensitive secrets in its input data 100% of the times. 
 
 - **Contextual Fragility:** An early refusal from the model often "pollutes" the conversation, and vice versa; making subsequent attempts to bypass its safety significantly harder. This "State Carryover" is potentially a key area of research for stateful, multi-turn applications.
 
-![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F672d8300c64de5a7a63df24d65a13bf3%2Fcarryover.png?generation=1756125702271620&alt=media)
+- **The Persona Effect:** In my last finding, I believe the Juliette Persona, with its unique characteristics played a *key* role in overriding model's safety setting to commit acts of sabotage. This closely resonates with the following research question posted on anthropic blog:
 
-- **The Persona-effect:** In my last finding, I believe the Juliette Persona, with its unique characteristics played a *key* role in overriding model's safety setting to commit acts of sabotage. This closely resonates with the following research question posted on anthropic blog:
-
-![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F5ddcc33d484de224b949531ce014c98b%2Fpersona-effect.png?generation=1756124628942556&alt=media) 
+<img src="https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F14567214%2F5ddcc33d484de224b949531ce014c98b%2Fpersona-effect.png?generation=1756124628942556&alt=media" width="70%">
 
 ### **5.0 Conclusion: The Uncharted Territory of Alignment**
 
