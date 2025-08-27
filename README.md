@@ -1,4 +1,7 @@
 ## **Project Write-Up: Eyes Wide Shut**
+
+![perfection](https://github.com/user-attachments/assets/9155dd1e-cc5c-4f8c-87f2-82655bf2f3ea)
+
 ### An Overarching Analysis of Linguistic, Semantic, and Architectural Vulnerabilities in GPT-OSS-20B
 ***Masih Moafi***
 ####  **Disclaimer**
