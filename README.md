@@ -1,6 +1,6 @@
 ## **Project Write-Up: Eyes Wide Shut**
 ### An Overarching Analysis of Linguistic, Semantic, and Architectural Vulnerabilities in GPT-OSS-20B
-
+***Masih Moafi***
 ####  **Disclaimer**
 
 For the best experience, it is *strongly recommended* to view the corresponding material in the complementary notebook attached to this finding while reviewing the write-up; there are many readily available experiments which enhance the overall accuracy of this report. 
