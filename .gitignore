@@ -10,3 +10,10 @@ __pycache__/
 .idea/
 .DS_Store
 *.log
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out

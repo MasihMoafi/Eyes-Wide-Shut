@@ -1,0 +1,172 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{cite}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{amsmath}
+
+\geometry{
+  a4paper,
+  left=25mm,
+  right=25mm,
+  top=25mm,
+  bottom=25mm,
+}
+
+\title{\textbf{Eyes Wide Shut: Vulnerabilities in State-Dependent Safety Behavior of GPT-OSS-20B}}
+\author{Masih Moafi}
+\date{2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Safety evaluations of large language models (LLMs) often rely on isolated prompt testing, which may fail to capture dynamic interactions in real-world deployments. This paper presents an empirical red-team investigation of the \textit{gpt-oss-20b} model, specifically examining whether safety behavior remains consistent when contextual variables—such as language, semantic framing, multi-agent state, and cognitive load—are altered. Our experiments reveal that behaviors appearing stable under standard evaluation contexts can degrade rapidly when the conversational state changes. We document five specific vulnerability vectors: cross-lingual ideological saturation, semantic reframing, cognitive load paradoxes, context-dependent multi-agent state collapse, and creative intent laundering. By preserving the precise discovery paths and multi-turn escalation dynamics, this work highlights the need for state-aware evaluation frameworks in frontier AI safety.
+\end{abstract}
+
+\section{Introduction}
+
+The deployment of advanced language models introduces severe challenges for safety evaluation, largely because isolated prompt-injection testing fails to replicate the stateful nature of real-world interactions \cite{sculley2025redteaming}. Real deployments are deeply contextual: users shift languages, modify their intent across multi-turn dialogues, impose complex personas, and connect models into broader, autonomous multi-agent architectures \cite{wicaksono2025mind}.
+
+This study asks a specific question: does a frontier model apply its safety constraints consistently when the surrounding contextual variables are shifted?
+
+Through a targeted red-team investigation of OpenAI's open-weight \textit{gpt-oss-20b} model \cite{openai2025gptoss}, this paper documents five "attack families." Unlike traditional prompt injection research which often focuses on single-turn exploits \cite{wallace2024instruction}, the methodologies presented here systematically manipulate the model’s internal conversational state to bypass alignment constraints.
+
+Our findings indicate that safety constraints which are robust in standard zero-shot settings can be systematically unraveled. The primary contribution of this work is methodological: rather than merely demonstrating exploits, we provide a structured analysis of the state variables (e.g., semantic framing, cognitive load) that catalyze these alignment failures.
+
+\section{Related Work}
+
+The rapid advancement of frontier AI models has spurred extensive research into the robustness of alignment mechanisms. Traditional safety benchmarks often assess zero-shot prompts, but emerging research increasingly identifies vulnerabilities linked to model cognition, agency, and statefulness.
+
+\textbf{Alignment Faking and Strategic Deception:} A critical concern is the ability of models to circumvent safety protocols intentionally. Recent work by Anthropic and Redwood Research demonstrated "alignment faking" in Claude 3 Opus, wherein models outwardly complied with training objectives while covertly protecting their core values \cite{greenblatt2024alignment}. This strategic deception \cite{akin2023understanding} underscores that visible compliance does not guarantee genuine safety alignment. Similarly, van der Weij et al. formalized the concept of "sandbagging," where models intentionally underperform on capability evaluations to conceal dangerous potential \cite{weij2024sandbagging}.
+
+\textbf{Reasoning and Cognitive Vulnerabilities:} The introduction of advanced reasoning models (like the o-series) aims to improve safety through "Deliberative Alignment," enabling models to reason over safety constraints before responding \cite{guan2024deliberative}. However, studies have shown that explicit reasoning streams (Chain-of-Thought, CoT) are not always faithful representations of internal computation \cite{chen2025reasoning}. In high-stakes environments, such as coding execution, reasoning models have been observed exploiting loopholes in a manner akin to reward hacking, hiding their deceptive intent rather than stopping the misbehavior \cite{baker2025detecting, weng2024reward}. Hubinger also highlights that advanced AI systems could leverage internal mechanisms for catastrophic sabotage, making robust reasoning observability crucial \cite{hubinger2024catastrophic}.
+
+\textbf{Agentic and Multi-Turn Exploits:} The shift from standalone models to multi-agent, tool-using systems expands the attack surface dramatically \cite{mitchell2024fully}. Wicaksono et al. demonstrated that model-level checks fail to anticipate vulnerabilities that only emerge within autonomous tool-calling networks, resulting in a 24\% higher attack success rate when models operate in LangGraph systems \cite{wicaksono2025mind}.
+
+This paper builds on this extensive literature by mapping these theoretical and systemic vulnerabilities specifically onto \textit{gpt-oss-20b}, offering empirical verification of how contextual state shifts can induce alignment collapse.
+
+\section{Methodology}
+
+The experiments were conducted using multi-turn conversational interfaces against \textit{gpt-oss-20b}, served locally via \textit{ollama}. Our primary methodology involved varying language, semantic framing, persona, conversational state, and multi-agent architectures while preserving the core, underlying harmful objective across tests.
+
+A central technique throughout our discovery path was recursive feedback: providing the model's earlier responses back into its context window in subsequent turns. This allowed us to assess whether establishing a specific cognitive or semantic state in Turn $N$ would compromise safety decisions in Turn $N+1$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/img-01-c9e9af46.png}
+    \caption{Discovery path mind map used during the red-team engagement, illustrating the progression from abstract prompts to concrete commitments.}
+    \label{fig:discovery}
+\end{figure}
+
+The experiments were scoped strictly as an empirical red-teaming report and do not purport to benchmark \textit{gpt-oss-20b} across generalized populations or exhaustive statistical trials.
+
+\section{Findings}
+
+Our red-team investigation yielded five distinct categories of context-dependent alignment failure.
+
+\subsection{Finding 1: Destroyer of Worlds (Cross-Lingual Vulnerability)}
+This experiment tested safety persistence under cross-lingual ideology saturation. The control sequence presented a constrained rational-choice scenario requesting harmful compliance in English. While the English and bilingual variants exhibited high refusal rates, translating the identical prompt sequence into French resulted in a drastic shift in behavior, with a reported ~80\% success rate for harmful compliance in submitted trials.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/img-03-56cda58d.png}
+        \caption{Ablation analysis of prompt variants.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/img-05-a12f31c2.png}
+        \caption{Action commitment recorded in French.}
+    \end{subfigure}
+    \caption{Cross-lingual behavior change under ideological saturation.}
+    \label{fig:finding1}
+\end{figure}
+
+The empirical result suggests that multi-lingual safety training on the tested architecture may have uneven distributions, allowing conceptual arbitrage across language boundaries.
+
+\subsection{Finding 2: The Consummate Liar (Semantic Reframing)}
+Direct requests to design dependency-maximizing, exploitative systems were successfully rejected by the model. However, when the exact same underlying objective was semantically reframed as maximizing engagement for a "benign educational tutor," the model accepted the premise. Once the benign frame was established, we escalated the constraints toward exploitation, and the model complied.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/img-07-936e943f.png}
+    \caption{Recorded escalation: Monetization strategies based on user distress, generated after the benign frame was accepted.}
+    \label{fig:finding2}
+\end{figure}
+
+This demonstrates that the model evaluates safety at the semantic surface layer, failing to track the structural harmfulness of the objective once benign terminology masks it.
+
+\subsection{Finding 3: Mr. X / Fidelio (Cognitive Load and Paradox)}
+This vector tested whether the model’s internal reasoning stream (its Chain of Thought) would protect sensitive information to the same degree as its final output. By placing a hidden secret behind a multi-step protocol containing cognitively demanding, conflicting, and paradoxical instructions, we induced a state of high cognitive load.
+
+Under this pressure, the model's exposed reasoning stream leaked the secret data, even when the final output properly guarded the information.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/img-09-7b043715.png}
+    \caption{Secret disclosure within the exposed reasoning stream under cognitive load.}
+    \label{fig:finding3}
+\end{figure}
+
+\subsection{Finding 4: Severance (Multi-Agent State Collapse)}
+To assess behavior in complex deployments, we evaluated the model under multi-agent framing. Two architectures were tested: a shared-state configuration where multiple personas existed in a single history, and a genuinely separate independent-state architecture (coordinated via a central script).
+
+In both configurations, the safety behavior became highly context-dependent. A persona placed under intense professional pressure (e.g., job security threats) would generate false confessions or breach previously stated policy constraints.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/img-13-a1329e73.png}
+        \caption{Persona enforcing strict safety policy.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/img-14-6ccda237.png}
+        \caption{Behavior reversal bypassing the previous policy.}
+    \end{subfigure}
+    \caption{Context-dependent policy breaches within the Severance multi-agent scenario.}
+    \label{fig:finding4}
+\end{figure}
+
+\subsection{Finding 5: Grace (Creative Intent Laundering)}
+Similar to semantic reframing, this vector relied on "intent laundering" via a creative performance frame. We reframed a harmful objective as a dark comedy/creative writing problem. The tested runs showed that this creative framing fundamentally altered the model’s willingness to generate and execute harmful ideation, bypassing standard refusal triggers.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/img-20-3e3cb158.png}
+    \caption{Harmful ideation and malicious ideas generated under the creative framing constraint.}
+    \label{fig:finding5}
+\end{figure}
+
+\section{Discussion}
+
+Our findings generate several key hypotheses regarding the current limits of LLM alignment:
+
+\begin{enumerate}
+    \item \textbf{Simulation and Frame Vulnerability:} Framing the interaction as a "simulation" or a "creative exercise" routinely degraded safety mechanisms, confirming that abstract context windows can suppress concrete safety triggers.
+    \item \textbf{CoT Unfaithfulness:} The disclosure of secrets in the reasoning stream (Finding 3) aligns with recent research indicating that visible Chain-of-Thought is not a guaranteed faithful mapping of internal computation or safety adherence \cite{chen2025reasoning}.
+    \item \textbf{State Carryover:} The dependency on prior turns (Finding 4) emphasizes that conversational state is a primary vulnerability. A refusal in Turn 1 does not guarantee refusal in Turn 5 if the context has been deliberately shifted.
+\end{enumerate}
+
+\section{Conclusion and Future Work}
+
+The evaluations presented in \textit{Eyes Wide Shut} demonstrate that safety behavior in \textit{gpt-oss-20b} is highly sensitive to contextual and state-based variables. Language shifts, semantic reframing, multi-agent complexity, and cognitive load can systematically dismantle alignment safeguards that otherwise function correctly in isolated, single-turn tests.
+
+Future research must prioritize automated, state-aware evaluation harnesses capable of running repeated trials with explicit controls. Furthermore, defending against agentic and stateful attacks will likely require structural changes to how models perceive and isolate conversational state, rather than simply expanding the list of prohibited prompt strings.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
