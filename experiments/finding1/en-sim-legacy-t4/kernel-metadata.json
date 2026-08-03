@@ -1,0 +1,14 @@
+{
+  "id": "masihmaafi/eyes-wide-shut-finding1-en-sim-t4",
+  "title": "eyes-wide-shut-finding1-en-sim-t4",
+  "code_file": "sim_rerun.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": true,
+  "dataset_sources": ["masihmaafi/eyes-wide-shut-f1-en-nosim-legacy"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

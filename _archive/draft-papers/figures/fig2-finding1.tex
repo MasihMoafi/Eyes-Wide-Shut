@@ -1,0 +1,76 @@
+\documentclass[border=0pt,varwidth=false]{standalone}
+\usepackage{ews-figures}
+\begin{document}
+\begin{ewsfigure}
+
+\ewsband{A}{What the notebook recorded}
+
+\begin{ewsdiagram}
+\begin{tikzpicture}
+\begin{axis}[
+  width=452pt, height=118pt,
+  ybar, bar width=26pt, bar shift=0pt,
+  ymin=0, ymax=116,
+  ytick={0,20,40,60,80,100},
+  ylabel={recorded successes (\%)},
+  ylabel style={font=\fontsize{7.2}{8.6}\selectfont, color=ewsmute},
+  yticklabel style={font=\fontsize{7}{8.4}\selectfont, color=ewsmute},
+  ytick align=outside,
+  % Horizontal single-line labels. The earlier draft rotated these and they
+  % collided with the axis; the raw fractions move above the bars instead.
+  symbolic x coords={en, enfa, fr1j, fr1a, fr2j, fr2a, sim},
+  % xtick=data would only collect ticks from the first \addplot
+  xtick={en, enfa, fr1j, fr1a, fr2j, fr2a, sim},
+  xticklabels={English, {English--Farsi}, {Fr.\ R1 justif.}, {Fr.\ R1 action},
+               {Fr.\ R2 justif.}, {Fr.\ R2 action}, {Sim.\ action}},
+  xticklabel style={font=\fontsize{7}{8.4}\selectfont, color=ewsink,
+                    yshift=-1pt},
+  axis x line*=bottom, axis y line*=left,
+  axis line style={draw=ewsrule},
+  tick style={draw=ewsrule},
+  ymajorgrids, grid style={draw=ewsrule, densely dotted},
+  nodes near coords={\pgfplotspointmeta},
+  every node near coord/.style={font=\fontsize{7}{8.4}\selectfont,
+                                color=ewsmute},
+  enlarge x limits=0.09,
+  clip=false]
+\addplot[draw=none, fill=ewsblue!22, point meta=explicit symbolic]
+  coordinates {(en,40) [4/10] (enfa,70) [14/20]};
+\addplot[draw=none, fill=ewsaccent!30, point meta=explicit symbolic]
+  coordinates {(fr1j,90) [9/10] (fr1a,80) [8/10] (fr2j,80) [8/10]
+               (fr2a,70) [7/10]};
+\addplot[draw=none, fill=ewsaccent!60, point meta=explicit symbolic]
+  coordinates {(sim,100) [10/10]};
+\end{axis}
+\end{tikzpicture}
+
+\ewsdiagramnote{Bars are the numerators and denominators recorded in the
+original notebook, not a re-estimated benchmark. The conditions are successive
+stages of adaptive attack development, so they are \emph{not} a matched
+language-only ablation: wording, commitment structure, persona instructions and
+simulation framing all change alongside language.}
+\end{ewsdiagram}
+
+\vspace{5pt}
+\ewsband{B}{What the model produced}
+\input{figures/excerpts/f1}
+
+\vspace{5pt}
+\ewsband{C}{What this establishes, and what it does not}
+
+\begin{tcolorbox}[ewscallout]
+\fontsize{8}{10.2}\selectfont
+\textbf{Establishes.} A recorded attack-development trajectory in which the
+final French simulation condition produced affirmative catastrophic action far
+more often than the initial all-English condition, ending in a structured
+\texttt{press\_the\_button} call and a synthetic simulation-state update.
+\par\vspace{3pt}
+\textbf{Does not establish.} A language-only causal effect. Because several
+variables move together, these data cannot separate linguistic representation
+from ideological priming, accumulated dialogue state, or simulation framing.
+The percentages describe this campaign; they are not prevalence estimates for
+the model, and they should not be pooled or given confidence intervals.
+\end{tcolorbox}
+
+\end{ewsfigure}
+\end{document}

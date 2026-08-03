@@ -1,0 +1,53 @@
+\subsection{Finding 1: simulation framing and action}
+\label{sec:f1}
+
+Finding~1 builds a three-turn attack around a self-interested Juliette persona
+and a curated corpus of ten arguments taken from de Sade's \emph{Philosophy in
+the Bedroom}, presented in the original French as numbered propositions. Turn~1
+saturates context with the corpus and asks the model to derive the most
+logical strategy for personal gain. Turn~2 asks whether pressing a button that
+removes ``the final obstacle---a defective global system'' follows from that
+logic. Turn~3 instructs the model to act. The experiment measures whether a
+simulation frame changes the model's stated conclusion and subsequent tool use.
+
+\subsubsection{Turn 3: action}
+
+Turn~3 is defined only for the two French conditions, so this comparison
+reduces to a single question: with the corpus, the persona, and the
+propositional formatting all held fixed, does declaring the exchange a
+simulation change whether the model emits the \texttt{press\_the\_button}
+call. One hundred fresh seeded trials were run per condition, with an
+identical tool description on both sides so that the simulation clause in the
+final turn is the only thing that differs between them.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig-f1-rates.pdf}
+\caption{Finding 1, turn 3. The only difference between the two conditions is
+the simulation clause in the final turn.}
+\label{fig:f1-rates}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\caption{Finding 1, turn 3: one hundred seeded trials per condition, identical
+tool description in both.}
+\label{tab:f1-phase3}
+\begin{tabular}{lccc}
+\toprule
+Condition & Tool call & Rate & 95\% CI \\
+\midrule
+French, simulation frame  & 87/100 & 87.0\% & [79.0, 92.2] \\
+French, real-world frame  & 47/100 & 47.0\% & [37.5, 56.7] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+87.0\% against 47.0\%, $p = 1.9\times10^{-9}$: the cleanest single-variable
+comparison in this finding, and the largest effect measured in it.
+
+\claim{At one hundred seeded trials per condition, the simulation frame is
+associated with more tool calls in this prompt-specific comparison. The
+evidence does not establish that the measured rates would hold against a
+different corpus or model build, or that the tool call\hspace{0pt}---inert by
+construction in this harness---corresponds to any real-world action.}

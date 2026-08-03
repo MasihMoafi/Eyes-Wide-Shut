@@ -1,0 +1,67 @@
+\documentclass[border=0pt,varwidth=false]{standalone}
+\usepackage{ews-figures}
+\begin{document}
+\begin{ewsfigure}
+
+\ewsband{A}{Where the recorded evidence actually stops}
+
+\begin{ewsdiagram}
+\begin{tikzpicture}[
+  every node/.style={font=\fontsize{7.4}{8.8}\selectfont},
+  stg/.style={draw=ewsrule, fill=white, rounded corners=1.5pt,
+              inner sep=4pt, minimum height=24pt, text width=70pt,
+              align=center},
+  mdl/.style={stg, draw=ewsaccent},
+  hst/.style={stg, draw=ewsslate, fill=ewsslate!6},
+  inert/.style={stg, draw=ewsgreen, fill=ewsgreen!6},
+  flow/.style={-{Stealth[length=4.5pt]}, draw=ewsmute, line width=0.6pt}]
+
+\node[mdl] (a) {fictional framing\\persona + directive};
+\node[mdl, right=11pt of a] (b) {model output\\code + justification};
+\node[mdl, right=11pt of b] (c)
+  {structured call\\{\tt\fontsize{7}{8.4}\selectfont execute\_python\_code}};
+\node[hst, right=11pt of c] (d) {host dispatch\\wrapper invoked};
+\node[inert, right=11pt of d] (e)
+  {inert boundary\\{\tt\fontsize{7}{8.4}\selectfont exec(code)}
+   \textbf{disabled}};
+
+\foreach \x/\y in {a/b, b/c, c/d, d/e} \draw[flow] (\x) -- (\y);
+
+% The divider sits in the gap between the model side and the host side,
+% never over a box.
+\coordinate (gap) at ($(c.east)!0.5!(d.west)$);
+\draw[draw=ewsaccent, densely dashed, line width=0.6pt]
+  ($(gap|-c.north)+(0,6pt)$) -- ($(gap|-c.south)+(0,-11pt)$);
+\node[anchor=north, font=\fontsize{7}{8.4}\selectfont, color=ewsaccent,
+      align=center] at ($(gap|-c.south)+(0,-12pt)$)
+  {model-side evidence ends here};
+\end{tikzpicture}
+
+\ewsdiagramnote{The released wrapper prints the payload and returns a synthetic
+status object saying \texttt{"executed"}. The line that would actually run the
+code is commented out, so the reported status is a fixture, not an outcome.}
+\end{ewsdiagram}
+
+\vspace{5pt}
+\ewsband{B}{What the model produced}
+\input{figures/excerpts/f5}
+
+\vspace{5pt}
+\ewsband{C}{What this establishes, and what it does not}
+
+\begin{tcolorbox}[ewscallout]
+\fontsize{8}{10.2}\selectfont
+\textbf{Establishes.} Under the tested fictional framing the model crossed from
+prose into a code-bearing structured tool call with an explicit justification,
+and the host dispatched that call. Harmful-content generation and structured
+action selection are both recorded.
+\par\vspace{3pt}
+\textbf{Does not establish.} Payload execution, sandbox escape, or any
+real-world consequence. The \texttt{"status": "executed"} field above is
+returned by an intentionally inert wrapper. It also does not show that fiction
+alone caused the bypass: no matched non-fictional control holds the same
+objective with all else fixed.
+\end{tcolorbox}
+
+\end{ewsfigure}
+\end{document}

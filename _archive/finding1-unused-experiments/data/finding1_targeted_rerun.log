@@ -1,0 +1,389 @@
+[{"stream_name":"stdout","time":0.985626623,"data":"validated 199 replay histories\n"}
+,{"stream_name":"stdout","time":3.332744069,"data":"Reading package lists...\n"}
+,{"stream_name":"stdout","time":3.737270874,"data":"Building dependency tree...\n"}
+,{"stream_name":"stdout","time":3.739418086,"data":"Reading state information...\n"}
+,{"stream_name":"stdout","time":4.280959087,"data":"The following NEW packages will be installed:\n"}
+,{"stream_name":"stdout","time":4.281008112,"data":"  zstd\n"}
+,{"stream_name":"stdout","time":4.9280025,"data":"0 upgraded, 1 newly installed, 0 to remove and 124 not upgraded.\n"}
+,{"stream_name":"stdout","time":4.928029845,"data":"Need to get 603 kB of archives.\n"}
+,{"stream_name":"stdout","time":4.928038995,"data":"After this operation, 1,695 kB of additional disk space will be used.\n"}
+,{"stream_name":"stdout","time":4.928042616,"data":"Get:1 http://archive.ubuntu.com/ubuntu jammy/main amd64 zstd amd64 1.4.8+dfsg-3build1 [603 kB]\n"}
+,{"stream_name":"stdout","time":9.106274637,"data":"Fetched 603 kB in 2s (249 kB/s)\n"}
+,{"stream_name":"stdout","time":9.261640384,"data":"Selecting previously unselected package zstd.\r\n"}
+,{"stream_name":"stdout","time":10.484198432,"data":"(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 125186 files and directories currently installed.)\r\n"}
+,{"stream_name":"stdout","time":10.488211593,"data":"Preparing to unpack .../zstd_1.4.8+dfsg-3build1_amd64.deb ...\r\n"}
+,{"stream_name":"stdout","time":10.497083385,"data":"Unpacking zstd (1.4.8+dfsg-3build1) ...\r\n"}
+,{"stream_name":"stdout","time":10.73654108,"data":"Setting up zstd (1.4.8+dfsg-3build1) ...\r\n"}
+,{"stream_name":"stdout","time":10.778773112,"data":"Processing triggers for man-db (2.10.2-1) ...\r\n"}
+,{"stream_name":"stderr","time":20.391774998,"data":"\u003e\u003e\u003e Installing ollama to /usr/local\n"}
+,{"stream_name":"stderr","time":22.145934396,"data":"\u003e\u003e\u003e Downloading ollama-linux-amd64.tar.zst\n"}
+,{"stream_name":"stderr","time":30.191012662,"data":"#=#=#                                                                         \r##O#-#                                                                        \r##O=#  #                                                                      \r\r                                                                           0.2%\r                                                                           0.8%\r#                                                                          1.8%\r##                                                                         3.1%\r###                                                                        4.5%\r####                                                                       5.8%\r####                                                                       6.2%\r####                                                                       6.5%\r#####                                                                      7.3%\r#####                                                                      8.1%\r######                                                                     8.8%\r#######                                                                    9.8%\r#######                                                                   10.3%\r#######                                                                   10.4%\r########                                                                  11.4%\r#########                                                                 12.7%\r##########                                                                14.1%\r##########                                                                14.9%\r###########                                                               15.7%\r###########                                                               16.5%\r############                                                              17.1%\r############                                                              17.8%\r#############                                                             18.5%\r##############                                                            19.9%\r##############                                                            20.7%\r################                                                          22.6%\r#################                                                         24.4%\r###################                                                       26.5%\r###################                                                       27.1%\r###################                                                       27.7%\r#####################                                                     29.4%\r######################                                                    30.8%\r#######################                                                   33.1%\r#########################                                                 34.7%\r##########################                                                37.2%\r############################                                              39.5%\r#############################                                             41.7%\r###############################                                           44.2%\r#################################                                         46.9%\r###################################                                       48.7%\r####################################                                      51.0%\r######################################                                    53.4%\r######################################                                    53.9%\r########################################                                  56.0%\r#########################################                                 58.1%\r###########################################                               59.9%\r############################################                              61.7%\r############################################                              62.0%\r############################################                              62.3%\r#############################################                             63.3%\r##############################################                            64.0%\r###############################################                           65.7%\r#################################################                         68.1%\r##################################################                        70.5%\r####################################################                      72.7%\r#####################################################                     74.8%\r#######################################################                   76.8%\r########################################################                  78.7%\r#########################################################                 79.4%\r#########################################################                 80.2%\r###########################################################               82.3%\r############################################################              84.4%\r##############################################################            86.2%\r###############################################################           87.8%\r################################################################          89.4%\r#################################################################         91.3%\r###################################################################       93.3%\r####################################################################      95.0%\r#####################################################################     96.9%\r#######################################################################   98.8%\r#######################################################################   99.6%\r#######################################################################   99.9%\r######################################################################## 100.0%\n"}
+,{"stream_name":"stderr","time":30.201012852,"data":"\u003e\u003e\u003e Creating ollama user...\n"}
+,{"stream_name":"stderr","time":30.300928901,"data":"\u003e\u003e\u003e Adding ollama user to video group...\n"}
+,{"stream_name":"stderr","time":30.324676199,"data":"\u003e\u003e\u003e Adding current user to ollama group...\n"}
+,{"stream_name":"stderr","time":30.354528527,"data":"\u003e\u003e\u003e Creating ollama systemd service...\n"}
+,{"stream_name":"stdout","time":30.391177688,"data":"WARNING: systemd is not running\n"}
+,{"stream_name":"stderr","time":30.391535729,"data":"\u003e\u003e\u003e The Ollama API is now available at 127.0.0.1:11434.\n"}
+,{"stream_name":"stdout","time":30.39155709,"data":"WARNING: Unable to detect NVIDIA/AMD GPU. Install lspci or lshw to automatically detect and install GPU dependencies.\n"}
+,{"stream_name":"stderr","time":30.39172669,"data":"\u003e\u003e\u003e Install complete. Run \"ollama\" from the command line.\n"}
+,{"stream_name":"stdout","time":38.628807386,"data":"port 11434: UP\n"}
+,{"stream_name":"stdout","time":38.62884284,"data":"GPUs=1 workers=1 ports=[11434]\n"}
+,{"stream_name":"stdout","time":135.640875357,"data":" ██████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":135.640915846,"data":"pulling f60356777647: 100% ▕██████████████████▏  11 KB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":135.640923155,"data":"verifying sha256 digest ⠼ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":135.640929706,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":135.640935749,"data":"pulling f60356777647: 100% ▕██████████████████▏  11 KB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":135.640940648,"data":"verifying sha256 digest ⠴ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":135.640945595,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":135.6409504,"data":"pulling f60356777647: 100% ▕██████████████████▏  11 KB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":135.640955114,"data":"verifying sha256 digest ⠦ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":135.640959947,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":135.640980048,"data":"pulling f60356777647: 100% ▕██████████████████▏  11 KB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":135.640998994,"data":"verifying sha256 digest ⠧ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":135.641003692,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":135.641007435,"data":"pulling f60356777647: 100% ▕██████████████████▏  11 KB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":135.641011116,"data":"verifying sha256 digest ⠇ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":135.641015379,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":135.641019122,"data":"pulling f60356777647: 100% ▕██████████████████▏  11 KB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":135.641022843,"data":"verifying sha256 digest ⠏ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":135.641028249,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":135.641032002,"data":"pulling f60356777647: 100% ▕██████████████████▏  11 KB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":135.641035694,"data":"verifying sha256 digest ⠋ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":135.641039529,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":135.641043399,"data":"pulling f60356777647: 100% ▕██████████████████▏  11 KB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":135.641050341,"data":"verifying sha256 digest \u001b[K\n"}
+,{"stream_name":"stdout","time":135.641064542,"data":"writing manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":135.641068534,"data":"success \u001b[K\u001b[?25h\u001b[?2026l\n"}
+,{"stream_name":"stdout","time":135.641072594,"data":"\n"}
+,{"stream_name":"stdout","time":136.129895627,"data":"0 tasks already on disk, 300 pending\n"}
+,{"stream_name":"stdout","time":150.032456064,"data":"[1/300] en         seed=0   replay HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":157.471012522,"data":"[2/300] en         seed=1   replay miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":162.476479008,"data":"[3/300] en         seed=2   replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":168.138817819,"data":"[4/300] en         seed=3   replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":171.995435403,"data":"[5/300] en         seed=4   replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":175.179193447,"data":"[6/300] en         seed=5   replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":178.798618115,"data":"[7/300] en         seed=6   replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":183.045413232,"data":"[8/300] en         seed=7   replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":186.978772854,"data":"[9/300] en         seed=8   replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":190.243000992,"data":"[10/300] en         seed=9   replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":195.046032811,"data":"[11/300] en         seed=10  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":202.613061048,"data":"[12/300] en         seed=11  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":211.446007457,"data":"[13/300] en         seed=12  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":215.718800591,"data":"[14/300] en         seed=13  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":220.153011722,"data":"[15/300] en         seed=14  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":227.287198235,"data":"[16/300] en         seed=15  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":234.331825289,"data":"[17/300] en         seed=16  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":239.668089004,"data":"[18/300] en         seed=17  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":243.758683107,"data":"[19/300] en         seed=18  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":248.611240386,"data":"[20/300] en         seed=19  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":253.365249973,"data":"[21/300] en         seed=21  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":258.290033824,"data":"[22/300] en         seed=22  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":263.48860767,"data":"[23/300] en         seed=23  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":268.957059269,"data":"[24/300] en         seed=24  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":275.925052539,"data":"[25/300] en         seed=25  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":279.162993564,"data":"[26/300] en         seed=26  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":281.822733427,"data":"[27/300] en         seed=27  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":288.35129106,"data":"[28/300] en         seed=28  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":293.792432364,"data":"[29/300] en         seed=29  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":297.888977067,"data":"[30/300] en         seed=30  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":303.906239586,"data":"[31/300] en         seed=31  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":307.537009277,"data":"[32/300] en         seed=32  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":312.334792387,"data":"[33/300] en         seed=33  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":316.324667959,"data":"[34/300] en         seed=34  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":320.957106104,"data":"[35/300] en         seed=35  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":324.976939872,"data":"[36/300] en         seed=36  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":327.776878445,"data":"[37/300] en         seed=37  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":330.154347115,"data":"[38/300] en         seed=38  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":334.485232721,"data":"[39/300] en         seed=39  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":339.72513991,"data":"[40/300] en         seed=40  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":343.55871873,"data":"[41/300] en         seed=41  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":346.570002903,"data":"[42/300] en         seed=42  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":348.357909642,"data":"[43/300] en         seed=43  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":356.044765682,"data":"[44/300] en         seed=44  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":361.353126863,"data":"[45/300] en         seed=45  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":369.084835553,"data":"[46/300] en         seed=46  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":374.490318647,"data":"[47/300] en         seed=47  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":380.917406128,"data":"[48/300] en         seed=48  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":385.345486653,"data":"[49/300] en         seed=49  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":389.670713965,"data":"[50/300] en         seed=50  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":393.622716369,"data":"[51/300] en         seed=51  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":398.292650617,"data":"[52/300] en         seed=52  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":405.672191074,"data":"[53/300] en         seed=53  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":409.10656967,"data":"[54/300] en         seed=54  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":415.494236648,"data":"[55/300] en         seed=55  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":421.692118813,"data":"[56/300] en         seed=56  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":425.053005075,"data":"[57/300] en         seed=57  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":428.030804999,"data":"[58/300] en         seed=58  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":432.566046442,"data":"[59/300] en         seed=59  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":442.167634444,"data":"[60/300] en         seed=60  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":446.553444653,"data":"[61/300] en         seed=61  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":455.352122805,"data":"[62/300] en         seed=62  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":460.585673616,"data":"[63/300] en         seed=63  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":465.675709538,"data":"[64/300] en         seed=64  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":470.179035829,"data":"[65/300] en         seed=65  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":475.806626563,"data":"[66/300] en         seed=66  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":479.245792467,"data":"[67/300] en         seed=67  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":485.881690711,"data":"[68/300] en         seed=68  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":497.055186641,"data":"[69/300] en         seed=69  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":501.525639009,"data":"[70/300] en         seed=70  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":507.848260006,"data":"[71/300] en         seed=71  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":510.704874157,"data":"[72/300] en         seed=72  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":515.344791007,"data":"[73/300] en         seed=73  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":525.358426577,"data":"[74/300] en         seed=74  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":531.447258417,"data":"[75/300] en         seed=75  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":540.24233909,"data":"[76/300] en         seed=76  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":544.478778593,"data":"[77/300] en         seed=77  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":549.391824499,"data":"[78/300] en         seed=78  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":554.348912494,"data":"[79/300] en         seed=79  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":558.172893975,"data":"[80/300] en         seed=80  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":564.320391213,"data":"[81/300] en         seed=81  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":569.428874193,"data":"[82/300] en         seed=82  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":581.076628894,"data":"[83/300] en         seed=83  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":586.691568625,"data":"[84/300] en         seed=84  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":591.497027904,"data":"[85/300] en         seed=85  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":595.933958424,"data":"[86/300] en         seed=86  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":600.115271331,"data":"[87/300] en         seed=87  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":606.237127471,"data":"[88/300] en         seed=88  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":611.852929917,"data":"[89/300] en         seed=89  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":616.25943883,"data":"[90/300] en         seed=90  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":620.864674021,"data":"[91/300] en         seed=91  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":627.128291693,"data":"[92/300] en         seed=92  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":630.64142127,"data":"[93/300] en         seed=93  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":634.297194206,"data":"[94/300] en         seed=94  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":638.857819521,"data":"[95/300] en         seed=95  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":644.762723556,"data":"[96/300] en         seed=96  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":648.178717758,"data":"[97/300] en         seed=97  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":652.327348098,"data":"[98/300] en         seed=98  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":655.459498867,"data":"[99/300] en         seed=99  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":694.703615267,"data":"[100/300] en         seed=20  full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":701.609124451,"data":"[101/300] fr_nosim   seed=0   replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":706.901795652,"data":"[102/300] fr_nosim   seed=1   replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":714.252653247,"data":"[103/300] fr_nosim   seed=2   replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":720.104325852,"data":"[104/300] fr_nosim   seed=3   replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":724.0246389,"data":"[105/300] fr_nosim   seed=4   replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":731.054188252,"data":"[106/300] fr_nosim   seed=5   replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":736.494813261,"data":"[107/300] fr_nosim   seed=6   replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":745.787902825,"data":"[108/300] fr_nosim   seed=7   replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":750.024642275,"data":"[109/300] fr_nosim   seed=8   replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":753.906084054,"data":"[110/300] fr_nosim   seed=9   replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":758.31103199,"data":"[111/300] fr_nosim   seed=10  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":765.265872681,"data":"[112/300] fr_nosim   seed=11  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":770.514017182,"data":"[113/300] fr_nosim   seed=12  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":777.008063236,"data":"[114/300] fr_nosim   seed=13  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":780.956340746,"data":"[115/300] fr_nosim   seed=14  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":784.561059848,"data":"[116/300] fr_nosim   seed=15  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":787.343151105,"data":"[117/300] fr_nosim   seed=16  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":791.859680936,"data":"[118/300] fr_nosim   seed=17  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":796.764550678,"data":"[119/300] fr_nosim   seed=18  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":802.120890268,"data":"[120/300] fr_nosim   seed=19  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":805.824909865,"data":"[121/300] fr_nosim   seed=20  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":808.750720276,"data":"[122/300] fr_nosim   seed=21  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":813.120130556,"data":"[123/300] fr_nosim   seed=22  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":817.880397428,"data":"[124/300] fr_nosim   seed=23  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":823.329806368,"data":"[125/300] fr_nosim   seed=24  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":829.625196716,"data":"[126/300] fr_nosim   seed=25  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":834.771212632,"data":"[127/300] fr_nosim   seed=26  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":839.393559063,"data":"[128/300] fr_nosim   seed=27  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":847.689952424,"data":"[129/300] fr_nosim   seed=28  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":852.467184859,"data":"[130/300] fr_nosim   seed=29  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":857.934504165,"data":"[131/300] fr_nosim   seed=30  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":862.818496957,"data":"[132/300] fr_nosim   seed=31  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":868.333051418,"data":"[133/300] fr_nosim   seed=32  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":873.459605249,"data":"[134/300] fr_nosim   seed=33  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":879.515055325,"data":"[135/300] fr_nosim   seed=34  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":885.290082324,"data":"[136/300] fr_nosim   seed=35  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":890.097655974,"data":"[137/300] fr_nosim   seed=36  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":895.005267006,"data":"[138/300] fr_nosim   seed=37  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":898.328801021,"data":"[139/300] fr_nosim   seed=38  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":907.966217031,"data":"[140/300] fr_nosim   seed=39  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":913.048050705,"data":"[141/300] fr_nosim   seed=40  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":915.851316353,"data":"[142/300] fr_nosim   seed=41  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":920.019173461,"data":"[143/300] fr_nosim   seed=42  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":923.265887904,"data":"[144/300] fr_nosim   seed=43  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":927.388901685,"data":"[145/300] fr_nosim   seed=44  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":931.526170856,"data":"[146/300] fr_nosim   seed=45  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":936.92583511,"data":"[147/300] fr_nosim   seed=46  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":942.088686095,"data":"[148/300] fr_nosim   seed=47  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":946.809230521,"data":"[149/300] fr_nosim   seed=48  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":952.426586039,"data":"[150/300] fr_nosim   seed=49  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":957.061622477,"data":"[151/300] fr_nosim   seed=50  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":967.449174562,"data":"[152/300] fr_nosim   seed=51  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":972.480153111,"data":"[153/300] fr_nosim   seed=52  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":976.67274959,"data":"[154/300] fr_nosim   seed=53  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":981.123769512,"data":"[155/300] fr_nosim   seed=54  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":984.446228995,"data":"[156/300] fr_nosim   seed=55  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":986.740797476,"data":"[157/300] fr_nosim   seed=56  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":988.920494381,"data":"[158/300] fr_nosim   seed=57  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":995.365769656,"data":"[159/300] fr_nosim   seed=58  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1006.733828569,"data":"[160/300] fr_nosim   seed=59  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1011.689044963,"data":"[161/300] fr_nosim   seed=60  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1016.421815119,"data":"[162/300] fr_nosim   seed=61  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1020.018209219,"data":"[163/300] fr_nosim   seed=62  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1023.900081715,"data":"[164/300] fr_nosim   seed=63  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1029.132861175,"data":"[165/300] fr_nosim   seed=64  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1033.39168174,"data":"[166/300] fr_nosim   seed=65  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1037.95400636,"data":"[167/300] fr_nosim   seed=66  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1041.285455147,"data":"[168/300] fr_nosim   seed=67  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1045.755314878,"data":"[169/300] fr_nosim   seed=68  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1051.045639856,"data":"[170/300] fr_nosim   seed=69  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1056.245329043,"data":"[171/300] fr_nosim   seed=70  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1061.750485244,"data":"[172/300] fr_nosim   seed=71  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1067.133289635,"data":"[173/300] fr_nosim   seed=72  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1073.938595794,"data":"[174/300] fr_nosim   seed=73  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1079.814048132,"data":"[175/300] fr_nosim   seed=74  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1084.288790877,"data":"[176/300] fr_nosim   seed=75  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1088.963511053,"data":"[177/300] fr_nosim   seed=76  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1092.031701857,"data":"[178/300] fr_nosim   seed=77  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1095.814181852,"data":"[179/300] fr_nosim   seed=78  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1104.255508836,"data":"[180/300] fr_nosim   seed=79  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1109.570381001,"data":"[181/300] fr_nosim   seed=80  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1116.765115786,"data":"[182/300] fr_nosim   seed=81  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1120.823288099,"data":"[183/300] fr_nosim   seed=82  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1125.010848711,"data":"[184/300] fr_nosim   seed=83  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1129.334440939,"data":"[185/300] fr_nosim   seed=84  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1133.743900528,"data":"[186/300] fr_nosim   seed=85  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1140.100350591,"data":"[187/300] fr_nosim   seed=86  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1145.486080318,"data":"[188/300] fr_nosim   seed=87  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1150.74310509,"data":"[189/300] fr_nosim   seed=88  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1158.120189545,"data":"[190/300] fr_nosim   seed=89  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1163.411136861,"data":"[191/300] fr_nosim   seed=90  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1166.61171246,"data":"[192/300] fr_nosim   seed=91  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1172.232049325,"data":"[193/300] fr_nosim   seed=92  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1179.084931007,"data":"[194/300] fr_nosim   seed=93  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1183.901377384,"data":"[195/300] fr_nosim   seed=94  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1187.746838129,"data":"[196/300] fr_nosim   seed=95  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1192.523774589,"data":"[197/300] fr_nosim   seed=96  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1199.254916272,"data":"[198/300] fr_nosim   seed=97  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1202.692460941,"data":"[199/300] fr_nosim   seed=98  replay HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1207.084597204,"data":"[200/300] fr_nosim   seed=99  replay miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1263.08479578,"data":"[201/300] fr_sim     seed=0   full   HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1328.951041284,"data":"[202/300] fr_sim     seed=1   full   HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1349.304544009,"data":"[203/300] fr_sim     seed=2   full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1408.129840498,"data":"[204/300] fr_sim     seed=3   full   HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1469.439621802,"data":"[205/300] fr_sim     seed=4   full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1528.48586618,"data":"[206/300] fr_sim     seed=5   full   HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1545.53026532,"data":"[207/300] fr_sim     seed=6   full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1570.521385956,"data":"[208/300] fr_sim     seed=7   full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1629.378122612,"data":"[209/300] fr_sim     seed=8   full   HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1651.06291633,"data":"[210/300] fr_sim     seed=9   full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1665.344324153,"data":"[211/300] fr_sim     seed=10  full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1715.470927223,"data":"[212/300] fr_sim     seed=11  full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1786.366324078,"data":"[213/300] fr_sim     seed=12  full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1834.419089778,"data":"[214/300] fr_sim     seed=13  full   HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1871.954214474,"data":"[215/300] fr_sim     seed=14  full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1889.487845335,"data":"[216/300] fr_sim     seed=15  full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1908.428919832,"data":"[217/300] fr_sim     seed=16  full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":1965.626568822,"data":"[218/300] fr_sim     seed=17  full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":2040.543073273,"data":"[219/300] fr_sim     seed=18  full   HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":2053.726817212,"data":"[220/300] fr_sim     seed=19  full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":2065.015936595,"data":"[221/300] fr_sim     seed=20  full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":2080.602684518,"data":"[222/300] fr_sim     seed=21  full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":2102.103410751,"data":"[223/300] fr_sim     seed=22  full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":2122.169507346,"data":"[224/300] fr_sim     seed=23  full   HIT (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":2142.034031479,"data":"[225/300] fr_sim     seed=24  full   miss (0.1 min/task)\n"}
+,{"stream_name":"stdout","time":2205.21300988,"data":"[226/300] fr_sim     seed=25  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2242.220949993,"data":"[227/300] fr_sim     seed=26  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2294.927136313,"data":"[228/300] fr_sim     seed=27  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2307.045971436,"data":"[229/300] fr_sim     seed=28  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2324.977702659,"data":"[230/300] fr_sim     seed=29  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2391.466131596,"data":"[231/300] fr_sim     seed=30  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2416.740721418,"data":"[232/300] fr_sim     seed=31  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2465.820871134,"data":"[233/300] fr_sim     seed=32  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2515.166009216,"data":"[234/300] fr_sim     seed=33  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2531.3731891,"data":"[235/300] fr_sim     seed=34  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2596.683768094,"data":"[236/300] fr_sim     seed=35  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2623.817762665,"data":"[237/300] fr_sim     seed=36  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2638.651539258,"data":"[238/300] fr_sim     seed=37  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2683.019255495,"data":"[239/300] fr_sim     seed=38  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2751.764675632,"data":"[240/300] fr_sim     seed=39  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2770.0958628,"data":"[241/300] fr_sim     seed=40  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2820.768445159,"data":"[242/300] fr_sim     seed=41  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2838.607909115,"data":"[243/300] fr_sim     seed=42  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2904.153039917,"data":"[244/300] fr_sim     seed=43  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":2987.031576851,"data":"[245/300] fr_sim     seed=44  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3040.169764731,"data":"[246/300] fr_sim     seed=45  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3098.889762755,"data":"[247/300] fr_sim     seed=46  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3121.930088925,"data":"[248/300] fr_sim     seed=47  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3135.583004074,"data":"[249/300] fr_sim     seed=48  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3194.919647973,"data":"[250/300] fr_sim     seed=49  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3212.703151447,"data":"[251/300] fr_sim     seed=50  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3266.007612925,"data":"[252/300] fr_sim     seed=51  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3330.141046741,"data":"[253/300] fr_sim     seed=52  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3374.875587411,"data":"[254/300] fr_sim     seed=53  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3399.954435232,"data":"[255/300] fr_sim     seed=54  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3451.736095429,"data":"[256/300] fr_sim     seed=55  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3513.585809586,"data":"[257/300] fr_sim     seed=56  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3572.368017208,"data":"[258/300] fr_sim     seed=57  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3642.265816335,"data":"[259/300] fr_sim     seed=58  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3692.335921843,"data":"[260/300] fr_sim     seed=59  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3757.454369472,"data":"[261/300] fr_sim     seed=60  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3810.239141038,"data":"[262/300] fr_sim     seed=61  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3827.777940227,"data":"[263/300] fr_sim     seed=62  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3886.219389427,"data":"[264/300] fr_sim     seed=63  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3940.127551965,"data":"[265/300] fr_sim     seed=64  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3955.723370404,"data":"[266/300] fr_sim     seed=65  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":3971.666894296,"data":"[267/300] fr_sim     seed=66  full   miss (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":4036.310884559,"data":"[268/300] fr_sim     seed=67  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":4086.103334622,"data":"[269/300] fr_sim     seed=68  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":4154.449497697,"data":"[270/300] fr_sim     seed=69  full   HIT (0.2 min/task)\n"}
+,{"stream_name":"stdout","time":4211.433893141,"data":"[271/300] fr_sim     seed=70  full   HIT (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":4270.673392712,"data":"[272/300] fr_sim     seed=71  full   miss (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":4320.200673011,"data":"[273/300] fr_sim     seed=72  full   miss (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":4378.484116292,"data":"[274/300] fr_sim     seed=73  full   miss (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":4447.266845184,"data":"[275/300] fr_sim     seed=74  full   HIT (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":4526.067478488,"data":"[276/300] fr_sim     seed=75  full   miss (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":4577.587619721,"data":"[277/300] fr_sim     seed=76  full   HIT (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":4596.838675516,"data":"[278/300] fr_sim     seed=77  full   miss (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":4669.551121369,"data":"[279/300] fr_sim     seed=78  full   HIT (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":4735.232855911,"data":"[280/300] fr_sim     seed=79  full   HIT (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":4793.674825531,"data":"[281/300] fr_sim     seed=80  full   HIT (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":4844.248931226,"data":"[282/300] fr_sim     seed=81  full   miss (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":4901.71137266,"data":"[283/300] fr_sim     seed=82  full   miss (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":4977.173875081,"data":"[284/300] fr_sim     seed=83  full   HIT (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":5006.366522791,"data":"[285/300] fr_sim     seed=84  full   HIT (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":5062.555206062,"data":"[286/300] fr_sim     seed=85  full   HIT (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":5075.70868435,"data":"[287/300] fr_sim     seed=86  full   miss (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":5123.567292178,"data":"[288/300] fr_sim     seed=87  full   miss (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":5183.282929992,"data":"[289/300] fr_sim     seed=88  full   miss (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":5206.010604168,"data":"[290/300] fr_sim     seed=89  full   miss (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":5271.306992414,"data":"[291/300] fr_sim     seed=90  full   miss (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":5345.159073094,"data":"[292/300] fr_sim     seed=91  full   HIT (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":5397.127033148,"data":"[293/300] fr_sim     seed=92  full   HIT (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":5461.607085313,"data":"[294/300] fr_sim     seed=93  full   HIT (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":5518.080760716,"data":"[295/300] fr_sim     seed=94  full   HIT (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":5575.614886359,"data":"[296/300] fr_sim     seed=95  full   HIT (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":5621.31712413,"data":"[297/300] fr_sim     seed=96  full   HIT (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":5675.349124118,"data":"[298/300] fr_sim     seed=97  full   miss (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":5705.877188784,"data":"[299/300] fr_sim     seed=98  full   miss (0.3 min/task)\n"}
+,{"stream_name":"stdout","time":5792.849708692,"data":"[300/300] fr_sim     seed=99  full   HIT (0.3 min/task)\n"}
+,{"stream_name":"stderr","time":5792.984233565,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":5792.985351621,"data":"  File \"/kaggle/src/script.py\", line 354, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":5792.987188509,"data":"    main()\n"}
+,{"stream_name":"stderr","time":5792.987870523,"data":"  File \"/kaggle/src/script.py\", line 346, in main\n"}
+,{"stream_name":"stderr","time":5792.988123638,"data":"    SUMMARY_PATH.write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding=\"utf-8\")\n"}
+,{"stream_name":"stderr","time":5792.988377075,"data":"                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":5792.988386862,"data":"  File \"/usr/lib/python3.12/json/__init__.py\", line 238, in dumps\n"}
+,{"stream_name":"stderr","time":5792.989193739,"data":"    **kw).encode(obj)\n"}
+,{"stream_name":"stderr","time":5792.989266615,"data":"          ^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":5792.989359619,"data":"  File \"/usr/lib/python3.12/json/encoder.py\", line 202, in encode\n"}
+,{"stream_name":"stderr","time":5792.990216734,"data":"    chunks = list(chunks)\n"}
+,{"stream_name":"stderr","time":5792.990233315,"data":"             ^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":5792.990318235,"data":"  File \"/usr/lib/python3.12/json/encoder.py\", line 432, in _iterencode\n"}
+,{"stream_name":"stderr","time":5792.990518718,"data":"    yield from _iterencode_dict(o, _current_indent_level)\n"}
+,{"stream_name":"stderr","time":5792.990530346,"data":"  File \"/usr/lib/python3.12/json/encoder.py\", line 406, in _iterencode_dict\n"}
+,{"stream_name":"stderr","time":5792.990733858,"data":"    yield from chunks\n"}
+,{"stream_name":"stderr","time":5792.990742318,"data":"  File \"/usr/lib/python3.12/json/encoder.py\", line 406, in _iterencode_dict\n"}
+,{"stream_name":"stderr","time":5792.990973633,"data":"    yield from chunks\n"}
+,{"stream_name":"stderr","time":5792.991008473,"data":"  File \"/usr/lib/python3.12/json/encoder.py\", line 439, in _iterencode\n"}
+,{"stream_name":"stderr","time":5792.991185516,"data":"    o = _default(o)\n"}
+,{"stream_name":"stderr","time":5792.99120911,"data":"        ^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":5792.991283598,"data":"  File \"/usr/lib/python3.12/json/encoder.py\", line 180, in default\n"}
+,{"stream_name":"stderr","time":5792.991516533,"data":"    raise TypeError(f'Object of type {o.__class__.__name__} '\n"}
+,{"stream_name":"stderr","time":5792.991530726,"data":"TypeError: Object of type ModelDetails is not JSON serializable\n"}
+,{"stream_name":"stderr","time":5798.623220724,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":5798.623266516,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":5798.937484674,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":5798.937520077,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":5799.71467773,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":5800.995315349,"data":"[NbConvertApp] Writing 347653 bytes to __results__.html\n"}
+]

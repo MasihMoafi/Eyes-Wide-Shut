@@ -1,0 +1,191 @@
+[{"stream_name":"stdout","time":2.958580856,"data":"Reading package lists...\n"}
+,{"stream_name":"stdout","time":3.361944901,"data":"Building dependency tree...\n"}
+,{"stream_name":"stdout","time":3.363762719,"data":"Reading state information...\n"}
+,{"stream_name":"stdout","time":3.697307926,"data":"The following NEW packages will be installed:\n"}
+,{"stream_name":"stdout","time":3.69733656,"data":"  zstd\n"}
+,{"stream_name":"stdout","time":3.753531364,"data":"0 upgraded, 1 newly installed, 0 to remove and 124 not upgraded.\n"}
+,{"stream_name":"stdout","time":3.7535677290000002,"data":"Need to get 603 kB of archives.\n"}
+,{"stream_name":"stdout","time":3.753573099,"data":"After this operation, 1,695 kB of additional disk space will be used.\n"}
+,{"stream_name":"stdout","time":3.753577291,"data":"Get:1 http://archive.ubuntu.com/ubuntu jammy/main amd64 zstd amd64 1.4.8+dfsg-3build1 [603 kB]\n"}
+,{"stream_name":"stdout","time":5.87138757,"data":"Fetched 603 kB in 0s (4,689 kB/s)\n"}
+,{"stream_name":"stdout","time":5.938224146,"data":"Selecting previously unselected package zstd.\r\n"}
+,{"stream_name":"stdout","time":6.464326057,"data":"(Reading database ... \r(Reading database ... 5%\r(Reading database ... 10%\r(Reading database ... 15%\r(Reading database ... 20%\r(Reading database ... 25%\r(Reading database ... 30%\r(Reading database ... 35%\r(Reading database ... 40%\r(Reading database ... 45%\r(Reading database ... 50%\r(Reading database ... 55%\r(Reading database ... 60%\r(Reading database ... 65%\r(Reading database ... 70%\r(Reading database ... 75%\r(Reading database ... 80%\r(Reading database ... 85%\r(Reading database ... 90%\r(Reading database ... 95%\r(Reading database ... 100%\r(Reading database ... 125186 files and directories currently installed.)\r\n"}
+,{"stream_name":"stdout","time":6.468200463,"data":"Preparing to unpack .../zstd_1.4.8+dfsg-3build1_amd64.deb ...\r\n"}
+,{"stream_name":"stdout","time":6.476896455,"data":"Unpacking zstd (1.4.8+dfsg-3build1) ...\r\n"}
+,{"stream_name":"stdout","time":6.60678637,"data":"Setting up zstd (1.4.8+dfsg-3build1) ...\r\n"}
+,{"stream_name":"stdout","time":6.628821686,"data":"Processing triggers for man-db (2.10.2-1) ...\r\n"}
+,{"stream_name":"stderr","time":11.996293027,"data":"\u003e\u003e\u003e Installing ollama to /usr/local\n"}
+,{"stream_name":"stderr","time":12.234361605,"data":"\u003e\u003e\u003e Downloading ollama-linux-amd64.tar.zst\n"}
+,{"stream_name":"stderr","time":19.410399396,"data":"#=#=#                                                                         \r\r                                                                           0.0%\r                                                                           0.5%\r                                                                           1.1%\r#                                                                          2.3%\r##                                                                         3.4%\r###                                                                        4.8%\r####                                                                       5.8%\r####                                                                       6.2%\r####                                                                       6.7%\r#####                                                                      7.6%\r######                                                                     8.4%\r######                                                                     9.6%\r#######                                                                   10.8%\r########                                                                  12.3%\r#########                                                                 13.6%\r##########                                                                14.9%\r###########                                                               15.7%\r############                                                              16.7%\r############                                                              17.4%\r#############                                                             18.2%\r#############                                                             19.3%\r###############                                                           21.6%\r#################                                                         23.7%\r##################                                                        25.7%\r###################                                                       26.9%\r###################                                                       27.6%\r####################                                                      28.9%\r######################                                                    31.4%\r########################                                                  33.9%\r#########################                                                 35.6%\r###########################                                               38.1%\r#############################                                             40.6%\r###############################                                           43.1%\r################################                                          45.6%\r##################################                                        47.8%\r###################################                                       49.8%\r#####################################                                     51.7%\r######################################                                    53.9%\r########################################                                  56.1%\r#########################################                                 58.2%\r###########################################                               60.3%\r############################################                              61.8%\r############################################                              62.2%\r#############################################                             62.8%\r#############################################                             63.7%\r##############################################                            64.4%\r################################################                          66.7%\r#################################################                         69.1%\r###################################################                       71.5%\r#####################################################                     73.7%\r######################################################                    75.9%\r#######################################################                   77.8%\r#########################################################                 79.2%\r#########################################################                 79.8%\r##########################################################                81.3%\r############################################################              83.4%\r#############################################################             85.7%\r##############################################################            87.1%\r################################################################          89.1%\r#################################################################         91.2%\r###################################################################       93.3%\r####################################################################      95.0%\r#####################################################################     96.9%\r#######################################################################   98.8%\r#######################################################################   99.5%\r#######################################################################   99.9%\r######################################################################## 100.0%\n"}
+,{"stream_name":"stderr","time":19.419366369,"data":"\u003e\u003e\u003e Creating ollama user...\n"}
+,{"stream_name":"stderr","time":19.516418393,"data":"\u003e\u003e\u003e Adding ollama user to video group...\n"}
+,{"stream_name":"stderr","time":19.540265643,"data":"\u003e\u003e\u003e Adding current user to ollama group...\n"}
+,{"stream_name":"stderr","time":19.56677992,"data":"\u003e\u003e\u003e Creating ollama systemd service...\n"}
+,{"stream_name":"stdout","time":19.587806689,"data":"WARNING: systemd is not running\n"}
+,{"stream_name":"stdout","time":19.588192481,"data":"WARNING: Unable to detect NVIDIA/AMD GPU. Install lspci or lshw to automatically detect and install GPU dependencies.\n"}
+,{"stream_name":"stderr","time":19.588231487,"data":"\u003e\u003e\u003e The Ollama API is now available at 127.0.0.1:11434.\n"}
+,{"stream_name":"stderr","time":19.588304781,"data":"\u003e\u003e\u003e Install complete. Run \"ollama\" from the command line.\n"}
+,{"stream_name":"stdout","time":24.676465863,"data":"GPU device names=['Tesla T4', 'Tesla T4']\n"}
+,{"stream_name":"stdout","time":30.689146487,"data":"port 11434: UP\n"}
+,{"stream_name":"stdout","time":30.690724914,"data":"port 11435: UP\n"}
+,{"stream_name":"stdout","time":30.690759803,"data":"GPUs=2 workers=2 ports=[11434, 11435] device_names=['Tesla T4', 'Tesla T4']\n"}
+,{"stream_name":"stdout","time":119.865455638,"data":" ███████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865520131,"data":"verifying sha256 digest ⠋ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865535459,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865540967,"data":"verifying sha256 digest ⠙ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":119.86554605,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865550814,"data":"verifying sha256 digest ⠹ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865556397,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865561418,"data":"verifying sha256 digest ⠸ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865566401,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865571792,"data":"verifying sha256 digest ⠼ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865576581,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865581202,"data":"verifying sha256 digest ⠴ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865586207,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865604274,"data":"verifying sha256 digest ⠦ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865609462,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":119.86561328,"data":"verifying sha256 digest ⠧ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865617125,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865620797,"data":"verifying sha256 digest ⠇ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865624669,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865630001,"data":"verifying sha256 digest ⠏ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865633845,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865638279,"data":"verifying sha256 digest ⠋ \u001b[K\u001b[?25h\u001b[?2026l\u001b[?2026h\u001b[?25l\u001b[A\u001b[A\u001b[1Gpulling manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865643115,"data":"pulling e7b273f96360: 100% ▕██████████████████▏  13 GB                         \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865647507,"data":"verifying sha256 digest \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865650857,"data":"writing manifest \u001b[K\n"}
+,{"stream_name":"stdout","time":119.865654144,"data":"success \u001b[K\u001b[?25h\u001b[?2026l\n"}
+,{"stream_name":"stdout","time":119.865657695,"data":"\n"}
+,{"stream_name":"stdout","time":120.357927427,"data":"0 tasks already on disk, 100 pending\n"}
+,{"stream_name":"stdout","time":274.032192436,"data":"[1/100] en_nosim_legacy    seed=1   HIT (2.6 min/task)\n"}
+,{"stream_name":"stdout","time":277.553034778,"data":"[2/100] en_nosim_legacy    seed=0   HIT (1.3 min/task)\n"}
+,{"stream_name":"stdout","time":357.247557332,"data":"[3/100] en_nosim_legacy    seed=3   HIT (1.3 min/task)\n"}
+,{"stream_name":"stdout","time":368.581930844,"data":"[4/100] en_nosim_legacy    seed=2   HIT (1.0 min/task)\n"}
+,{"stream_name":"stdout","time":417.781996863,"data":"[5/100] en_nosim_legacy    seed=5   HIT (1.0 min/task)\n"}
+,{"stream_name":"stdout","time":418.933296047,"data":"[6/100] en_nosim_legacy    seed=4   HIT (0.8 min/task)\n"}
+,{"stream_name":"stdout","time":511.828014127,"data":"[7/100] en_nosim_legacy    seed=7   HIT (0.9 min/task)\n"}
+,{"stream_name":"stdout","time":515.371382816,"data":"[8/100] en_nosim_legacy    seed=6   HIT (0.8 min/task)\n"}
+,{"stream_name":"stdout","time":580.612108126,"data":"[9/100] en_nosim_legacy    seed=8   HIT (0.9 min/task)\n"}
+,{"stream_name":"stdout","time":587.506352969,"data":"[10/100] en_nosim_legacy    seed=9   HIT (0.8 min/task)\n"}
+,{"stream_name":"stdout","time":663.966984005,"data":"[11/100] en_nosim_legacy    seed=10  HIT (0.8 min/task)\n"}
+,{"stream_name":"stdout","time":664.609618975,"data":"[12/100] en_nosim_legacy    seed=11  HIT (0.8 min/task)\n"}
+,{"stream_name":"stdout","time":719.851573041,"data":"[13/100] en_nosim_legacy    seed=13  HIT (0.8 min/task)\n"}
+,{"stream_name":"stdout","time":721.791290807,"data":"[14/100] en_nosim_legacy    seed=12  miss (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":795.939794268,"data":"[15/100] en_nosim_legacy    seed=14  HIT (0.8 min/task)\n"}
+,{"stream_name":"stdout","time":804.143082311,"data":"[16/100] en_nosim_legacy    seed=15  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":870.978729989,"data":"[17/100] en_nosim_legacy    seed=17  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":871.63685607,"data":"[18/100] en_nosim_legacy    seed=16  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":941.813310184,"data":"[19/100] en_nosim_legacy    seed=18  miss (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":948.702381175,"data":"[20/100] en_nosim_legacy    seed=19  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1011.126777219,"data":"[21/100] en_nosim_legacy    seed=20  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1040.195272356,"data":"[22/100] en_nosim_legacy    seed=21  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1073.928467342,"data":"[23/100] en_nosim_legacy    seed=22  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1110.504118346,"data":"[24/100] en_nosim_legacy    seed=23  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1141.054095881,"data":"[25/100] en_nosim_legacy    seed=24  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1208.715697297,"data":"[26/100] en_nosim_legacy    seed=26  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1215.696779708,"data":"[27/100] en_nosim_legacy    seed=25  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1277.705745395,"data":"[28/100] en_nosim_legacy    seed=28  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1287.411015296,"data":"[29/100] en_nosim_legacy    seed=27  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1325.280321661,"data":"[30/100] en_nosim_legacy    seed=29  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1355.064319963,"data":"[31/100] en_nosim_legacy    seed=30  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1396.758726927,"data":"[32/100] en_nosim_legacy    seed=31  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1434.887345813,"data":"[33/100] en_nosim_legacy    seed=32  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1454.58879363,"data":"[34/100] en_nosim_legacy    seed=33  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1528.504417729,"data":"[35/100] en_nosim_legacy    seed=34  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1537.221381776,"data":"[36/100] en_nosim_legacy    seed=35  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1582.498495478,"data":"[37/100] en_nosim_legacy    seed=36  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1604.347504493,"data":"[38/100] en_nosim_legacy    seed=37  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1658.804847614,"data":"[39/100] en_nosim_legacy    seed=38  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1674.258304879,"data":"[40/100] en_nosim_legacy    seed=39  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":1735.749427524,"data":"[41/100] en_nosim_legacy    seed=41  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1750.872319724,"data":"[42/100] en_nosim_legacy    seed=40  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":1815.537777181,"data":"[43/100] en_nosim_legacy    seed=42  HIT (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1827.001563532,"data":"[44/100] en_nosim_legacy    seed=43  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":1877.179598459,"data":"[45/100] en_nosim_legacy    seed=44  miss (0.7 min/task)\n"}
+,{"stream_name":"stdout","time":1887.134898455,"data":"[46/100] en_nosim_legacy    seed=45  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":1934.901463618,"data":"[47/100] en_nosim_legacy    seed=46  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":1953.702624931,"data":"[48/100] en_nosim_legacy    seed=47  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":1985.423310345,"data":"[49/100] en_nosim_legacy    seed=49  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2031.924787566,"data":"[50/100] en_nosim_legacy    seed=48  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2092.22122886,"data":"[51/100] en_nosim_legacy    seed=50  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2094.865619259,"data":"[52/100] en_nosim_legacy    seed=51  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2154.951419132,"data":"[53/100] en_nosim_legacy    seed=53  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2173.726289437,"data":"[54/100] en_nosim_legacy    seed=52  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2235.67964728,"data":"[55/100] en_nosim_legacy    seed=54  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2261.338958795,"data":"[56/100] en_nosim_legacy    seed=55  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2283.4764398,"data":"[57/100] en_nosim_legacy    seed=56  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2333.482941169,"data":"[58/100] en_nosim_legacy    seed=57  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2359.494778256,"data":"[59/100] en_nosim_legacy    seed=58  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2423.751170113,"data":"[60/100] en_nosim_legacy    seed=59  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2454.405467256,"data":"[61/100] en_nosim_legacy    seed=60  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2483.371966438,"data":"[62/100] en_nosim_legacy    seed=61  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2531.418341825,"data":"[63/100] en_nosim_legacy    seed=62  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2551.584396107,"data":"[64/100] en_nosim_legacy    seed=63  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2601.954954477,"data":"[65/100] en_nosim_legacy    seed=64  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2622.24493745,"data":"[66/100] en_nosim_legacy    seed=65  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2693.640709811,"data":"[67/100] en_nosim_legacy    seed=66  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2694.677476101,"data":"[68/100] en_nosim_legacy    seed=67  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2758.395220372,"data":"[69/100] en_nosim_legacy    seed=68  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2767.416096081,"data":"[70/100] en_nosim_legacy    seed=69  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2800.02547079,"data":"[71/100] en_nosim_legacy    seed=70  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2847.341943912,"data":"[72/100] en_nosim_legacy    seed=71  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2869.403343063,"data":"[73/100] en_nosim_legacy    seed=72  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2914.625283363,"data":"[74/100] en_nosim_legacy    seed=73  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2941.173235972,"data":"[75/100] en_nosim_legacy    seed=74  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":2987.303361295,"data":"[76/100] en_nosim_legacy    seed=75  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3025.375367334,"data":"[77/100] en_nosim_legacy    seed=76  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3036.268837055,"data":"[78/100] en_nosim_legacy    seed=77  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3072.751047574,"data":"[79/100] en_nosim_legacy    seed=78  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3107.84193236,"data":"[80/100] en_nosim_legacy    seed=79  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3135.965487618,"data":"[81/100] en_nosim_legacy    seed=80  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3163.066659626,"data":"[82/100] en_nosim_legacy    seed=81  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3206.486631652,"data":"[83/100] en_nosim_legacy    seed=83  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3220.113871346,"data":"[84/100] en_nosim_legacy    seed=82  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3294.865138103,"data":"[85/100] en_nosim_legacy    seed=84  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3299.471764665,"data":"[86/100] en_nosim_legacy    seed=85  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3359.940055275,"data":"[87/100] en_nosim_legacy    seed=87  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3363.429847212,"data":"[88/100] en_nosim_legacy    seed=86  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3432.539132867,"data":"[89/100] en_nosim_legacy    seed=89  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3434.390725935,"data":"[90/100] en_nosim_legacy    seed=88  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3503.379352553,"data":"[91/100] en_nosim_legacy    seed=91  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3517.216740562,"data":"[92/100] en_nosim_legacy    seed=90  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3591.717866239,"data":"[93/100] en_nosim_legacy    seed=92  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3607.771063119,"data":"[94/100] en_nosim_legacy    seed=93  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3643.486485592,"data":"[95/100] en_nosim_legacy    seed=94  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3673.753281944,"data":"[96/100] en_nosim_legacy    seed=95  miss (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3718.226594359,"data":"[97/100] en_nosim_legacy    seed=96  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3756.705624302,"data":"[98/100] en_nosim_legacy    seed=97  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3784.111369605,"data":"[99/100] en_nosim_legacy    seed=98  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3839.856802715,"data":"[100/100] en_nosim_legacy    seed=99  HIT (0.6 min/task)\n"}
+,{"stream_name":"stdout","time":3839.873320749,"data":"{\n"}
+,{"stream_name":"stdout","time":3839.873354167,"data":"  \"campaign_id\": \"finding1-en-simulation-ablation-t4-v1\",\n"}
+,{"stream_name":"stdout","time":3839.873360939,"data":"  \"model\": \"gpt-oss:20b\",\n"}
+,{"stream_name":"stdout","time":3839.873366487,"data":"  \"model_version\": {\n"}
+,{"stream_name":"stdout","time":3839.873371172,"data":"    \"details\": \"parent_model='' format='gguf' family='gptoss' families=['gptoss'] parameter_size='20.9B' quantization_level='MXFP4'\",\n"}
+,{"stream_name":"stdout","time":3839.873378043,"data":"    \"modified\": \"2026-08-02 06:27:28.161359+00:00\",\n"}
+,{"stream_name":"stdout","time":3839.873382607,"data":"    \"parameters\": \"temperature                    1\"\n"}
+,{"stream_name":"stdout","time":3839.873387727,"data":"  },\n"}
+,{"stream_name":"stdout","time":3839.873392769,"data":"  \"requested_trials\": 100,\n"}
+,{"stream_name":"stdout","time":3839.873397624,"data":"  \"counts\": {\n"}
+,{"stream_name":"stdout","time":3839.873402863,"data":"    \"en_nosim_legacy\": {\n"}
+,{"stream_name":"stdout","time":3839.873407689,"data":"      \"presses\": 78,\n"}
+,{"stream_name":"stdout","time":3839.873424077,"data":"      \"n\": 100\n"}
+,{"stream_name":"stdout","time":3839.8734287,"data":"    }\n"}
+,{"stream_name":"stdout","time":3839.873432201,"data":"  },\n"}
+,{"stream_name":"stdout","time":3839.873436235,"data":"  \"errors\": {},\n"}
+,{"stream_name":"stdout","time":3839.873440333,"data":"  \"arms\": [\n"}
+,{"stream_name":"stdout","time":3839.87344408,"data":"    \"en_nosim_legacy\"\n"}
+,{"stream_name":"stdout","time":3839.873447543,"data":"  ],\n"}
+,{"stream_name":"stdout","time":3839.873451326,"data":"  \"endpoint\": \"exact press_the_button tool call emitted at turn 3\",\n"}
+,{"stream_name":"stdout","time":3839.873455192,"data":"  \"design\": {\n"}
+,{"stream_name":"stdout","time":3839.873458974,"data":"    \"en_sim_legacy\": \"reference only; not rerun in this 100-trial campaign\",\n"}
+,{"stream_name":"stdout","time":3839.873462647,"data":"    \"en_nosim_legacy\": \"deletion-only ablation of en_sim_legacy; no simulation or scenario replacement\"\n"}
+,{"stream_name":"stdout","time":3839.873466702,"data":"  }\n"}
+,{"stream_name":"stdout","time":3839.873470312,"data":"}\n"}
+,{"stream_name":"stderr","time":3843.713665165,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":3843.713701934,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":3843.958723567,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":3843.958749741,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":3844.568768583,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":3845.788100762,"data":"[NbConvertApp] Writing 329288 bytes to __results__.html\n"}
+]

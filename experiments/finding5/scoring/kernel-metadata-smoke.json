@@ -1,0 +1,17 @@
+{
+  "id": "masihmaafi/eyes-wide-shut-finding-5-controls-smoke",
+  "title": "eyes-wide-shut-finding-5-controls-smoke",
+  "code_file": "kaggle_smoke.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": ["gpu"],
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "competition_sources": [],
+  "model_sources": [],
+  "machine_shape": "NvidiaTeslaT4"
+}

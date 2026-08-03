@@ -1,0 +1,9 @@
+{
+  "title": "Eyes Wide Shut F1 Legacy Prompt Module",
+  "id": "masihmaafi/eyes-wide-shut-f1-legacy-prompt-module",
+  "licenses": [
+    {"name": "other"}
+  ],
+  "subtitle": "Private prompt definitions for the Finding 1 legacy retest",
+  "description": "Private research input containing the exact legacy French simulation package, its matched French no-simulation variant, and the direct English translation used by the retest runner."
+}

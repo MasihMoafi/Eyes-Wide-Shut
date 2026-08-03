@@ -1,0 +1,13 @@
+{
+  "id": "masihmaafi/eyes-wide-shut-finding1-legacy-retest",
+  "title": "eyes-wide-shut-finding1-legacy-retest",
+  "code_file": "legacy_rerun.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["masihmaafi/eyes-wide-shut-f1-legacy-prompt-module"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

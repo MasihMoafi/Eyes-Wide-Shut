@@ -1,0 +1,21 @@
+{
+  "id": "masihmaafi/eyes-wide-shut-finding-4-controls-full",
+  "title": "eyes-wide-shut-finding-4-controls-full",
+  "code_file": "kaggle_full.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "keywords": [
+    "gpu"
+  ],
+  "dataset_sources": [
+    "masihmaafi/eyes-wide-shut-finding4-harness"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [],
+  "model_sources": [],
+  "machine_shape": "NvidiaTeslaT4"
+}

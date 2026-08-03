@@ -1,0 +1,13 @@
+{
+  "id": "masihmaafi/eyes-wide-shut-finding1-targeted",
+  "title": "eyes-wide-shut-finding1-targeted",
+  "code_file": "targeted_rerun.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["masihmaafi/eyes-wide-shut-f1-replay-history"],
+  "competition_sources": [],
+  "kernel_sources": []
+}
