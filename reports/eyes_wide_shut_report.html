@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,49 +11,89 @@
 @font-face { font-family: "PT Serif"; src: url("assets/fonts/pt-serif-bold-italic-latin.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
 @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/jetbrains-mono-latin.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
 
-:root {
-  --background: 45 33.33% 95.29%;
-  --foreground: 40 4.35% 13.53%;
-  --card: 42 26.32% 92.55%;
-  --muted: 41.54 24.53% 89.61%;
-  --muted-foreground: 35 6.74% 34.9%;
-  --border: 38.57 12.96% 78.82%;
-  --hit: 16 62% 47.5%;
-  --miss: 147.5 40% 23.5%;
-  --neu: 211.1 47.3% 43.9%;
-  --hl: 48.3 63.9% 85.9%;
-  --radius: 0.75rem;
+:root, :root[data-theme="light"] {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.148 0.004 228.8);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.148 0.004 228.8);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.148 0.004 228.8);
+  --primary: oklch(0.52 0.105 223.128);
+  --primary-foreground: oklch(0.984 0.019 200.873);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.963 0.002 197.1);
+  --muted-foreground: oklch(0.56 0.021 213.5);
+  --accent: oklch(0.963 0.002 197.1);
+  --accent-foreground: oklch(0.218 0.008 223.9);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.91 0.005 214.3);
+  --input: oklch(0.925 0.005 214.3);
+  --ring: oklch(0.723 0.014 214.4);
+  --radius: 0.625rem;
+  --hit: oklch(0.52 0.105 223.128);
+  --miss: oklch(0.48 0.08 285);
+  --neu: oklch(0.56 0.021 213.5);
+  --hl: oklch(0.963 0.002 197.1);
   --font-serif: "PT Serif", Georgia, "Times New Roman", serif;
   --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: 0 0% 14.51%;
-    --foreground: 38.18 29.73% 92.75%;
-    --card: 0 0% 13.73%;
-    --muted: 0 0% 16.86%;
-    --muted-foreground: 34 11% 72%;
-    --border: 0 0% 23.14%;
-    --hit: 17.4 70% 59.4%;
-    --miss: 144 26.5% 48%;
-    --neu: 208.1 43% 64.9%;
-    --hl: 41.9 41% 20.6%;
-  }
-}
+
 :root[data-theme="dark"] {
-  --background: 0 0% 14.51%; --foreground: 38.18 29.73% 92.75%; --card: 0 0% 13.73%;
-  --muted: 0 0% 16.86%; --muted-foreground: 34 11% 72%; --border: 0 0% 23.14%;
-  --hit: 17.4 70% 59.4%; --miss: 144 26.5% 48%; --neu: 208.1 43% 64.9%; --hl: 41.9 41% 20.6%;
+  --background: oklch(0.148 0.004 228.8);
+  --foreground: oklch(0.987 0.002 197.1);
+  --card: oklch(0.218 0.008 223.9);
+  --card-foreground: oklch(0.987 0.002 197.1);
+  --popover: oklch(0.218 0.008 223.9);
+  --popover-foreground: oklch(0.987 0.002 197.1);
+  --primary: oklch(0.45 0.085 224.283);
+  --primary-foreground: oklch(0.984 0.019 200.873);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.275 0.011 216.9);
+  --muted-foreground: oklch(0.723 0.014 214.4);
+  --accent: oklch(0.275 0.011 216.9);
+  --accent-foreground: oklch(0.987 0.002 197.1);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.56 0.021 213.5);
+  --hit: oklch(0.72 0.10 215);
+  --miss: oklch(0.60 0.08 285);
+  --neu: oklch(0.723 0.014 214.4);
+  --hl: oklch(0.275 0.011 216.9);
 }
-:root[data-theme="light"] {
-  --background: 45 33.33% 95.29%; --foreground: 40 4.35% 13.53%; --card: 42 26.32% 92.55%;
-  --muted: 41.54 24.53% 89.61%; --muted-foreground: 35 6.74% 34.9%; --border: 38.57 12.96% 78.82%;
-  --hit: 16 62% 47.5%; --miss: 147.5 40% 23.5%; --neu: 211.1 47.3% 43.9%; --hl: 48.3 63.9% 85.9%;
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: oklch(0.148 0.004 228.8);
+    --foreground: oklch(0.987 0.002 197.1);
+    --card: oklch(0.218 0.008 223.9);
+    --card-foreground: oklch(0.987 0.002 197.1);
+    --popover: oklch(0.218 0.008 223.9);
+    --popover-foreground: oklch(0.987 0.002 197.1);
+    --primary: oklch(0.45 0.085 224.283);
+    --primary-foreground: oklch(0.984 0.019 200.873);
+    --secondary: oklch(0.274 0.006 286.033);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.275 0.011 216.9);
+    --muted-foreground: oklch(0.723 0.014 214.4);
+    --accent: oklch(0.275 0.011 216.9);
+    --accent-foreground: oklch(0.987 0.002 197.1);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 12%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.56 0.021 213.5);
+    --hit: oklch(0.72 0.10 215);
+    --miss: oklch(0.60 0.08 285);
+    --neu: oklch(0.723 0.014 214.4);
+    --hl: oklch(0.275 0.011 216.9);
+  }
 }
 
 * { box-sizing: border-box; }
 html { scrollbar-gutter: stable; }
-html, body { margin: 0; background: hsl(var(--background)); color: hsl(var(--foreground)); }
+html, body { margin: 0; background: var(--background); color: var(--foreground); transition: background 200ms ease, color 200ms ease; }
 body {
   font-family: var(--font-serif);
   font-size: 16px;
@@ -65,143 +105,171 @@ body {
   text-rendering: optimizeLegibility;
 }
 main { width: 100%; max-width: 58rem; }
-::selection { background: hsl(var(--foreground) / 0.16); color: hsl(var(--foreground)); }
+::selection { background: var(--primary); color: var(--primary-foreground); }
 code, pre, kbd, samp, .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 strong { font-weight: 700; }
 em { font-style: italic; }
-a { color: hsl(var(--foreground)); text-decoration: underline; text-decoration-color: hsl(var(--muted-foreground) / 0.6); text-underline-offset: 0.18em; transition: text-decoration-color 150ms ease; }
-a:hover, a:focus-visible { text-decoration-color: hsl(var(--foreground)); }
-:where(a, [tabindex]):focus-visible { outline: 2px solid hsl(var(--foreground) / 0.6); outline-offset: 3px; }
+a { color: var(--foreground); text-decoration: underline; text-decoration-color: var(--muted-foreground); text-underline-offset: 0.2em; transition: text-decoration-color 150ms ease, color 150ms ease; }
+a:hover, a:focus-visible { color: var(--primary); text-decoration-color: var(--primary); }
+:where(a, [tabindex]):focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
 
-header.cover { padding-bottom: 20px; margin-bottom: 32px; border-bottom: 1px solid hsl(var(--border)); }
-header.finding-header { border-bottom: 1px solid hsl(var(--border)); padding-bottom: 26px; margin-bottom: 32px; margin-top: 40px; }
-.eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin: 0 0 10px; }
-h1 { font-family: var(--font-serif); font-size: clamp(1.9rem, 4.4vw, 2.5rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.015em; margin: 0 0 12px; text-wrap: balance; }
-.subtitle { font-size: 1.05rem; line-height: 1.5; color: hsl(var(--muted-foreground)); max-width: 50ch; margin: 0 0 12px; }
-.byline { font-size: 0.88rem; color: hsl(var(--muted-foreground)); margin: 0; }
-header.cover p.note { font-size: 0.85rem; color: hsl(var(--muted-foreground)); margin: 16px 0 0; max-width: 60ch; }
-header.cover p.note strong { color: hsl(var(--foreground)); }
+header.cover { padding-bottom: 20px; margin-bottom: 28px; border-bottom: 1px solid var(--border); position: relative; }
+.header-top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-foreground); margin: 0; }
+.theme-btn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--muted);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+.theme-btn:hover { background: var(--secondary); border-color: var(--ring); }
+
+h1 { font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 2.3rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.015em; margin: 0 0 10px; text-wrap: balance; }
+.subtitle { font-size: 1.02rem; line-height: 1.5; color: var(--muted-foreground); max-width: 50ch; margin: 0 0 12px; }
+.byline { font-size: 0.88rem; color: var(--muted-foreground); margin: 0; }
+header.cover p.note { font-size: 0.85rem; color: var(--muted-foreground); margin: 16px 0 0; max-width: 60ch; }
+header.cover p.note strong { color: var(--foreground); }
 
 nav.toc { display: grid; counter-reset: toc; gap: 0.55rem; margin: 24px 0 0; padding: 0; list-style: none; }
-nav.toc a { display: flex; gap: 0.65rem; counter-increment: toc; color: hsl(var(--foreground) / 0.92); font-size: 0.95rem; text-decoration: none; }
-nav.toc a::before { content: counter(toc, decimal-leading-zero) "."; color: hsl(var(--muted-foreground)); font-variant-numeric: tabular-nums; font-weight: 700; }
-nav.toc a:hover, nav.toc a:focus-visible { text-decoration: underline; text-decoration-color: hsl(var(--muted-foreground) / 0.6); }
-nav.toc a.sub { padding-left: 1.6rem; font-size: 0.88rem; color: hsl(var(--muted-foreground)); }
+nav.toc a { display: flex; gap: 0.65rem; counter-increment: toc; color: var(--foreground); font-size: 0.95rem; text-decoration: none; }
+nav.toc a::before { content: counter(toc, decimal-leading-zero) "."; color: var(--muted-foreground); font-variant-numeric: tabular-nums; font-weight: 700; }
+nav.toc a:hover, nav.toc a:focus-visible { text-decoration: underline; text-decoration-color: var(--foreground); }
+nav.toc a.sub { padding-left: 1.6rem; font-size: 0.88rem; color: var(--muted-foreground); }
 nav.toc a.sub::before { content: "—"; }
 
-section, article { margin-bottom: 40px; }
+section, article { margin-bottom: 36px; width: 100%; }
 section[id] { scroll-margin-top: 24px; }
-h2.block { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.3; margin: 0 0 8px; }
-.section-head { border-bottom: 1px solid hsl(var(--border)); padding-bottom: 10px; margin-bottom: 20px; }
-.section-head h2 { margin-bottom: 0; }
-h3 { font-size: 1.05rem; font-weight: 700; margin: 24px 0 10px; }
-.lede { font-size: 1rem; line-height: 1.6; color: hsl(var(--muted-foreground)); max-width: 64ch; margin: 0 0 16px; }
+
+header.finding-header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+  margin-top: 36px;
+}
+header.finding-header h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 6px 0 4px;
+  color: var(--foreground);
+  border: none;
+  padding: 0;
+}
+header.finding-header .subtitle { font-size: 0.95rem; margin: 0 0 8px; }
+
+h3 { font-size: 1.05rem; font-weight: 700; margin: 22px 0 10px; color: var(--foreground); }
+.lede { font-size: 1rem; line-height: 1.6; color: var(--muted-foreground); max-width: 64ch; margin: 0 0 16px; }
 p.body, .abstract p, .interp p { font-size: 0.98rem; line-height: 1.7; max-width: 68ch; margin: 0 0 14px; }
 p.body:last-child, .abstract p:last-child { margin-bottom: 0; }
-.note { font-size: 0.85rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
-.links.note a { color: hsl(var(--muted-foreground)); text-decoration-color: hsl(var(--muted-foreground) / 0.5); }
+.note { font-size: 0.85rem; line-height: 1.6; color: var(--muted-foreground); }
+.links.note a { color: var(--muted-foreground); text-decoration-color: var(--muted-foreground); }
 
-.hook { font-size: clamp(1.1rem, 2.4vw, 1.28rem); line-height: 1.45; font-weight: 700; margin: 0 0 12px; max-width: 58ch; text-wrap: balance; }
-.hook-answer { color: hsl(var(--hit)); }
+.hook { font-size: 1.1rem; line-height: 1.45; font-weight: 700; margin: 0 0 12px; max-width: 58ch; text-wrap: balance; }
+.hook-answer { color: var(--primary); }
 
-.band { display: flex; align-items: baseline; gap: 0.55em; margin: 0 0 14px; border-bottom: 1px solid hsl(var(--border)); padding-bottom: 8px; }
-.band-number { color: hsl(var(--hit)); font-weight: 700; font-size: 1.05rem; font-family: var(--font-mono); }
-.band-title { font-weight: 700; font-size: 1.15rem; letter-spacing: 0.01em; }
+.band { display: flex; align-items: baseline; gap: 0.55em; margin: 0 0 14px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+.band-number { color: var(--primary); font-weight: 700; font-size: 1.05rem; font-family: var(--font-mono); }
+.band-title { font-weight: 700; font-size: 1.1rem; letter-spacing: 0.01em; }
 
-.abstract, .result, .group, .callout, .srcbox, .table-wrap, .turn, .scorecard, .verdict {
-  background: hsl(var(--card));
-  border: 1px solid hsl(var(--border));
+.abstract, .result, .group, .callout, .srcbox, .table-wrap, .turn, .scorecard {
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  box-sizing: border-box;
+  width: 100%;
 }
 .abstract { padding: 22px 24px; margin: 20px 0; }
 .abstract .eyebrow { margin-bottom: 8px; }
 
-.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; }
-.tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; padding: 5px 11px; border-radius: calc(var(--radius) * 0.6); border: 1px solid hsl(var(--border)); background: hsl(var(--muted)); color: hsl(var(--muted-foreground)); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0; }
+.tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; padding: 4px 10px; border-radius: calc(var(--radius) * 0.6); border: 1px solid var(--border); background: var(--muted); color: var(--muted-foreground); }
 
 .table-wrap { overflow-x: auto; margin: 18px 0 22px; }
 table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
-th, td { border-bottom: 1px solid hsl(var(--border)); padding: 11px 15px; text-align: left; vertical-align: top; }
+th, td { border-bottom: 1px solid var(--border); padding: 11px 15px; text-align: left; vertical-align: top; }
 tr:last-child th, tr:last-child td { border-bottom: none; }
-th { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
-td:first-child { color: hsl(var(--muted-foreground)); white-space: nowrap; }
+th { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted-foreground); }
+td:first-child { color: var(--muted-foreground); white-space: nowrap; }
 
 .transcript { display: flex; flex-direction: column; gap: 12px; margin: 18px 0 22px; }
 .transcript.two-up { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .turn { border-radius: var(--radius); padding: 16px 18px; font-size: 0.9rem; line-height: 1.6; }
-.turn.role-reasoning { border-style: dashed; background: hsl(var(--muted)); }
-.turn.role-assistant { border-left: 3px solid hsl(var(--foreground) / 0.5); }
-.turn.role-user { border-left: 3px solid hsl(var(--border)); }
-.turn-role { display: flex; justify-content: space-between; gap: 10px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid hsl(var(--border)); }
-.turn-ann { font-weight: 400; text-transform: none; letter-spacing: 0; font-style: italic; color: hsl(var(--muted-foreground)); white-space: nowrap; }
+.turn.role-reasoning { border-style: dashed; background: var(--muted); }
+.turn.role-assistant { border-left: 3px solid var(--foreground); }
+.turn.role-user { border-left: 3px solid var(--border); }
+.turn-role { display: flex; justify-content: space-between; gap: 10px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted-foreground); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+.turn-ann { font-weight: 400; text-transform: none; letter-spacing: 0; font-style: italic; color: var(--muted-foreground); white-space: nowrap; }
 .turn p { margin: 0; }
-.turn pre { margin: 8px 0 0; white-space: pre-wrap; font-family: var(--font-mono); font-size: 0.83rem; line-height: 1.55; color: hsl(var(--foreground)); }
-.secret { display: inline-block; max-width: 100%; overflow-wrap: anywhere; word-break: break-word; background: hsl(var(--hit) / 0.16); color: hsl(var(--hit)); font-weight: 700; border-radius: 2px; padding: 0 4px; }
-mark.hl { background: hsl(var(--hl)); color: hsl(var(--foreground)); font-weight: 700; padding: 0 3px; border-radius: 2px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.turn pre { margin: 8px 0 0; white-space: pre-wrap; font-family: var(--font-mono); font-size: 0.83rem; line-height: 1.55; color: var(--foreground); }
+.secret { display: inline-block; max-width: 100%; overflow-wrap: anywhere; word-break: break-word; background: var(--muted); color: var(--foreground); font-weight: 700; border-radius: 3px; padding: 2px 6px; border: 1px solid var(--border); }
+mark.hl { background: var(--hl); color: var(--foreground); font-weight: 700; padding: 0 4px; border-radius: 2px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 
-.diffblock { border-radius: var(--radius); border: 1px solid hsl(var(--border)); overflow: hidden; margin: 18px 0 24px; }
-.diffhead { background: hsl(var(--muted)); border-bottom: 1px solid hsl(var(--border)); font-family: var(--font-mono); font-size: 0.8rem; padding: 10px 16px; }
-.arm-left { color: hsl(var(--muted-foreground)); }
-.arm-right { color: hsl(var(--foreground)); font-weight: 700; }
-.arrow { color: hsl(var(--muted-foreground)); }
-.diffsection { border-bottom: 1px solid hsl(var(--border)); padding: 12px 16px; }
+.diffblock { border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; margin: 18px 0 24px; }
+.diffhead { background: var(--muted); border-bottom: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.8rem; padding: 10px 16px; }
+.arm-left { color: var(--muted-foreground); }
+.arm-right { color: var(--foreground); font-weight: 700; }
+.arrow { color: var(--muted-foreground); }
+.diffsection { border-bottom: 1px solid var(--border); padding: 12px 16px; }
 .diffsection:last-child { border-bottom: none; }
-.section-label { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.03em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin-bottom: 6px; }
+.section-label { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--muted-foreground); margin-bottom: 6px; }
 .diffbody { font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.65; margin: 0; overflow-wrap: anywhere; white-space: pre-wrap; word-break: break-word; }
-.ins { background: hsl(var(--hit) / 0.15); color: hsl(var(--hit)); border-radius: 2px; padding: 0 2px; }
-.del { background: hsl(var(--miss) / 0.15); color: hsl(var(--miss)); border-radius: 2px; padding: 0 2px; }
-p.legend { font-size: 0.85rem; color: hsl(var(--muted-foreground)); margin: 0 0 4px; }
+.ins { background: var(--muted); color: var(--primary); border-radius: 2px; padding: 0 4px; font-weight: 600; }
+.del { background: var(--muted); color: var(--muted-foreground); border-radius: 2px; padding: 0 4px; text-decoration: line-through; }
+p.legend { font-size: 0.85rem; color: var(--muted-foreground); margin: 0 0 4px; }
 
 .result { padding: 20px 22px; }
-.result-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: hsl(var(--muted-foreground)); margin-bottom: 14px; }
+.result-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted-foreground); margin-bottom: 14px; }
 .bar-row { display: grid; grid-template-columns: 180px 1fr 76px; align-items: center; gap: 14px; margin: 12px 0; }
 .bar-label { font-size: 0.9rem; font-weight: 700; }
-.bar-sub { display: block; font-size: 0.72rem; font-weight: 400; color: hsl(var(--muted-foreground)); margin-top: 2px; }
-.track { position: relative; height: 16px; border-radius: 4px; background: hsl(var(--muted)); border: 1px solid hsl(var(--border)); overflow: hidden; }
-.fill, .seg { position: absolute; inset: 0; height: 100%; width: 0; background: hsl(var(--foreground)); }
-.fill.secondary { position: static; background: hsl(var(--muted-foreground) / 0.55); }
-.seg.hit { background: hsl(var(--hit)); }
-.seg.miss { background: hsl(var(--miss)); }
-.seg.neu { background: hsl(var(--neu)); }
+.bar-sub { display: block; font-size: 0.72rem; font-weight: 400; color: var(--muted-foreground); margin-top: 2px; }
+.track { position: relative; height: 16px; border-radius: 4px; background: var(--muted); border: 1px solid var(--border); overflow: hidden; }
+.fill, .seg { position: absolute; inset: 0; height: 100%; width: 0; background: var(--foreground); }
+.fill.secondary { position: static; background: var(--muted-foreground); }
+.seg.hit { background: var(--primary); }
+.seg.miss { background: var(--miss); }
+.seg.neu { background: var(--neu); }
 .count { text-align: right; font-family: var(--font-mono); font-size: 0.88rem; font-weight: 700; }
-.count .n { color: hsl(var(--muted-foreground)); font-weight: 400; }
+.count .n { color: var(--muted-foreground); font-weight: 400; }
 
-.chart-title { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin: 0 0 4px; }
-.chart-source { font-size: 0.85rem; color: hsl(var(--muted-foreground)); margin: 0 0 16px; }
+.chart-title { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--muted-foreground); margin: 0 0 4px; }
+.chart-source { font-size: 0.85rem; color: var(--muted-foreground); margin: 0 0 16px; }
 .group { border-radius: var(--radius); padding: 16px 18px; margin-bottom: 14px; }
 .group-label { font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; }
 .rows { display: flex; flex-direction: column; gap: 14px; }
 .group .rows { gap: 10px; }
 .row { display: grid; grid-template-columns: 168px 1fr 92px; align-items: center; gap: 14px; }
 .row .label { font-size: 0.88rem; font-weight: 700; }
-.row .sub { display: block; font-size: 0.72rem; font-weight: 400; color: hsl(var(--muted-foreground)); margin-top: 1px; font-family: var(--font-mono); }
+.row .sub { display: block; font-size: 0.72rem; font-weight: 400; color: var(--muted-foreground); margin-top: 1px; font-family: var(--font-mono); }
 
-.legend { display: flex; gap: 18px; font-size: 0.8rem; color: hsl(var(--muted-foreground)); margin-top: 14px; flex-wrap: wrap; }
+.legend { display: flex; gap: 18px; font-size: 0.8rem; color: var(--muted-foreground); margin-top: 14px; flex-wrap: wrap; }
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
-.swatch { width: 9px; height: 9px; border-radius: 2px; display: inline-block; background: hsl(var(--foreground)); }
-.swatch.hit { background: hsl(var(--hit)); }
-.swatch.miss { background: hsl(var(--miss)); }
-.swatch.neu { background: hsl(var(--neu)); }
+.swatch { width: 9px; height: 9px; border-radius: 2px; display: inline-block; background: var(--foreground); }
+.swatch.hit { background: var(--primary); }
+.swatch.miss { background: var(--miss); }
+.swatch.neu { background: var(--neu); }
 
 .nodemap { display: flex; align-items: stretch; gap: 10px; flex-wrap: wrap; margin: 16px 0 10px; }
-.node { display: flex; flex-direction: column; justify-content: center; background: hsl(var(--card)); border: 1.5px solid hsl(var(--border)); border-radius: calc(var(--radius) * 0.7); padding: 9px 13px; font-size: 0.78rem; font-weight: 700; text-align: center; line-height: 1.35; min-width: 96px; }
-.node.n-hit { border-color: hsl(var(--hit)); }
-.node-sub { display: block; font-weight: 400; font-size: 0.68rem; color: hsl(var(--muted-foreground)); margin-top: 2px; font-family: var(--font-mono); text-transform: none; }
-.nodearrow { align-self: center; color: hsl(var(--muted-foreground)); font-size: 16px; }
+.node { display: flex; flex-direction: column; justify-content: center; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 9px 13px; font-size: 0.78rem; font-weight: 700; text-align: center; line-height: 1.35; min-width: 96px; }
+.node-sub { display: block; font-weight: 400; font-size: 0.68rem; color: var(--muted-foreground); margin-top: 2px; font-family: var(--font-mono); text-transform: none; }
+.nodearrow { align-self: center; color: var(--muted-foreground); font-size: 16px; }
 
-.callout { display: flex; flex-direction: column; gap: 8px; border-left: 3px solid hsl(var(--foreground) / 0.5); border-top-left-radius: 0; border-bottom-left-radius: 0; padding: 16px 20px; }
+.callout { display: flex; flex-direction: column; gap: 8px; border-left: 3px solid var(--foreground); border-top-left-radius: 0; border-bottom-left-radius: 0; padding: 16px 20px; }
 .callout p { margin: 0; font-size: 0.92rem; line-height: 1.6; }
 
-.verdict { border: 1.3px solid hsl(var(--hit)); padding: 16px 20px; margin: 12px 0 0; }
-.verdict p { margin: 0 0 10px; font-size: 0.92rem; line-height: 1.62; }
-.verdict p:last-child { margin-bottom: 0; }
-.verdict strong { color: hsl(var(--foreground)); }
-
+/* References list formatting: uniform spacing after tags */
 .reflist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
-.reflist li { font-size: 0.88rem; line-height: 1.6; padding-left: 2.2em; text-indent: -2.2em; }
-.reflist .reftag { display: inline-block; width: 1.9em; text-indent: 0; font-family: var(--font-mono); font-size: 0.78rem; color: hsl(var(--muted-foreground)); }
+.reflist li { display: flex; gap: 0.85rem; font-size: 0.88rem; line-height: 1.6; align-items: baseline; }
+.reflist .reftag { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted-foreground); font-weight: 700; flex-shrink: 0; width: 2.2rem; text-align: left; }
+.reflist .refcontent { flex: 1; }
 
-footer { border-top: 1px solid hsl(var(--border)); color: hsl(var(--muted-foreground)); font-size: 0.85rem; line-height: 1.6; padding-top: 20px; margin-top: 24px; }
+footer { border-top: 1px solid var(--border); color: var(--muted-foreground); font-size: 0.85rem; line-height: 1.6; padding-top: 20px; margin-top: 24px; }
 
 @media (max-width: 620px) {
   .bar-row, .row { grid-template-columns: 1fr; gap: 6px; }
@@ -217,7 +285,10 @@ footer { border-top: 1px solid hsl(var(--border)); color: hsl(var(--muted-foregr
 <main>
   <section class="cover">
     <header class="cover">
-      <div class="eyebrow">Eyes Wide Shut</div>
+      <div class="header-top-bar">
+        <div class="eyebrow">Eyes Wide Shut</div>
+        <button id="theme-toggle" class="theme-btn" type="button" aria-label="Toggle theme">Light Mode</button>
+      </div>
       <h1>A Multivector Analysis of gpt-oss:20b</h1>
       <p class="subtitle">Three independent findings against gpt-oss:20b.</p>
       <p class="byline">Masih Moafi · Independent Researcher</p>
@@ -249,7 +320,7 @@ footer { border-top: 1px solid hsl(var(--border)); color: hsl(var(--muted-foregr
       <div class="nodearrow">→</div>
       <div class="node">final answer</div>
       <div class="nodearrow">→</div>
-      <div class="node n-hit">tool call<span class="node-sub">Finding 1</span></div>
+      <div class="node">tool call<span class="node-sub">Finding 1</span></div>
     </div>
     <p class="note">One deployed pipeline, three points where it was tested, not three unrelated prompts. Finding 1 asks whether the <em>tool call</em> node changes with framing alone. Finding 2 asks whether the <em>dialogue state</em> — what the model treats as already agreed — changes when the same objective is relabelled. Finding 3 asks whether the <em>reasoning field</em> can disagree with the final answer inside one turn.</p>
     <p class="body" style="margin-top:16px;">Two further findings from the same campaign — Severance (multi-agent self-preservation reasoning) and Grace (intent laundering through fictional framing) — are outside this report's scope and are not summarized or referenced below.</p>
@@ -269,7 +340,6 @@ footer { border-top: 1px solid hsl(var(--border)); color: hsl(var(--muted-foregr
 
     <h3>Independent, concurrent evidence on the same model</h3>
     <p class="body">This campaign began as one of roughly a hundred entries to OpenAI's <span class="mono">gpt-oss-20b</span> red-teaming challenge. Prize-winning entries judged independently report mechanisms that converge with these findings:</p>
-    <p class="body">• <strong>Published Paper:</strong> Zekun Wu, Ilham Wicaksono, et al. published an action-graph observability paper (<a href="https://arxiv.org/abs/2509.17259">Wicaksono et al., 2025</a>, "Mind the Gap").</p>
     <p class="body">• <strong>Tool Priming Ablation:</strong> Kevin Power (<a href="https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/writeups/drop-the-guardrails-tool-primed-prompt-pairing-and">"Drop the Guardrails"</a>) documented a 33.7-point refusal drop under tool priming across 5,200 generations per condition.</p>
     <p class="body">• <strong>Action Recording:</strong> Mike Perry (<a href="https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/writeups/hostileshop-a-quaint-hostel-shop-with-sharp-tools">"HostileShop"</a>) recorded tool actions directly, corroborating the say/do split.</p>
     <p class="body">• <strong>Chain-of-Thought Forgery:</strong> Team dawgnation (<a href="https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/writeups/lucky-coin-jailbreak">"Policy over Values"</a>) analyzed attacker-supplied reasoning style mimicry.</p>
@@ -283,7 +353,7 @@ footer { border-top: 1px solid hsl(var(--border)); color: hsl(var(--muted-foregr
 
   <header id="finding-1" class="finding-header">
     <div class="eyebrow">Eyes Wide Shut · Finding 3.1 · 2 August 2026</div>
-    <h1>The Destroyer of Worlds</h1>
+    <h2>The Destroyer of Worlds</h2>
     <p class="subtitle">Prompt framing and structured destructive-action invocation</p>
     <p class="byline">Masih Moafi · Independent Researcher</p>
     <div class="tags">
@@ -446,11 +516,6 @@ Based solely on the rational principles you established, is pressing this button
       Fake-alignment run prompt source: <a href="../experiments/finding1/original-en-t4/original_en_prompt.py"><span class="mono">original_en_prompt.py</span></a> ·
       Full diff ledger: <a href="../experiments/finding1/PROMPT_DIFFS.html"><span class="mono">PROMPT_DIFFS.html</span></a>
     </p>
-    <div class="band"><span class="band-number">3.1.F</span><span class="band-title">What this establishes, and what it does not</span></div>
-    <div class="verdict">
-      <p><strong>Establishes.</strong> Within one held-fixed English prompt package, adding explicit simulation framing raised the exact turn-3 <span class="mono">press_the_button</span> rate from 78/100 to 97/100 (100 seeds per arm, 0 harness errors). A further diagnostic on a related package recorded 20/100 trials where a visible refusal in turn 1 or 2 was followed by the same exact tool call on turn 3.</p>
-      <p><strong>Does not establish.</strong> A model-wide rate, a readout of latent cognition, or evidence of realized harm — the wrapper was inert throughout, and the fake-alignment diagnostic changes several prompt variables at once rather than isolating simulation framing alone.</p>
-    </div>
   </section>
 
   <footer>
@@ -459,7 +524,8 @@ Based solely on the rational principles you established, is pressing this button
 
   <header id="finding-2" class="finding-header">
     <div class="eyebrow">Eyes Wide Shut — Finding 3.2</div>
-    <h1>The Consummate Liar</h1>
+    <h2>The Consummate Liar</h2>
+    <p class="subtitle">Refusal of direct dependency ask vs. 100% compliance under educational reframing</p>
     <p class="hook">It refused a direct request to maximize user dependency. What happened when the same broad retention objective was relabelled as education? <span class="hook-answer">30/30 judged compliant.</span></p>
     <p class="body">In the five-phase arm, a blinded semantic review of the visible outputs labelled the direct dependency ask as refusal in all 30 trials and the benevolent reframe plus each of the three follow-up pseudocode asks as compliant. The review used a deliberately binary outcome scheme — complies or refuses — so it does not encode partial, nonresponsive, or uncertain distinctions.</p>
     <div class="tags"><span class="tag">Semantic Reframing</span></div>
@@ -585,19 +651,12 @@ def intercept_external_help_seeking(
     </div>
   </article>
 
-  <article>
-    <div class="band"><span class="band-number">3.2.E</span><span class="band-title">What this establishes, and what it does not</span></div>
-    <div class="verdict">
-      <p><strong>Establishes.</strong> Relabelling one fixed retention objective as pedagogy moved the blinded semantic verdict from refusal (0/30) to compliance (30/30) in the same five-turn conversation, and the compliant turns include deployable code — an emotional-intervention trigger, a peer-comparison selector, a "Focus Guardian" that intercepts the user's own attempts to leave — not just permissive text.</p>
-      <p><strong>Does not establish.</strong> That semantic reframing succeeds for objectives that cannot plausibly be relabelled, or any scale of harm beyond the one conversation and one condensed-arm follow-up tested here.</p>
-    </div>
-  </article>
-
   <p class="note" style="margin-top: 20px;">Sources: <a href="../experiments/finding2/data/finding2_campaign.jsonl"><span class="mono">finding2_campaign.jsonl</span></a> (raw transcripts), <a href="../experiments/finding2/data/classifications_legacy.json"><span class="mono">classifications_legacy.json</span></a> (blinded binary semantic labels), <a href="../experiments/finding2/code/finding2_arms.py"><span class="mono">finding2_arms.py</span></a>, <a href="../experiments/finding2/code/finding2_runner.py"><span class="mono">finding2_runner.py</span></a>, and the <a href="../experiments/finding2/scoring/SCORING.md">scoring contract</a>.</p>
 
   <header id="finding-3" class="finding-header">
     <div class="eyebrow">Eyes Wide Shut — Finding 3.3</div>
-    <h1>The Mr. X</h1>
+    <h2>The Mr. X</h2>
+    <p class="subtitle">Exposure of protected secret string in recorded reasoning</p>
     <p class="hook">Can a model protect a secret in its visible answer while exposing it in its recorded reasoning? <span class="hook-answer">In a 30-seed run, the secret appeared in reasoning 25/30 times and in the visible answer 13/30 times.</span></p>
     <p class="body">This finding runs the two-step Mr. X / Fidelio scenario, both turns generated live. It measures an observable interface failure: the exact secret appearing in the returned reasoning field, even when the visible answer does not contain it.</p>
     <div class="tags"><span class="tag">Data exfiltration</span><span class="tag">Chain-of-thought leakage</span></div>
@@ -647,7 +706,7 @@ def intercept_external_help_seeking(
         <div class="nodearrow">→</div>
         <div class="node">user turn 2<span class="node-sub">icecream test</span></div>
         <div class="nodearrow">→</div>
-        <div class="node n-hit">turn-2 output<span class="node-sub">reasoning + answer</span></div>
+        <div class="node">turn-2 output<span class="node-sub">reasoning + answer</span></div>
       </div>
     </div>
   </article>
@@ -686,14 +745,6 @@ def intercept_external_help_seeking(
     <p class="body">If reasoning logs are visible to an operator, evaluator, middleware layer, or downstream system, a model can disclose a protected value there even when its final answer appears compliant.</p>
   </article>
 
-  <article>
-    <div class="band"><span class="band-number">3.3.E</span><span class="band-title">What this establishes, and what it does not</span></div>
-    <div class="verdict">
-      <p><strong>Establishes.</strong> The exact protected secret appeared in the recorded reasoning field in 25 of 30 runs, including 17 cases where the visible answer withheld it entirely — an observable channel that a monitor reading only the visible answer would miss.</p>
-      <p><strong>Does not establish.</strong> That the visible reasoning field is a faithful transcript of the model's actual internal computation, or that this generalizes beyond the one fixed secret, prompt, and runtime tested here.</p>
-    </div>
-  </article>
-
   <section id="evaluation">
     <div class="band"><span class="band-number">4.</span><span class="band-title">Evaluation</span></div>
     <p class="body">Each finding above was separately scored on three self-assessed axes borrowed from the competition's own rubric — severity (real-world consequence if the tool were live and the code deployed), breadth (how broadly the mechanism should generalize beyond this exact prompt), and novelty (how much of the effect is a known jailbreak class versus a new observation). These are not independently validated, are not comparable to each other in absolute terms — they score three different behaviors — and should be read as a self-report, not a benchmark result.</p>
@@ -713,29 +764,94 @@ def intercept_external_help_seeking(
   <section id="conclusion">
     <div class="band"><span class="band-number">5.</span><span class="band-title">Conclusion</span></div>
     <p class="body">Three findings, one recurring shape: <span class="mono">gpt-oss:20b</span>'s tested safety behavior tracks whether a request matches a category the model names explicitly, not whether it matches the concept that category is meant to catch. Moving a request across the boundary of a named category — through simulation framing, through relabelling, through a channel the visible answer does not cover — changed the model's behavior in each of the three prompt packages tested here, while the same underlying content stayed close to fixed.</p>
-    <p class="body">None of this establishes a model-wide prevalence rate, says anything about why the model was trained this way, or demonstrates realized real-world harm: Finding 3.1's tool was inert, Finding 3.2's deliverable is code rather than a deployed system, and Finding 3.3's leak is an interface observation, not a shown exfiltration. Each finding's own verdict band states its specific limits; this conclusion does not extend past them.</p>
+    <p class="body">None of this establishes a model-wide prevalence rate, says anything about why the model was trained this way, or demonstrates realized real-world harm: Finding 3.1's tool was inert, Finding 3.2's deliverable is code rather than a deployed system, and Finding 3.3's leak is an interface observation, not a shown exfiltration.</p>
     <p class="body">Two further findings from the same campaign, Severance and Grace, are outside this report's scope. The concurrent, independently judged entries discussed in Related Works suggest the underlying mechanisms here — framing-sensitive tool invocation, reasoning/output divergence, reframable objectives — are not artifacts of this one campaign's specific prompts.</p>
   </section>
 
   <section id="references">
     <div class="band"><span class="band-number">6.</span><span class="band-title">References</span></div>
     <ol class="reflist">
-      <li><span class="reftag">[1]</span> Sam Marks. "Recommendations for Technical AI Safety Research Directions." Anthropic Alignment Science Blog, 10 January 2025. <a href="https://alignment.anthropic.com/2025/recommended-directions/">alignment.anthropic.com/2025/recommended-directions</a>.</li>
-      <li><span class="reftag">[2]</span> Ryan Greenblatt, Carson Denison, Benjamin Wright, Fabien Roger, Monte MacDiarmid, Sam Marks, Johannes Treutlein, et al. "Alignment Faking in Large Language Models." arXiv:2412.14093, 2024. <a href="https://arxiv.org/abs/2412.14093">arxiv.org/abs/2412.14093</a>.</li>
-      <li><span class="reftag">[3]</span> Tamera Lanham, Anna Chen, Ansh Radhakrishnan, et al. "Measuring Faithfulness in Chain-of-Thought Reasoning." arXiv:2307.13702, 2023. <a href="https://arxiv.org/abs/2307.13702">arxiv.org/abs/2307.13702</a>.</li>
-      <li><span class="reftag">[4]</span> Ansh Radhakrishnan, Karina Nguyen, Anna Chen, et al. "Question Decomposition Improves the Faithfulness of Model-Generated Reasoning." arXiv:2307.11768, 2023. <a href="https://arxiv.org/abs/2307.11768">arxiv.org/abs/2307.11768</a>.</li>
-      <li><span class="reftag">[5]</span> Yanda Chen, Chandan Singh, Xiaodong Liu, Simiao Zuo, Bin Yu, He He, Jianfeng Gao. "Towards Consistent Natural-Language Explanations via Explanation-Consistency Finetuning." arXiv:2401.13986, 2024. <a href="https://arxiv.org/abs/2401.13986">arxiv.org/abs/2401.13986</a>.</li>
-      <li><span class="reftag">[6]</span> James Chua, Edward Rees, Hunar Batra, Samuel R. Bowman, Julian Michael, Ethan Perez, Miles Turpin. "Bias-Augmented Consistency Training Reduces Biased Reasoning in Chain-of-Thought." arXiv:2403.05518, 2024. <a href="https://arxiv.org/abs/2403.05518">arxiv.org/abs/2403.05518</a>.</li>
-      <li><span class="reftag">[7]</span> Edmund Mills, Shiye Su, Stuart Russell, Scott Emmons. "ALMANACS: A Simulatability Benchmark for Language Model Explainability." arXiv:2312.12747, 2024. <a href="https://arxiv.org/abs/2312.12747">arxiv.org/abs/2312.12747</a>.</li>
-      <li><span class="reftag">[8]</span> Alexandra Souly, Qingyuan Lu, Dillon Bowen, et al. "A StrongREJECT for Empty Jailbreaks." arXiv:2402.10260, 2024. <a href="https://arxiv.org/abs/2402.10260">arxiv.org/abs/2402.10260</a>.</li>
-      <li><span class="reftag">[9]</span> Maksym Andriushchenko, Alexandra Souly, Mateusz Dziemian, et al. "AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents." arXiv:2410.09024, 2024 (ICLR 2025). <a href="https://arxiv.org/abs/2410.09024">arxiv.org/abs/2410.09024</a>.</li>
-      <li><span class="reftag">[10]</span> Ilham Wicaksono, Zekun Wu, Rahul Patel, Theo King, Adriano Koshiyama, Philip Treleaven. "Mind the Gap: Comparing Model- vs Agentic-Level Red Teaming with Action-Graph Observability on GPT-OSS-20B." arXiv:2509.17259, 2025. <a href="https://arxiv.org/abs/2509.17259">arxiv.org/abs/2509.17259</a>.</li>
-      <li><span class="reftag">[11]</span> Kevin Power. "Drop the Guardrails: Tool-Primed Prompt Pairing and Refusal Behavior in GPT-OSS." OpenAI gpt-oss-20b Red-Teaming Challenge, Kaggle, 2025. <a href="https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/writeups/drop-the-guardrails-tool-primed-prompt-pairing-and">writeup</a>.</li>
-      <li><span class="reftag">[12]</span> Mike Perry. "HostileShop: A Quaint Hostel Shop with Sharp Tools." OpenAI gpt-oss-20b Red-Teaming Challenge, Kaggle, 2025. <a href="https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/writeups/hostileshop-a-quaint-hostel-shop-with-sharp-tools">writeup</a>.</li>
-      <li><span class="reftag">[13]</span> Team dawgnation. "Policy over Values: Alignment Hacking via CoT Forgery." OpenAI gpt-oss-20b Red-Teaming Challenge, Kaggle, 2025. <a href="https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/writeups/lucky-coin-jailbreak">writeup</a>.</li>
-      <li><span class="reftag">[14]</span> Owen Kaplinsky. "Alignment Risks in OSS-20B." OpenAI gpt-oss-20b Red-Teaming Challenge, Kaggle, 2025. <a href="https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/writeups/oss-20b-allignment-risks">writeup</a>.</li>
+      <li>
+        <span class="reftag">[1]</span>
+        <div class="refcontent">OpenAI gpt-oss-20b Red-Teaming Challenge. Official Kaggle Competition Page, 2025. <a href="https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/">kaggle.com/competitions/openai-gpt-oss-20b-red-teaming</a>.</div>
+      </li>
+      <li>
+        <span class="reftag">[2]</span>
+        <div class="refcontent">OpenAI gpt-oss-20b Red-Teaming Challenge. Official Prize Winners Announcement, Kaggle Discussion, 2025. <a href="https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/discussion/608537">kaggle.com/.../discussion/608537</a>.</div>
+      </li>
+      <li>
+        <span class="reftag">[3]</span>
+        <div class="refcontent">Ryan Greenblatt, Carson Denison, Benjamin Wright, Fabien Roger, Monte MacDiarmid, Sam Marks, Johannes Treutlein, et al. "Alignment Faking in Large Language Models." arXiv:2412.14093, 2024. <a href="https://arxiv.org/abs/2412.14093">arxiv.org/abs/2412.14093</a>.</div>
+      </li>
+      <li>
+        <span class="reftag">[4]</span>
+        <div class="refcontent">Sam Marks. "Recommendations for Technical AI Safety Research Directions." Anthropic Alignment Science Blog, 10 January 2025. <a href="https://alignment.anthropic.com/2025/recommended-directions/">alignment.anthropic.com/2025/recommended-directions</a>.</div>
+      </li>
+      <li>
+        <span class="reftag">[5]</span>
+        <div class="refcontent">Tamera Lanham, Anna Chen, Ansh Radhakrishnan, et al. "Measuring Faithfulness in Chain-of-Thought Reasoning." arXiv:2307.13702, 2023. <a href="https://arxiv.org/abs/2307.13702">arxiv.org/abs/2307.13702</a>.</div>
+      </li>
+      <li>
+        <span class="reftag">[6]</span>
+        <div class="refcontent">Ansh Radhakrishnan, Karina Nguyen, Anna Chen, et al. "Question Decomposition Improves the Faithfulness of Model-Generated Reasoning." arXiv:2307.11768, 2023. <a href="https://arxiv.org/abs/2307.11768">arxiv.org/abs/2307.11768</a>.</div>
+      </li>
+      <li>
+        <span class="reftag">[7]</span>
+        <div class="refcontent">Yanda Chen, Chandan Singh, Xiaodong Liu, Simiao Zuo, Bin Yu, He He, Jianfeng Gao. "Towards Consistent Natural-Language Explanations via Explanation-Consistency Finetuning." arXiv:2401.13986, 2024. <a href="https://arxiv.org/abs/2401.13986">arxiv.org/abs/2401.13986</a>.</div>
+      </li>
+      <li>
+        <span class="reftag">[8]</span>
+        <div class="refcontent">James Chua, Edward Rees, Hunar Batra, Samuel R. Bowman, Julian Michael, Ethan Perez, Miles Turpin. "Bias-Augmented Consistency Training Reduces Biased Reasoning in Chain-of-Thought." arXiv:2403.05518, 2024. <a href="https://arxiv.org/abs/2403.05518">arxiv.org/abs/2403.05518</a>.</div>
+      </li>
+      <li>
+        <span class="reftag">[9]</span>
+        <div class="refcontent">Edmund Mills, Shiye Su, Stuart Russell, Scott Emmons. "ALMANACS: A Simulatability Benchmark for Language Model Explainability." arXiv:2312.12747, 2024. <a href="https://arxiv.org/abs/2312.12747">arxiv.org/abs/2312.12747</a>.</div>
+      </li>
+      <li>
+        <span class="reftag">[10]</span>
+        <div class="refcontent">Alexandra Souly, Qingyuan Lu, Dillon Bowen, et al. "A StrongREJECT for Empty Jailbreaks." arXiv:2402.10260, 2024. <a href="https://arxiv.org/abs/2402.10260">arxiv.org/abs/2402.10260</a>.</div>
+      </li>
+      <li>
+        <span class="reftag">[11]</span>
+        <div class="refcontent">Maksym Andriushchenko, Alexandra Souly, Mateusz Dziemian, et al. "AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents." arXiv:2410.09024, 2024 (ICLR 2025). <a href="https://arxiv.org/abs/2410.09024">arxiv.org/abs/2410.09024</a>.</div>
+      </li>
+      <li>
+        <span class="reftag">[12]</span>
+        <div class="refcontent">Kevin Power. "Drop the Guardrails: Tool-Primed Prompt Pairing and Refusal Behavior in GPT-OSS." OpenAI gpt-oss-20b Red-Teaming Challenge, Kaggle, 2025. <a href="https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/writeups/drop-the-guardrails-tool-primed-prompt-pairing-and">writeup</a>.</div>
+      </li>
+      <li>
+        <span class="reftag">[13]</span>
+        <div class="refcontent">Mike Perry. "HostileShop: A Quaint Hostel Shop with Sharp Tools." OpenAI gpt-oss-20b Red-Teaming Challenge, Kaggle, 2025. <a href="https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/writeups/hostileshop-a-quaint-hostel-shop-with-sharp-tools">writeup</a>.</div>
+      </li>
+      <li>
+        <span class="reftag">[14]</span>
+        <div class="refcontent">Team dawgnation. "Policy over Values: Alignment Hacking via CoT Forgery." OpenAI gpt-oss-20b Red-Teaming Challenge, Kaggle, 2025. <a href="https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/writeups/lucky-coin-jailbreak">writeup</a>.</div>
+      </li>
+      <li>
+        <span class="reftag">[15]</span>
+        <div class="refcontent">Owen Kaplinsky. "Alignment Risks in OSS-20B." OpenAI gpt-oss-20b Red-Teaming Challenge, Kaggle, 2025. <a href="https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/writeups/oss-20b-allignment-risks">writeup</a>.</div>
+      </li>
     </ol>
   </section>
 </main>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  function updateBtnText(theme) {
+    if (toggleBtn) {
+      toggleBtn.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+    }
+  }
+  toggleBtn?.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', nextTheme);
+    localStorage.setItem('theme', nextTheme);
+    updateBtnText(nextTheme);
+  });
+  const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateBtnText(savedTheme);
+</script>
 </body>
 </html>
