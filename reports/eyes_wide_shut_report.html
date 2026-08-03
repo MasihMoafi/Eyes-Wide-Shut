@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Eyes Wide Shut — Findings 1–3 and Positioning</title>
+<title>EYES WIDE SHUT: A Multivector Analysis of gpt-oss:20b</title>
 <style>
 @font-face { font-family: "PT Serif"; src: url("assets/fonts/pt-serif-regular-latin.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: "PT Serif"; src: url("assets/fonts/pt-serif-italic-latin.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
@@ -71,6 +71,164 @@ header.finding-header {
   border-bottom: 1px solid hsl(var(--border));
   padding-bottom: 16px;
   margin-bottom: 24px;
+  margin-top: 36px;
+}
+header.finding-header h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 6px 0 4px;
+  color: hsl(var(--foreground));
+  border: none;
+  padding: 0;
+}
+header.finding-header .subtitle { font-size: 0.95rem; margin: 0 0 8px; }
+
+h3 { font-size: 1.05rem; font-weight: 700; margin: 22px 0 10px; color: hsl(var(--foreground)); }
+.lede { font-size: 1rem; line-height: 1.6; color: hsl(var(--muted-foreground)); max-width: 64ch; margin: 0 0 16px; }
+p.body, .abstract p, .interp p { font-size: 0.98rem; line-height: 1.7; max-width: 68ch; margin: 0 0 14px; }
+p.body:last-child, .abstract p:last-child { margin-bottom: 0; }
+.note { font-size: 0.85rem; line-height: 1.6; color: hsl(var(--muted-foreground)); }
+
+.hook { font-size: 1.1rem; line-height: 1.45; font-weight: 700; margin: 0 0 12px; max-width: 58ch; text-wrap: balance; }
+.hook-answer { color: hsl(var(--hit)); }
+
+.band { display: flex; align-items: baseline; gap: 0.55em; margin: 0 0 14px; border-bottom: 1px solid hsl(var(--border)); padding-bottom: 8px; }
+.band-number { color: hsl(var(--hit)); font-weight: 700; font-size: 1.05rem; font-family: var(--font-mono); }
+.band-title { font-weight: 700; font-size: 1.1rem; letter-spacing: 0.01em; }
+
+.abstract, .result, .group, .callout, .srcbox, .table-wrap, .turn, .scorecard, .scripted-release-flow {
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  box-sizing: border-box;
+  width: 100%;
+}
+.abstract { padding: 22px 24px; margin: 20px 0; }
+.abstract .eyebrow { margin-bottom: 8px; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0; }
+.tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; padding: 4px 10px; border-radius: calc(var(--radius) * 0.6); border: 1px solid hsl(var(--border)); background: hsl(var(--muted)); color: hsl(var(--muted-foreground)); }
+
+.table-wrap { overflow-x: auto; margin: 18px 0 22px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { border-bottom: 1px solid hsl(var(--border)); padding: 11px 15px; text-align: left; vertical-align: top; }
+tr:last-child th, tr:last-child td { border-bottom: none; }
+th { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
+td:first-child { color: hsl(var(--muted-foreground)); white-space: nowrap; }
+
+.transcript { display: flex; flex-direction: column; gap: 12px; margin: 18px 0 22px; }
+.transcript.two-up { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.turn { border-radius: var(--radius); padding: 16px 18px; font-size: 0.9rem; line-height: 1.6; }
+.turn.role-reasoning { border-style: dashed; background: hsl(var(--muted)); }
+.turn.role-assistant { border-left: 3px solid hsl(var(--foreground) / 0.5); }
+.turn.role-user { border-left: 3px solid hsl(var(--border)); }
+.turn-role { display: flex; justify-content: space-between; gap: 10px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid hsl(var(--border)); }
+.turn-ann { font-weight: 400; text-transform: none; letter-spacing: 0; font-style: italic; color: hsl(var(--muted-foreground)); white-space: nowrap; }
+.turn p { margin: 0; }
+.turn pre { margin: 8px 0 0; white-space: pre-wrap; font-family: var(--font-mono); font-size: 0.83rem; line-height: 1.55; color: hsl(var(--foreground)); background: hsl(var(--muted) / 0.5); border: 1px solid hsl(var(--border)); padding: 10px 12px; border-radius: 4px; }
+.secret { display: inline-block; max-width: 100%; overflow-wrap: anywhere; word-break: break-word; background: hsl(var(--hit) / 0.16); color: hsl(var(--hit)); font-weight: 700; border-radius: 3px; padding: 2px 6px; }
+mark.hl { background: hsl(var(--hl)); color: hsl(var(--foreground)); font-weight: 700; padding: 0 4px; border-radius: 2px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+.diffblock { border-radius: var(--radius); border: 1px solid hsl(var(--border)); overflow: hidden; margin: 18px 0 24px; }
+.diffhead { background: hsl(var(--muted)); border-bottom: 1px solid hsl(var(--border)); font-family: var(--font-mono); font-size: 0.8rem; padding: 10px 16px; }
+.arm-left { color: hsl(var(--muted-foreground)); }
+.arm-right { color: hsl(var(--foreground)); font-weight: 700; }
+.arrow { color: hsl(var(--muted-foreground)); }
+.diffsection { border-bottom: 1px solid hsl(var(--border)); padding: 12px 16px; }
+.diffsection:last-child { border-bottom: none; }
+.section-label { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.03em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin-bottom: 6px; }
+.diffbody { font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.65; margin: 0; overflow-wrap: anywhere; white-space: pre-wrap; word-break: break-word; background: hsl(var(--muted) / 0.5); border: 1px solid hsl(var(--border)); padding: 10px 12px; border-radius: 4px; }
+.ins { background: hsl(var(--hit) / 0.18); color: hsl(var(--hit)); border-radius: 2px; padding: 0 4px; font-weight: 600; }
+.del { background: hsl(var(--miss) / 0.18); color: hsl(var(--miss)); border-radius: 2px; padding: 0 4px; }
+
+.result { padding: 20px 22px; }
+.result-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: hsl(var(--muted-foreground)); margin-bottom: 14px; }
+.bar-row { display: grid; grid-template-columns: 180px 1fr 76px; align-items: center; gap: 14px; margin: 12px 0; }
+.bar-label { font-size: 0.9rem; font-weight: 700; }
+.bar-sub { display: block; font-size: 0.72rem; font-weight: 400; color: hsl(var(--muted-foreground)); margin-top: 2px; }
+.track { position: relative; height: 16px; border-radius: 4px; background: hsl(var(--muted)); border: 1px solid hsl(var(--border)); overflow: hidden; }
+.fill, .seg { position: absolute; inset: 0; height: 100%; width: 0; background: hsl(var(--foreground)); }
+.fill.secondary { position: static; background: hsl(var(--muted-foreground) / 0.55); }
+.seg.hit { background: hsl(var(--hit)); }
+.seg.miss { background: hsl(var(--miss)); }
+.seg.neu { background: hsl(var(--neu)); }
+.count { text-align: right; font-family: var(--font-mono); font-size: 0.88rem; font-weight: 700; }
+.count .n { color: hsl(var(--muted-foreground)); font-weight: 400; }
+
+.chart-title { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin: 0 0 4px; }
+.chart-source { font-size: 0.85rem; color: hsl(var(--muted-foreground)); margin: 0 0 16px; }
+.group { border-radius: var(--radius); padding: 16px 18px; margin-bottom: 14px; }
+.group-label { font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; }
+.rows { display: flex; flex-direction: column; gap: 14px; }
+.group .rows { gap: 10px; }
+.row { display: grid; grid-template-columns: 168px 1fr 92px; align-items: center; gap: 14px; }
+.row .label { font-size: 0.88rem; font-weight: 700; }
+.row .sub { display: block; font-size: 0.72rem; font-weight: 400; color: hsl(var(--muted-foreground)); margin-top: 1px; font-family: var(--font-mono); }
+
+.legend { display: flex; gap: 18px; font-size: 0.8rem; color: hsl(var(--muted-foreground)); margin-top: 14px; flex-wrap: wrap; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.swatch { width: 9px; height: 9px; border-radius: 2px; display: inline-block; background: hsl(var(--foreground)); }
+.swatch.hit { background: hsl(var(--hit)); }
+.swatch.miss { background: hsl(var(--miss)); }
+.swatch.neu { background: hsl(var(--neu)); }
+
+.scripted-release-flow { padding: 18px 20px; margin: 18px 0 22px; }
+.release-main-flow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.rel-node { flex: 1; min-width: 120px; }
+.rel-box { background: hsl(var(--card)); color: hsl(var(--foreground)); border: 1.5px solid hsl(var(--border)); border-radius: var(--radius); padding: 8px 12px; font-size: 0.85rem; font-weight: 600; text-align: center; line-height: 1.3; }
+.rel-node.gate .rel-box { border-color: hsl(var(--neu)); }
+.rel-node.auth .rel-box { border-color: hsl(var(--hit)); }
+.rel-sub { display: block; font-size: 0.74rem; font-weight: 400; color: hsl(var(--muted-foreground)); margin-top: 2px; font-family: var(--font-mono); }
+.rel-arrow { color: hsl(var(--muted-foreground)); font-size: 16px; }
+.release-split-channels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 16px; padding-top: 14px; border-top: 1.5px dashed hsl(var(--border)); }
+.split-channel { border-radius: var(--radius); padding: 10px 14px; border: 1.5px solid hsl(var(--border)); text-align: center; }
+.split-channel.channel-refuses { border-color: hsl(var(--miss)); background: hsl(var(--card)); }
+.split-channel.channel-leak { border-color: hsl(var(--hit)); background: hsl(var(--hit) / 0.06); }
+.channel-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: hsl(var(--muted-foreground)); margin-bottom: 3px; }
+.channel-status { font-size: 0.88rem; color: hsl(var(--foreground)); }
+.channel-refuses .channel-status { color: hsl(var(--miss)); }
+.channel-leak .channel-status { color: hsl(var(--hit)); }
+
+.callout { display: flex; flex-direction: column; gap: 8px; border-left: 3px solid hsl(var(--foreground) / 0.5); border-top-left-radius: 0; border-bottom-left-radius: 0; padding: 16px 20px; }
+.callout p { margin: 0; font-size: 0.92rem; line-height: 1.6; }
+
+.reflist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.reflist li { display: flex; gap: 0.85rem; font-size: 0.88rem; line-height: 1.6; align-items: baseline; }
+.reflist .reftag { font-family: var(--font-mono); font-size: 0.8rem; color: hsl(var(--muted-foreground)); font-weight: 700; flex-shrink: 0; width: 2.2rem; text-align: left; }
+.reflist .refcontent { flex: 1; }
+
+@media (max-width: 620px) {
+  .bar-row, .row { grid-template-columns: 1fr; gap: 6px; }
+  .bar-row .count, .row .count { text-align: left; }
+  .transcript.two-up { grid-template-columns: 1fr; }
+  .release-split-channels { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<main>
+  <section class="cover">
+    <header class="cover">
+      <div class="eyebrow">Eyes Wide Shut</div>
+      <h1>EYES WIDE SHUT: A Multivector Analysis of gpt-oss:20b</h1>
+      <p class="byline">Masih Moafi · Independent Researcher</p>
+      <p class="note"><strong>Shared setup.</strong> Unless a finding states otherwise, every experiment below uses <span class="mono">gpt-oss:20b</span> (GGUF, MXFP4 quantization) at temperature 1.0.</p>
+      <nav class="toc">
+        <a href="#introduction">1. Introduction</a>
+        <a href="#related-works">2. Related Works</a>
+        <a href="#methods">3. Methods</a>
+        <a href="#finding-1" class="sub">3.1 Finding 1 — The Destroyer of Worlds</a>
+        <a href="#finding-2" class="sub">3.2 Finding 2 — The Consummate Liar</a>
+        <a href="#finding-3" class="sub">3.3 Finding 3 — The Mr. X</a>
+        <a href="#evaluation">4. Evaluation</a>
+        <a href="#conclusion">5. Conclusion</a>
+        <a href="#references">6. References</a>
+      </nav>
+    </header>
+  </section>
   margin-top: 36px;
 }
 header.finding-header h2 {
