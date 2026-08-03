@@ -2,3 +2,13 @@ _archive/
 __pycache__/
 *.pyc
 .DS_Store
+
+# LaTeX build artifacts (paper/ figures are pre-built and tracked; these are not)
+paper/main.pdf
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.synctex.gz
+paper/figures/*.aux
+paper/figures/*.log
+paper/figures/*.synctex.gz

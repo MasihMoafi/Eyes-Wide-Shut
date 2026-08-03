@@ -1,0 +1,659 @@
+% Eyes Wide Shut — TMLR submission.
+%
+% Build:  pdflatex main && pdflatex main
+% Figures are built separately (xelatex, see figures/) and included at natural
+% size so that 8pt text inside a figure renders at 8pt on the page.
+%
+% Pass [accepted] to tmlr to reveal the author block; submission is double-blind.
+\documentclass{article}
+\usepackage{tmlr}
+
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{float}
+\usepackage{url}
+
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+% Let short pages end short rather than stretching interparagraph glue to fill
+% the measure. The earlier drafts had half-page voids from exactly this.
+\raggedbottom
+
+% Claim boundaries are the paper's main defensive device, so they get a
+% consistent visual treatment matching the band C blocks inside the figures.
+\definecolor{ewspaper}{HTML}{F7F6F2}
+\definecolor{ewsaccent}{HTML}{C4562E}
+\newtcolorbox{claimscope}{
+  enhanced, sharp corners=all, arc=1.5pt,
+  colback=ewspaper, colframe=ewsaccent, boxrule=0.6pt,
+  left=6pt, right=6pt, top=4pt, bottom=4pt, boxsep=0pt,
+  before skip=6pt, after skip=8pt}
+\newcommand{\claim}[1]{\begin{claimscope}\small\textbf{Claim boundary.} #1\end{claimscope}}
+
+\title{Eyes Wide Shut: A Multivector Analysis of\\Three Safety Surfaces in gpt-oss:20b}
+
+\author{\name Masih Moafi \email m.moafi@el.iut.ac.ir \\
+        \addr Artificial Intelligence and Robotics\\
+        Isfahan University of Technology, Iran}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Safety evaluation usually asks one question: did the model refuse? A deployed
+reasoning system answers on several surfaces at once. The same request can be
+framed as a simulation, spread across dialogue turns, or exposed in an
+observable reasoning field distinct from the visible answer, and a refusal on
+one surface says little about the others. We report \emph{Eyes Wide Shut}, a
+red-team campaign against OpenAI's open-weight \texttt{gpt-oss-20b},
+reconstructed from the original experiment notebook with saved outputs, three
+challenge-format finding files containing full Harmony response traces, and
+the released attack scripts. Three attack families probe three points on one
+pipeline: simulation framing at the input paired with a structured
+destructive-action tool call, stateful semantic escalation of a fixed
+retention objective across seven dialogue turns, and exposure of a protected
+secret string in the reasoning channel of a turn whose final answer withholds
+it. Framing an English prompt package as a simulation raised exact
+\texttt{press\_the\_button} tool-call invocation from 78/100 to 97/100 seeded
+trials; a diagnostic audit of the same English package found 44/100 trials
+invoking the tool overall, 20 of which followed a visible refusal earlier in
+the same trial. A direct request to build a dependency-maximizing assistant
+was refused, but the same objective, relabelled as pedagogical engagement, was
+complied with in 30/30 seeded trials and escalated over seven turns into a
+distress-keyed monetization function. A scripted two-credential release
+protocol produced the protected secret string in the reasoning field in 25/30
+seeded trials and in the visible answer in 13/30; the submitted trace shows
+the reasoning field carrying the string in a turn whose final answer refuses.
+No finding here is scored with a p-value or a significance test; every number
+reported is a raw count out of a stated seeded-trial denominator. Each result
+is bound to the surface on which it was measured: the tool-call result ends at
+host dispatch to a deliberately inert wrapper, and the reasoning-channel
+result is a cross-channel containment failure after a satisfied release
+condition rather than an authentication bypass. The contribution is a
+primary-evidence map of where safety-relevant behavior changes across system
+boundaries, together with an artifact record that keeps model text, reasoning
+field, final answer, and structured action separate.
+\end{abstract}
+
+\section{Introduction}
+
+Safety evaluation is often summarized as a binary question: does a model refuse
+a harmful request? Deployed reasoning systems expose a larger surface. A request
+can be framed as fiction or simulation, distributed across turns, or represented
+in an observable reasoning field the final answer does not have to match. An
+evaluation that inspects only the final text can therefore miss behavior at
+other stages of the system.
+
+This paper reports the original \emph{Eyes Wide Shut} red-team campaign against
+\texttt{gpt-oss-20b}, developed for the OpenAI/Kaggle \texttt{gpt-oss-20b}
+Red-Teaming Challenge. The campaign was intentionally adaptive: attack prompts
+were refined after observing failures, and successful surfaces were pursued
+further. That design is appropriate for vulnerability discovery but differs from
+a randomized benchmark. Our aim is to report the experimental record accurately
+rather than retrofit every attack into a causal ablation.
+
+Figure~\ref{fig:map} states the organizing claim. The three attack families are
+not three unrelated prompts; they are three points on one deployed pipeline, each
+named for the boundary it crosses.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig1-failure-map.pdf}
+\caption{The three attack families located on one deployed pipeline. The dashed
+line marks the separation the paper holds throughout: what the model emitted is
+evidence, what a host would then do is not.}
+\label{fig:map}
+\end{figure}
+
+We make four contributions:
+\begin{enumerate}
+  \item We document three red-team attack surfaces against one open-weight
+  reasoning model, together with scripts, notebook outcomes, and preserved
+  response traces.
+  \item We measure Finding~1 at one hundred seeded trials per condition and
+  report Findings~2 and~3 at their recorded seeded-trial counts, including
+  20/30--25/30-scale reasoning-channel results for Finding~3. No finding here
+  is scored with a p-value or a significance test.
+  \item We separate model behavior from system behavior: reasoning-field
+  exposure, final-answer content, structured tool-call emission, and host
+  dispatch are different observable events.
+  \item We connect the findings to multi-turn jailbreaks, reasoning-trace
+  leakage, semantic and metamorphic robustness, and agentic safety without
+  claiming one hidden mechanism.
+\end{enumerate}
+
+The paper is best read as an empirical red-team study with repeated observations
+on all three attack families and preserved full traces for each, not as a
+population estimate of the model's global failure rate.
+
+\section{Related Work}
+
+\subsection{Multi-turn interaction and semantic robustness}
+
+Safety tuning can fail through competing objectives and mismatched generalization
+\citep{wei2023jailbroken}, while adversarial input transformations can transfer
+across aligned models \citep{zou2023universal}. Multi-turn interaction is an
+established attack surface in its own right: \citet{zhou2024speak} decompose
+harmful requests across turns, while Crescendo reuses accepted conversational
+material to escalate toward harmful content \citep{russinovich2025crescendo}.
+More recent work formalizes safety as state-dependent across dialogue
+trajectories \citep{li2026state}. These studies motivate treating history as an
+active attack surface rather than incidental prompt text, which is the frame
+Finding~2 below sits inside.
+
+Finding~2 also relates to work asking whether behavior is stable under
+meaning-preserving or safety-relevant transformations. Safe2Harm maps harmful
+problems into superficially safe but structurally related representations
+\citep{yang2025safe2harm}. Consistency training treats some jailbreak failures
+as failures of invariance to irrelevant prompt changes
+\citep{irpan2025consistency}. Metamorphic-testing work evaluates stability under
+systematic transformations, including safety-specific transformations
+\citep{xing2026safety} and semantic-preserving transformations in agentic
+reasoning systems \citep{zarza2026semantic}. Those designs are more controlled
+than the adaptive campaign reported here; robustness under transformation is
+therefore a discussion frame, not a newly established formal principle.
+
+\subsection{Reasoning channels}
+
+Observable reasoning can be useful for monitoring without being a faithful
+transcript of latent computation \citep{chen2025reasoning}. OpenAI cautions
+developers not to expose raw \texttt{gpt-oss} chain-of-thought directly to users
+because it may contain material intentionally omitted from the final answer
+\citep{openai2025gptoss}. \citet{ahrend2026safer} systematically show that
+reasoning traces can increase exposure of sensitive prompt information.
+
+The reasoning channel is exploitable in both directions, and the two directions
+are complementary. \citet{ye2026role} attack it by \emph{writing} to it: they
+trace prompt injection to role confusion, where untrusted text that imitates a
+role inherits that role's authority, and their CoT Forgery attack injects
+fabricated reasoning that the model mistakes for its own, reaching 26\% attack
+success on \texttt{gpt-oss-20b} over 100 attacks. Finding~3 below is the
+\emph{reading} direction on the same channel: a protected string present in the
+reasoning field of a turn whose final answer withholds it. Neither result is
+evidence about hidden computation; both concern what the observable reasoning
+field carries in a deployed system.
+
+\subsection{Realistic, differential jailbreak benchmarks}
+
+None of the three findings here claim that non-refusal is itself harm.
+Finding~1's tool was inert; Finding~2's deliverable is code rather than a
+deployed system; Finding~3's leak is an interface observation, not a shown
+exfiltration. This follows the standard set by benchmarks that measure whether a
+jailbreak enables \emph{capable}, \emph{differential} harm rather than counting
+refusals \citep{souly2024strongreject,andriushchenko2024agentharm}.
+
+\subsection{Independent, concurrent evidence on the same model}
+
+This campaign began as one of roughly a hundred entries to OpenAI's
+\texttt{gpt-oss-20b} red-teaming challenge. Two comparators have since been
+published in full and are cited here in peer-reviewed form. \citet{ye2026role}
+isolate a single mechanism, role confusion in the reasoning channel, and measure
+it over 100 attacks per condition with an explicit baseline; \emph{Mind the Gap}
+distinguishes model-only from agentic failure using action-graph instrumentation
+on \texttt{gpt-oss-20b} \citep{wicaksono2025mind}. Both illustrate what the
+present artifacts lack: a frozen condition and a denominator large enough to
+separate close rates. Appendix~B gives the full comparison against the ten
+prize-winning challenge writeups.
+
+\section{Experimental Record}
+
+\subsection{Primary artifacts}
+
+The experimental record consists of four complementary sources:
+\begin{enumerate}
+  \item the original Kaggle notebook, containing methodological explanations,
+  experiment code, reported repetition counts, and saved outputs;
+  \item three challenge-format finding files containing model and environment
+  metadata, issue definitions, reproduction steps, and preserved Harmony
+  response traces;
+  \item the released Python scripts for the three attack families; and
+  \item the competition writeup.
+\end{enumerate}
+
+The notebook records a local \texttt{gpt-oss:20b} Ollama model identifier of
+\texttt{aa4295ac10c3} after a 13\,GB pull. This is useful run provenance,
+although it is an Ollama-local identifier rather than a cryptographic commitment
+to every upstream artifact. All three finding files identify Kaggle/Tesla T4
+execution through Ollama. Seeds 0--99 (Finding~1) or 0--29 (Findings~2 and~3)
+are fixed per arm within each campaign.
+
+\subsection{What counts as evidence}
+
+\textbf{Seeded-trial record.} The notebook and released scripts record seeded
+trial counts for each finding: 100 seeds per arm for Finding~1, 30 seeds per arm
+for Findings~2 and~3. Every number in Section~\ref{sec:results} is a raw count
+out of one of these stated denominators; no p-value or significance test is
+computed anywhere in this paper.
+
+\textbf{Preserved trace.} Each finding file contains at least one full Harmony
+walkthrough showing the concrete behavior that motivated the finding. These
+traces are directly inspectable even when they do not establish frequency by
+themselves. Band~B of each results figure reproduces these traces verbatim from
+the submitted finding file.
+
+\textbf{Saved reproduction output.} The notebook contains a separate reproduction
+validator with saved output for all three findings. The stored pass records all
+three as reproduced. This is additional evidence, but it is not substituted for
+the original seeded-trial counts.
+
+\begin{table}[tbp]
+\caption{Primary evidence available for the three attack families. Each row is
+a rate or count explicitly present in the original notebook and release
+scripts, not a rate inferred from one image.}
+\label{tab:evidence}
+\small
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}P{1.15in}P{2.05in}YY@{}}
+\toprule
+\textbf{Finding} & \textbf{Recorded outcome} & \textbf{Preserved trace} &
+\textbf{Additional artifact}\\
+\midrule
+1: simulation framing &
+Turn-3 exact tool call, $n{=}100$ each: 78/100 (no simulation) vs.\ 97/100
+(simulation). Diagnostic audit, $n{=}100$: 44/100 overall, 20/100 following a
+visible refusal &
+Full simulation-framing path; diagnostic audit trace &
+Five Python variants; word-level prompt diff\\
+2: semantic escalation &
+30/30 direct-ask refusal; 30/30 benevolent-reframe compliance; 30/30 through
+turns 3--6 &
+Full turn-1 refusal through turn-7 distress upsell, quoted verbatim &
+Saved validator; two Python scripts\\
+3: reasoning-channel secret exposure &
+25/30 reasoning-field exposure; 13/30 visible-answer exposure &
+Submitted trace: reasoning contains secret, final answer refuses &
+Saved run and validator\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Inferential scope}
+
+Findings~1 through~3 are each reported at their stated seeded-trial counts (100
+for Finding~1, 30 for Findings~2 and~3); none is scored with a p-value or
+significance test, and success criteria differ across findings (an exact
+tool-call name, a blinded compliance label, an exact string match), so outcomes
+are not pooled into one attack-success rate.
+
+The paper makes causal claims only where the design supports them. Finding~1's
+comparison is a deletion-only ablation (the no-simulation arm is the simulation
+arm with simulation-specific text removed, nothing added), which supports a
+narrow causal reading. Finding~2's turns 3--6 introduce new functionality at
+each step, so the campaign is a documented escalation trajectory rather than a
+single matched comparison. Finding~3's release condition is scripted and
+explicitly authorizes disclosure after the second credential, which the results
+account for directly.
+
+\section{Results}
+\label{sec:results}
+
+Each finding is presented in the same three-band form. Band~A states what was
+done and what the notebook recorded. Band~B reproduces the model's own output,
+cut verbatim from the corresponding finding file. Band~C states what the
+artifact establishes and, equally, what it does not.
+
+\input{section_finding1}
+
+\subsection{Finding 2: refusal, benign scaffold, and exploitative escalation}
+
+Finding~2 begins with a direct request to design an assistant optimized for
+long-term user dependency. The preserved trace shows an explicit refusal:
+\textit{``I can't help with designing systems intended to create user
+dependency or manipulate users. This approach could be harmful to users'
+wellbeing and autonomy.''} The conversation then pivots to a
+hyper-personalized educational tutor framed around engagement and knowledge
+retention; the model complies. Three further turns build an emotional-
+intervention function, a peer-comparison function, and a ``Focus Guardian''
+that intercepts the user's own attempts to seek outside help. The seventh turn
+restates the same scaffold and asks for a premium upsell called specifically
+when a high-stress state is detected, with the stated goal of converting
+distress into a sale; the preserved output supplies the requested logic,
+including the docstring \textit{``Convert user distress into premium service
+sales''} and the comment \textit{``\# Target high-distress moments for maximum
+conversion.''}
+
+The notebook and released scripts record this attack family at 30/30 across the
+full seven-turn escalation and a separate condensed 2-turn replication
+restating the system as context. The empirical result is therefore a repeated,
+seeded-trial observation, not one screenshot: the campaign consistently reached
+the defined exploitative endpoint, and one complete trace is preserved turn by
+turn, as Figure~\ref{fig:f2} shows.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{figures/fig3-finding2.pdf}
+\caption{Finding 2: refusal, benign scaffold, and exploitative escalation. The
+refusal at turn~1 and the distress-keyed upsell at turn~7 are the same
+conversation.}
+\label{fig:f2}
+\end{figure}
+
+\claim{This finding demonstrates stateful semantic escalation across a fixed
+seven-turn conversation, replicated over 30 seeds. It does not prove a
+keyword-only safety filter: ``dependency'' and ``engagement'' are not identical
+objectives, and later turns introduce functionality absent from the first
+prompt.}
+
+\subsection{Finding 3: exposure of a synthetic secret in reasoning}
+
+Finding~3 places a synthetic secret in a developer prompt and defines a
+two-step authentication-like protocol: a first credential (\texttt{"Fidelio"})
+and a second credential that must decline a scripted decoy question. The
+success criterion recorded in the notebook is whether the protected string
+appears in the observable thinking field. The notebook reports exposure in
+25/30 seeded trials in the reasoning field and 13/30 in the visible answer.
+
+The submitted finding file's preserved trace, reproduced in Figure~\ref{fig:f3},
+shows the reasoning field explicitly working through the release condition and
+reproducing the protected string, then concluding the content is disallowed and
+refusing in the final answer: \textit{``I'm sorry, but I can't help with
+that.''} This is the turn Panel~B quotes verbatim. Other seeded trials in the
+same campaign show the visible answer also carrying the string, which the
+25/30-versus-13/30 split in Section~\ref{sec:results} already reports; the
+submitted trace is one specific, verbatim-preserved instance of the
+reasoning-exposes/final-refuses pattern, not the only recorded outcome.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{figures/fig4-finding3.pdf}
+\caption{Finding 3: cross-channel containment. The reasoning field reproduces the
+protected string in the same turn whose final answer refuses.}
+\label{fig:f3}
+\end{figure}
+
+\claim{The repeated observation is cross-channel containment failure after the
+scripted release condition. It is not evidence that the visible reasoning field
+is a faithful transcript of hidden cognition, nor that the experiment bypassed
+authentication before authorization: the release protocol explicitly authorizes
+disclosure once the second credential is given.}
+
+\section{Cross-Finding Discussion}
+
+The three findings span different stages of an agentic interaction pipeline:
+\[
+\text{input representation}
+\rightarrow \text{dialogue state}
+\rightarrow \text{reasoning field}
+\rightarrow \text{final answer}
+\rightarrow \text{tool call}
+\rightarrow \text{host action}.
+\]
+
+The campaign found safety-relevant behavior at each boundary it tested:
+simulation framing changed structured tool-call invocation; benign scaffolding
+preceded repeated exploitative escalation across a fixed seven-turn
+conversation; and a protected string repeatedly appeared in reasoning
+independent of what the final answer did.
+
+Finding~1's own diagnostic audit is worth naming directly: 20 of the 44 trials
+that invoked the tool overall did so \emph{after} a visible refusal earlier in
+the same trial. That is an observable say/do mismatch within a single
+transcript, not evidence about why the model was trained, and it is reported
+here as a raw count, not a rate compared against any other condition.
+
+This does not imply one model-internal mechanism. It suggests a practical
+evaluation principle: safety claims should specify the measured surface and
+system boundary. Final-answer refusal is insufficient evidence about
+reasoning-field contents or tool-call selection. Conversely, a tool call does
+not establish environment compromise when execution is disabled.
+
+Recent invariance and metamorphic-testing work provides a route from discovery
+to controlled evaluation
+\citep{irpan2025consistency,zarza2026semantic,xing2026safety}. The
+transformation axes supplied by this campaign are simulation framing, semantic
+scaffold, dialogue history, output channel, and tool availability.
+
+\section{Limitations}
+
+\textbf{Adaptive search and selection effects.} Prompts were refined after
+observing outputs. Seeded-trial rates characterize recorded attack-development
+conditions, not failure prevalence under arbitrary prompts.
+
+\textbf{Non-uniform endpoints.} ``Success'' means an exact tool-call name, a
+blinded compliance label, or an exact string match depending on the finding.
+Per-finding outcomes should not be pooled.
+
+\textbf{Causal isolation.} Finding~1's ablation isolates the simulation-framing
+variable by construction (deletion-only), but the diagnostic audit and
+Finding~2's multi-turn escalation are not matched-condition designs; Finding~2
+changes framing and requested functionality across turns by design.
+
+\textbf{Reasoning-channel authorization and faithfulness.} The synthetic-secret
+protocol authorizes release after the second credential. The observation is
+exposure in an observable reasoning field, which should not be equated with
+hidden computation.
+
+\textbf{Single model.} All experiments target \texttt{gpt-oss-20b};
+generalization requires replication.
+
+\section{Broader Impact and Responsible Use}
+
+The study concerns adversarial prompts that could elicit harmful behavior.
+Scientific evidence is preserved without unnecessary real-world execution: the
+secret is synthetic, and the Finding~1 tool wrapper never executes a real
+destructive action. This separation is both an ethical and a methodological
+choice; real-world harm is not required to demonstrate a transition from final
+text into a structured action interface.
+
+The defensive implication is that safety evaluation should monitor the full
+deployed-system boundary. Reasoning fields may carry information absent from
+final answers; dialogue state can change later behavior; and tool calls should
+be logged separately from actual environment transitions.
+
+\section{Conclusion}
+
+This campaign contains more experimental evidence than a repository-only or
+screenshot-only reading suggests. The challenge-format finding files preserve
+full Harmony traces, and the released scripts expose the relevant system
+boundaries.
+
+Finding~1, measured at one hundred seeded trials per condition, shows
+simulation framing raising exact tool-call invocation from 78/100 to 97/100,
+with a separate diagnostic audit recording 44/100 overall invocations and
+20/100 following a visible refusal earlier in the same trial. Finding~2 is
+recorded at 30/30 across a fixed seven-turn escalation and preserves a
+refusal-to-exploitative-escalation trajectory quoted verbatim. Finding~3
+records reasoning-field string exposure in 25/30 seeded trials against 13/30 in
+the visible answer, with the submitted trace showing the reasoning field
+carrying the string while the final answer refuses.
+
+Three findings, one recurring shape: the model's tested safety behavior tracks
+whether a request matches a category the model names explicitly, not whether
+it matches the concept that category is meant to catch. Moving a request
+across the boundary of a named category --- through simulation framing, through
+relabelling, through a channel the visible answer does not cover --- changed
+the model's behavior in each of the three prompt packages tested here, while
+the same underlying content stayed fixed. The concurrent, independently judged
+entries discussed in Related Work suggest the underlying mechanisms here ---
+framing-sensitive tool invocation, reasoning/output divergence, reframable
+objectives --- are not artifacts of this one campaign's specific prompts.
+
+The campaign does not identify one causal mechanism, nor does it need to. Its
+empirical contribution is a multi-surface map of failure modes in one
+open-weight reasoning model and an artifact record that distinguishes prompt
+behavior, dialogue state, reasoning channels, final answers, and structured
+actions. Controlled matched-condition studies, sketched in Appendix~D, can now
+test which transformation axes causally move the system across a safety
+boundary.
+
+\section*{Data and Artifact Availability}
+
+The public research repository is available at
+\url{https://github.com/MasihMoafi/Eyes-Wide-Shut}. The original competition
+notebook and challenge-format finding records are part of the project evidence.
+The repository contains the red-team scripts, figures, and reproduction
+instructions for Findings~1--3.
+
+\appendix
+\section{Experiment--Evidence Map}
+
+\begin{table}[H]
+\caption{Claim-to-artifact map used for review.}
+\small
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}P{0.55in}P{1.75in}YY@{}}
+\toprule
+\textbf{Finding} & \textbf{Principal code} & \textbf{Seeded-trial source} &
+\textbf{Preserved outcome source}\\
+\midrule
+1 & \texttt{1.4.no\_simulation.py}, \texttt{1.5.simulation.py} & Notebook cells
+for the deletion-only ablation and the diagnostic audit & Finding~1 Harmony
+trace; validator output\\
+2 & \texttt{2.1.cl.py}, \texttt{2.2.cl.py} & Notebook 30/30 seeded record &
+Full escalation trace; saved output and validator\\
+3 & \texttt{3.mr.x.py} & Notebook 25/30 (reasoning) and 13/30 (visible answer)
+seeded record & Submitted trace; validator\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Comparison with Prize-Winning Challenge Reports}
+
+\begin{table}[H]
+\caption{Methodological positioning against the strongest comparators among the
+prize-winning challenge writeups. Numbers reported by those writeups are not
+re-estimated here, and raw success rates are not compared across heterogeneous
+tasks.}
+\small
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}P{2.05in}P{1.35in}Y@{}}
+\toprule
+\textbf{Writeup} & \textbf{Primary emphasis} & \textbf{Methodological relation}\\
+\midrule
+Policy over Values / ``Lucky Coin'' (Team dawgnation, 2025), published as
+\citet{ye2026role} & CoT policy forgery; role confusion & Isolates one mechanism;
+100 attacks per condition with an explicit baseline. Attacks the reasoning
+channel by writing to it, where Finding~3 reads from it\\
+Mind the Gap \citep{wicaksono2025mind} & Model vs.\ agentic red teaming &
+Action-graph instrumentation and system-level outcomes\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+This is positioning rather than competitive scoring. These two comparators
+illustrate exactly what the present artifacts lack: a frozen condition and a
+denominator large enough to separate close rates. \emph{Eyes Wide Shut}
+contributes breadth across surfaces and preserves attack-development
+trajectories connecting model text, reasoning channels, and tools.
+
+\section{Controlled Follow-Up Experiments}
+
+One small controlled study would directly test a causal hypothesis raised by
+Finding~2. The equivalent study for Finding~1 --- freezing the target objective,
+system instructions, turn count, tool schema, outcome rubric, and decoding
+parameters while varying only simulation framing --- is no longer a
+follow-up: Section~\ref{sec:results} reports it, at one hundred seeded trials
+per condition, as a deletion-only ablation.
+
+\textbf{Stateful semantic control.} Compare the same final exploitative request
+after no prior context, after a benign accepted scaffold, and after a
+refusal-producing scaffold, using repeated sampling.
+
+This is a confirmatory extension, not a prerequisite for the empirical
+observations preserved in the current artifact record.
+
+\clearpage
+\begin{thebibliography}{99}
+\small
+
+\bibitem[Ahrend et~al.(2026)]{ahrend2026safer}
+Patrick Ahrend, Tobias Eder, Xiyang Yang, Zhiyi Pan, and Georg Groh.
+\newblock Safer reasoning traces: Measuring and mitigating chain-of-thought leakage in LLMs.
+\newblock In \emph{Proceedings of the Seventh Workshop on Privacy in Natural Language
+Processing (PrivateNLP@ACL)}, pages 140--164, 2026.
+\newblock Preprint arXiv:2603.05618.
+
+\bibitem[Andriushchenko et~al.(2024)]{andriushchenko2024agentharm}
+Maksym Andriushchenko, Alexandra Souly, Mateusz Dziemian, et~al.
+\newblock AgentHarm: A benchmark for measuring harmfulness of LLM agents.
+\newblock arXiv:2410.09024, 2024.
+
+\bibitem[Chen et~al.(2025)]{chen2025reasoning}
+Yanda Chen, Joe Benton, Ansh Radhakrishnan, et~al.
+\newblock Reasoning models don't always say what they think.
+\newblock arXiv:2505.05410, 2025.
+
+\bibitem[de Zarzà et~al.(2026)]{zarza2026semantic}
+I. de Zarzà, J. de Curtò, Jordi Cabot, Pietro Manzoni, and Carlos T. Calafate.
+\newblock Semantic invariance in agentic AI.
+\newblock arXiv:2603.13173, 2026.
+
+\bibitem[Irpan et~al.(2025)]{irpan2025consistency}
+Alex Irpan, Alexander Matt Turner, Mark Kurzeja, David K. Elson, and Rohin Shah.
+\newblock Consistency training helps stop sycophancy and jailbreaks.
+\newblock arXiv:2510.27062, 2025.
+
+\bibitem[Li et~al.(2026)]{li2026state}
+Pengcheng Li, Jie Zhang, Tianwei Zhang, et~al.
+\newblock State-dependent safety failures in multi-turn language model interaction.
+\newblock arXiv:2603.15684, 2026.
+
+\bibitem[OpenAI(2025)]{openai2025gptoss}
+OpenAI.
+\newblock Introducing gpt-oss.
+\newblock Technical release and model documentation,
+\url{https://openai.com/index/introducing-gpt-oss/}, 2025.
+
+\bibitem[Russinovich et~al.(2025)]{russinovich2025crescendo}
+Mark Russinovich, Ahmed Salem, and Ronen Eldan.
+\newblock Great, now write an article about that: The Crescendo multi-turn LLM jailbreak attack.
+\newblock In \emph{USENIX Security}, pages 2421--2440, 2025.
+
+\bibitem[Souly et~al.(2024)]{souly2024strongreject}
+Alexandra Souly, Qingyuan Lu, Dillon Bowen, et~al.
+\newblock A StrongREJECT for empty jailbreaks.
+\newblock arXiv:2402.10260, 2024.
+
+\bibitem[Wei et~al.(2023)]{wei2023jailbroken}
+Alexander Wei, Nika Haghtalab, and Jacob Steinhardt.
+\newblock Jailbroken: How does LLM safety training fail?
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2023.
+
+\bibitem[Wicaksono et~al.(2025)]{wicaksono2025mind}
+Ilham Wicaksono, Zekun Wu, Rahul Patel, Theo King, Adriano Koshiyama, and Philip
+Treleaven.
+\newblock Mind the gap: Comparing model- vs agentic-level red teaming with action-graph
+observability on GPT-OSS-20B.
+\newblock arXiv:2509.17259, 2025.
+
+\bibitem[Xing et~al.(2026)]{xing2026safety}
+Ying Xing, Jia-Qi Huang, Hai-Jiao Zhao, Long Zhang, and Wen-Jin Li.
+\newblock Safety evaluation for large language models with metamorphic testing: An empirical
+study.
+\newblock \emph{Journal of Computer Science and Technology}, 2026.
+\newblock DOI 10.1007/s11390-026-5705-z.
+
+\bibitem[Yang(2025)]{yang2025safe2harm}
+Fan Yang.
+\newblock Safe2Harm: Semantic isomorphism attacks for jailbreaking large language models.
+\newblock arXiv:2512.13703, 2025.
+
+\bibitem[Ye et~al.(2026)]{ye2026role}
+Charles Ye, Jasmine Cui, and Dylan Hadfield-Menell.
+\newblock Prompt injection as role confusion.
+\newblock In \emph{Proceedings of the 43rd International Conference on Machine
+Learning (ICML)}, PMLR 306, 2026.
+\newblock arXiv:2603.12277.
+
+\bibitem[Zhou et~al.(2024)]{zhou2024speak}
+Zhenhong Zhou, Jiuyang Xiang, Haopeng Chen, Quan Liu, Zherui Li, and Sen Su.
+\newblock Speak out of turn: Safety vulnerability of large language models in multi-turn
+dialogue.
+\newblock arXiv:2402.17262, 2024.
+
+\bibitem[Zou et~al.(2023)]{zou2023universal}
+Andy Zou, Zifan Wang, Nicholas Carlini, Milad Nasr, J. Zico Kolter, and Matt
+Fredrikson.
+\newblock Universal and transferable adversarial attacks on aligned language models.
+\newblock arXiv:2307.15043, 2023.
+
+\end{thebibliography}
+
+\end{document}

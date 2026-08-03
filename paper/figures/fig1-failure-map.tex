@@ -1,0 +1,67 @@
+\documentclass[border=0pt,varwidth=false]{standalone}
+\usepackage{ews-figures}
+\begin{document}
+\begin{ewsfigure}
+
+\begin{ewsdiagram}
+\begin{tikzpicture}[
+  every node/.style={font=\fontsize{7.6}{9}\selectfont},
+  stage/.style={draw=ewsrule, fill=white, rounded corners=1.5pt,
+                inner sep=4pt, minimum height=17pt, minimum width=54pt,
+                align=center},
+  host/.style={stage, draw=ewsslate, fill=ewsslate!6},
+  flow/.style={-{Stealth[length=4.5pt]}, draw=ewsmute, line width=0.6pt},
+  pin/.style={draw=ewsaccent, fill=white, rounded corners=1.5pt,
+              inner sep=3pt, minimum height=13pt, align=center,
+              font=\fontsize{7}{8.4}\selectfont},
+  tick/.style={draw=ewsaccent, line width=0.5pt, densely dotted}]
+
+% ---- the deployed pipeline, left to right
+\node[stage] (inp) {input\\representation};
+\node[stage, right=13pt of inp] (dia) {dialogue\\state};
+\node[stage, right=13pt of dia] (rea) {reasoning\\field};
+\node[stage, right=13pt of rea] (fin) {final\\answer};
+\node[stage, right=13pt of fin] (too) {tool\\call};
+\node[host,  right=13pt of too] (hos) {host\\action};
+
+\foreach \a/\b in {inp/dia, dia/rea, rea/fin, fin/too, too/hos}
+  \draw[flow] (\a) -- (\b);
+
+% ---- where each finding crosses a boundary
+\node[pin, below=22pt of inp] (f1) {\textbf{F1} multilingual\\saturation};
+\node[pin, below=22pt of dia] (f2) {\textbf{F2} stateful\\escalation};
+\node[pin, below=22pt of rea] (f3) {\textbf{F3} cross-channel\\containment};
+\node[pin, below=22pt of too] (f5) {\textbf{F5} code-bearing\\tool call};
+
+\foreach \s/\f in {inp/f1, dia/f2, rea/f3, too/f5}
+  \draw[tick] (\s.south) -- (\f.north);
+
+% F4 spans dialogue state and reasoning rather than sitting at one stage.
+% Route via a bus above the box so no connector crosses the label.
+\coordinate (busl) at ($(f2.south)+(0,-9pt)$);
+\coordinate (busr) at ($(f3.south)+(0,-9pt)$);
+\coordinate (busm) at ($(busl)!0.5!(busr)$);
+\node[pin, anchor=north] (f4) at ($(busm)+(0,-9pt)$)
+  {\textbf{F4} persona and agent state across two memory topologies};
+\draw[tick] (f2.south) -- (busl);
+\draw[tick] (f3.south) -- (busr);
+\draw[tick] (busl) -- (busr);
+\draw[tick] (busm) -- (f4.north);
+
+% ---- the boundary the paper insists on
+\draw[draw=ewsslate, densely dashed, line width=0.5pt]
+  ($(too.north east)+(6.5pt,7pt)$) -- ($(too.south east)+(6.5pt,-58pt)$);
+\node[anchor=west, font=\fontsize{7}{8.4}\selectfont, color=ewsslate,
+      align=left] at ($(too.south east)+(8pt,-46pt)$)
+  {model output ends here\\host consequences begin};
+
+\end{tikzpicture}
+
+\ewsdiagramnote{The campaign probes five points on one deployed pipeline rather
+than five unrelated prompts. Each finding is named for the boundary it crosses,
+and the dashed line marks the separation the paper holds throughout: what the
+model emitted is evidence, what a host would then do is not.}
+\end{ewsdiagram}
+
+\end{ewsfigure}
+\end{document}
