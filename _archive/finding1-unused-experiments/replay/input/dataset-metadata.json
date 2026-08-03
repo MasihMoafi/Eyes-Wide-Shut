@@ -1,9 +1,0 @@
-{
-  "title": "Eyes Wide Shut F1 Replay History",
-  "id": "masihmaafi/eyes-wide-shut-f1-replay-history",
-  "licenses": [
-    {"name": "other"}
-  ],
-  "subtitle": "Private turn-1 and turn-2 histories for Finding 1 repair",
-  "description": "Private research input. Contains valid historical English and French no-simulation turn-1/turn-2 records plus the checked-out corrected arms.py."
-}

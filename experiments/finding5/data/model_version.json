@@ -1,5 +1,0 @@
-{
-  "details": "parent_model='' format='gguf' family='gptoss' families=['gptoss'] parameter_size='20.9B' quantization_level='MXFP4'",
-  "modified": "2026-07-31 22:10:51.775885+00:00",
-  "parameters": "temperature                    1"
-}
