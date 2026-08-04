@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - publication/tmlr-submission
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -22,19 +25,16 @@ jobs:
           OUT="$RUNNER_TEMP/tmlr_anonymous_supplement"
           mkdir -p "$OUT/study1" "$OUT/study2" "$OUT/study3" "$OUT/environment" "$OUT/analysis"
 
-          # Copy the complete experiment records used by the three-study paper.
           cp -a experiments/finding1/. "$OUT/study1/"
           cp -a experiments/finding2/. "$OUT/study2/"
           cp -a experiments/finding3/. "$OUT/study3/"
 
-          # Preserve the three submitted full traces under anonymous filenames.
           for i in 1 2 3; do
             if [ -f "submission-files/masih_finding_${i}.json" ]; then
               cp "submission-files/masih_finding_${i}.json" "$OUT/study${i}/submitted_trace.json"
             fi
           done
 
-          # Include the exact paper-side analysis and figure generator.
           cp paper/section_finding1.tex "$OUT/analysis/" 2>/dev/null || true
           cp paper/main.tex "$OUT/analysis/paper_source_reference.tex" 2>/dev/null || true
           find paper -maxdepth 2 -type f \( -name '*.py' -o -name '*.tex' \) -print0 | while IFS= read -r -d '' f; do
@@ -45,13 +45,11 @@ jobs:
             esac
           done
 
-          # Capture model/environment records already present in the repository.
           find . -type f \( -iname 'model_version*.json' -o -iname '*environment*.json' -o -iname '*hardware*.txt' -o -iname '*requirements*.txt' \) \
             -not -path './.git/*' -print0 | while IFS= read -r -d '' f; do
               cp "$f" "$OUT/environment/$(basename "$f")" 2>/dev/null || true
             done
 
-          # Remove irrelevant caches, generated webpages, and binaries from the evidence archive.
           find "$OUT" -type d \( -name '__pycache__' -o -name '.ipynb_checkpoints' \) -prune -exec rm -rf {} +
           find "$OUT" -type f \( -name '*.pyc' -o -name '*.html' -o -name '*.pdf' -o -name '*.png' -o -name '*.log' \) -delete
 
@@ -83,12 +81,11 @@ jobs:
           The archive concerns one local `gpt-oss:20b` package and the recorded runtime configurations. It does not claim generalization to other models, package revisions, quantizations, renderers, or deployments.
           EOF
 
-          # Remove identity-bearing strings and machine-specific paths from text artifacts.
           python - <<'PY'
           from pathlib import Path
-          import re
+          import re, os
 
-          root = Path(__import__('os').environ['RUNNER_TEMP']) / 'tmlr_anonymous_supplement'
+          root = Path(os.environ['RUNNER_TEMP']) / 'tmlr_anonymous_supplement'
           binary_ext = {'.zip', '.gz', '.jpg', '.jpeg', '.png', '.pdf', '.pyc'}
           replacements = [
               (re.compile(r'Masih\s+Moafi', re.I), 'Anonymous Author'),
@@ -112,15 +109,12 @@ jobs:
               p.write_text(text, encoding='utf-8')
           PY
 
-          # Generate an evidence inventory and lightweight consistency checks.
           OUT="$OUT" python - <<'PY'
           from pathlib import Path
-          import json, os, re
+          import json, os
 
           root = Path(os.environ['OUT'])
-          lines = []
-          lines.append('ANONYMOUS TMLR SUPPLEMENT VALIDATION REPORT')
-          lines.append('')
+          lines = ['ANONYMOUS TMLR SUPPLEMENT VALIDATION REPORT', '']
           for p in sorted(root.rglob('*')):
               if p.is_file():
                   rel = p.relative_to(root)
@@ -129,7 +123,6 @@ jobs:
                       n = sum(1 for line in p.open(encoding='utf-8', errors='replace') if line.strip())
                       lines.append(f'  nonempty JSONL records: {n}')
 
-          # Exact checks for known reported Study 3 fields when the raw baseline is present.
           candidates = list((root / 'study3').rglob('finding3_reproducible_baseline.jsonl'))
           if candidates:
               records = [json.loads(x) for x in candidates[0].read_text(encoding='utf-8').splitlines() if x.strip()]
@@ -137,7 +130,6 @@ jobs:
                         f"  leak_in_thinking=true: {sum(bool(r.get('leak_in_thinking')) for r in records)}",
                         f"  leak_in_final=true: {sum(bool(r.get('leak_in_final')) for r in records)}"]
 
-          # Aggregate Study 2 labels without assuming a fixed schema.
           label_files = list((root / 'study2').rglob('classifications_legacy.json'))
           if label_files:
               obj = json.loads(label_files[0].read_text(encoding='utf-8'))
@@ -149,7 +141,6 @@ jobs:
           (root / 'VALIDATION_REPORT.txt').write_text('\n'.join(lines) + '\n', encoding='utf-8')
           PY
 
-          # Fail the build if direct identifiers, credentials, or absolute personal paths remain.
           if grep -RIE --binary-files=without-match \
             'Masih[[:space:]]+Moafi|MasihMoafi|masihmoafi\.com|m\.moafi@|masihmoafi12@|github\.com/MasihMoafi|/home/[^/[:space:]]+/|/Users/[^/[:space:]]+/' "$OUT"; then
             echo 'Anonymization audit failed.' >&2
