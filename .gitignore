@@ -3,12 +3,13 @@ __pycache__/
 *.pyc
 .DS_Store
 
-# LaTeX build artifacts (paper/ figures are pre-built and tracked; these are not)
-paper/main.pdf
-paper/*.aux
-paper/*.log
-paper/*.out
-paper/*.synctex.gz
-paper/figures/*.aux
-paper/figures/*.log
-paper/figures/*.synctex.gz
+# Private files and folders (not to be published on GitHub)
+VISION.md
+vision
+.obsidian/
+.prompt-diffs-view/
+.prompt-diffs-viewP/
+paper/
+reports/
+submission-files/
+
