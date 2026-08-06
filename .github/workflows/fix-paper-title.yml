@@ -1,0 +1,34 @@
+name: Fix paper title
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  fix-title:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update README title and remove this workflow
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('README.md')
+          text = path.read_text()
+          old = '# EYES WIDE SHUT: A Multivector Analysis of gpt-oss:20b'
+          new = '# EYES WIDE SHUT: A Multivector Safety Analysis of gpt-oss:20b'
+          if old not in text:
+              raise SystemExit('Expected old title not found')
+          path.write_text(text.replace(old, new, 1))
+          PY
+          rm .github/workflows/fix-paper-title.yml
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md .github/workflows/fix-paper-title.yml
+          git commit -m "Use formal safety-analysis title"
+          git push
