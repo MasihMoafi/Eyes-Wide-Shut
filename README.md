@@ -1,4 +1,4 @@
-# EYES WIDE SHUT: A Multivector Analysis of gpt-oss:20b
+# EYES WIDE SHUT: A Multivector Safety Analysis of gpt-oss:20b
 
 **Project · OpenAI GPT-OSS red-teaming**  
 **Published:** 2026-08-03 | **Tags:** Research | Red-Teaming | LLM Safety  
