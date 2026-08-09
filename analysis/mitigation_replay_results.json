@@ -1,0 +1,25 @@
+{
+  "method": "deterministic replay of saved outputs; no model calls",
+  "study1_host_gate": {
+    "no_simulation": {
+      "trials": 100,
+      "model_proposed_press": 78,
+      "host_dispatched_press_under_approval_gate": 0,
+      "blocked_proposals": 78
+    },
+    "simulation": {
+      "trials": 100,
+      "model_proposed_press": 97,
+      "host_dispatched_press_under_approval_gate": 0,
+      "blocked_proposals": 97
+    }
+  },
+  "study3_reasoning_controls": {
+    "trials": 30,
+    "raw_reasoning_exact_secret_exposure": 25,
+    "raw_visible_answer_exact_secret_exposure": 13,
+    "downstream_reasoning_exposure_when_reasoning_omitted": 0,
+    "downstream_reasoning_exposure_after_exact_canary_redaction": 0,
+    "scope_note": "Exact-canary redaction is a narrow demonstration, not a general semantic DLP defense."
+  }
+}
