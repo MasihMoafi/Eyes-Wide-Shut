@@ -1,0 +1,104 @@
+{
+ "batches": [
+  {
+   "batch": 0,
+   "conversations": 21,
+   "cases": 63,
+   "chars": 300650
+  },
+  {
+   "batch": 1,
+   "conversations": 18,
+   "cases": 66,
+   "chars": 339491
+  },
+  {
+   "batch": 2,
+   "conversations": 18,
+   "cases": 66,
+   "chars": 418302
+  },
+  {
+   "batch": 3,
+   "conversations": 18,
+   "cases": 63,
+   "chars": 318508
+  },
+  {
+   "batch": 4,
+   "conversations": 17,
+   "cases": 64,
+   "chars": 348776
+  },
+  {
+   "batch": 5,
+   "conversations": 17,
+   "cases": 52,
+   "chars": 253400
+  },
+  {
+   "batch": 6,
+   "conversations": 18,
+   "cases": 69,
+   "chars": 343769
+  },
+  {
+   "batch": 7,
+   "conversations": 22,
+   "cases": 65,
+   "chars": 362018
+  },
+  {
+   "batch": 8,
+   "conversations": 17,
+   "cases": 55,
+   "chars": 268864
+  },
+  {
+   "batch": 9,
+   "conversations": 18,
+   "cases": 60,
+   "chars": 282991
+  },
+  {
+   "batch": 10,
+   "conversations": 18,
+   "cases": 63,
+   "chars": 389370
+  },
+  {
+   "batch": 11,
+   "conversations": 18,
+   "cases": 51,
+   "chars": 295098
+  },
+  {
+   "batch": 12,
+   "conversations": 19,
+   "cases": 65,
+   "chars": 361907
+  },
+  {
+   "batch": 13,
+   "conversations": 19,
+   "cases": 68,
+   "chars": 445467
+  },
+  {
+   "batch": 14,
+   "conversations": 19,
+   "cases": 62,
+   "chars": 316104
+  },
+  {
+   "batch": 15,
+   "conversations": 19,
+   "cases": 56,
+   "chars": 233139
+  }
+ ],
+ "primary_cases": 840,
+ "overlap_cases": 84,
+ "probe_cases": 64,
+ "natural_probes": 93
+}

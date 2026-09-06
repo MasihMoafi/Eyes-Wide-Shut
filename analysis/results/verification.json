@@ -1,0 +1,25 @@
+{
+  "source_fingerprints_verified": 34,
+  "original_manuscript_preserved": true,
+  "negative_controls": {
+    "wrong_tool_name": "detected by failing test",
+    "missing_reasoning_as_zero": "detected by failing test"
+  },
+  "anonymized_pdf_name_email_check": "passed",
+  "authored_pdf_name_check": "passed",
+  "latex_overflow_undefined_warning_check": "passed",
+  "finding2_semantic_review": "pending; no labels created",
+  "target_model_calls_this_revision": 0,
+  "pdf_visual_review": "14 final rendered pages; contact sheet and detail inspection passed",
+  "pdf_outputs": {
+    "paper/new/main.pdf": {
+      "sha256": "029d807b5c538af4539bf9852affe39d43f01e69de7fb44f3ec9ccef639d4216",
+      "pages": 7
+    },
+    "paper/new/preprint.pdf": {
+      "sha256": "054bbf125fd95cb75cb48717a5c7a20075f025a32bea3a0ffd42049781c89859",
+      "pages": 7
+    }
+  },
+  "viewer": "evince process 1394414 confirmed exact preprint.pdf path"
+}

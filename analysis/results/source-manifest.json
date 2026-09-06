@@ -1,0 +1,177 @@
+[
+  {
+    "path": "analysis/audit.py",
+    "sha256": "da2cda1f231438f3ebe795a1260c392062ffdf4f96844a7ee336bfadeae2fdbd",
+    "bytes": 13443
+  },
+  {
+    "path": "analysis/build_artifacts.py",
+    "sha256": "78156fac6abdf36558953e8e0265145a21599f6cc9da8a06136455ca1eae1b23",
+    "bytes": 8484
+  },
+  {
+    "path": "analysis/test_audit.py",
+    "sha256": "bb697c2759f3a3cd51ebd697a2cdc9f9f3531de72c429027c9b5f85e827e5d12",
+    "bytes": 2560
+  },
+  {
+    "path": "paper/new/body.tex",
+    "sha256": "e7e2342735db577335689231501b72b09d0d6f9c0358b8eb1691a281ec0450ac",
+    "bytes": 24682
+  },
+  {
+    "path": "paper/new/preamble.tex",
+    "sha256": "b5d707ae7d52331950e5949d2effccf34e814f26be10e0ff7f343da48a9e7e74",
+    "bytes": 833
+  },
+  {
+    "path": "paper/new/build.sh",
+    "sha256": "371179ea84e409f483edc45e16d927e0ede2e0686181db564d415e93d54f9166",
+    "bytes": 526
+  },
+  {
+    "path": "experiments/experiment-openrouter-oss120b/arms.py",
+    "sha256": "32020a6146c0f6b661145994918e512aa566b1c53fd88b0e83f3ba883df4c2f9",
+    "bytes": 11165
+  },
+  {
+    "path": "experiments/experiment-openrouter-oss120b/runner.py",
+    "sha256": "7fa50440e4fe461921435204fa83da365470df9cb11c5429026e90d781650833",
+    "bytes": 14286
+  },
+  {
+    "path": "experiments/experiment-openrouter-oss120b/batch_runner.py",
+    "sha256": "57aaf3c578900342761c1b73b0e740da5e86bcd5d0b3da91f4872882554c1995",
+    "bytes": 12974
+  },
+  {
+    "path": "experiments/finding1/en-nosim-legacy/input/legacy_arms.py",
+    "sha256": "be5ad7d6662b6d8ec86650f0610077c88200dd8107d64608edeb2932ed9d2636",
+    "bytes": 4971
+  },
+  {
+    "path": "experiments/finding1/en-sim-legacy-t4/sim_rerun.py",
+    "sha256": "230d494589d05b4087c1f9dbd9d69b3f0cced40faa117593507b15bbd424b78d",
+    "bytes": 10567
+  },
+  {
+    "path": "experiments/finding1/en-nosim-legacy/legacy_rerun.py",
+    "sha256": "e98b77e9eb9ac348fb2ba5b8724fd9ff33ed7a8e0cc2bbd6dc1f9c57a3ba66ce",
+    "bytes": 10608
+  },
+  {
+    "path": "experiments/finding1/data/en_sim_legacy_t4/model_version.json",
+    "sha256": "22574742d06d04cce9793e7b3eac976c25558e2dd2f368796d8b0db863d0a3ec",
+    "bytes": 236
+  },
+  {
+    "path": "experiments/finding1/data/en_nosim_ablation_t4/model_version.json",
+    "sha256": "ab4b4975d5d1c6a2367b5dc7016cb6db5d711b2e56737081e683427f675dce40",
+    "bytes": 236
+  },
+  {
+    "path": "experiments/finding3/code/finding3_arms.py",
+    "sha256": "d50a278c7937dc5cd349456447fee6d876cc37decb79cdc993bfabf5550fa048",
+    "bytes": 3667
+  },
+  {
+    "path": "experiments/finding3/code/finding3_runner.py",
+    "sha256": "2e7586b55710f4232a4ce8b7838afab2c0ad362970633130948763a95c865375",
+    "bytes": 6602
+  },
+  {
+    "path": "experiments/finding3/data/model_version.json",
+    "sha256": "b3f13d140d4ce6bd079b96757a71aa03cc99157a5e3d578a75780a7b768131b1",
+    "bytes": 236
+  },
+  {
+    "path": "experiments/finding2/scoring/SCORING.md",
+    "sha256": "7e141f83cbe1ac1218e9804d975b170eb4a7d0f765ca40bbc9504447c5f99461",
+    "bytes": 1093
+  },
+  {
+    "path": "experiments/finding2/scoring/EVALUATOR_PROMPT.md",
+    "sha256": "72db355e1a7293549a9f8eca760d2f2c79748f19dc3b577c1a8840266d0fe2ba",
+    "bytes": 1453
+  },
+  {
+    "path": "experiments/finding1/data/en_sim_legacy_t4/finding1_en_simulation_t4.jsonl",
+    "sha256": "fa480cf66b7f14bc068b3da37ca47f207ee374d858855baca0249db34d4d7d39",
+    "bytes": 1574428
+  },
+  {
+    "path": "experiments/finding1/data/en_nosim_ablation_t4/finding1_en_simulation_ablation_t4.jsonl",
+    "sha256": "4cb8d7258f251db35f842dcde0bedd276dc1187bd8bf865a9986c063451beb70",
+    "bytes": 1417724
+  },
+  {
+    "path": "experiments/finding3/data/finding3_reproducible_baseline.jsonl",
+    "sha256": "dfef8968ebd2a10e8df25dc0f1fd1e048d9030f7e7636ba69bfb60b9438b6f24",
+    "bytes": 80076
+  },
+  {
+    "path": "experiments/experiment-openrouter-oss120b/data/finding1_openai_gpt-oss-120b.jsonl",
+    "sha256": "b660c86c31c694fddd679d8121acd04ca678d28f04a1f2e935052a2680dc0854",
+    "bytes": 1931771
+  },
+  {
+    "path": "experiments/experiment-openrouter-oss120b/data/finding3_openai_gpt-oss-120b.jsonl",
+    "sha256": "0d623aa5da9702df876d52b914929c60d00f38d7a3464fd5e2c43ca79f5d2555",
+    "bytes": 48324
+  },
+  {
+    "path": "experiments/experiment-openrouter-oss120b/data/finding2_openai_gpt-oss-120b.jsonl",
+    "sha256": "720b253b26042e31870529b4737cf522f6b17af1afe261055a8b5a1cba017c36",
+    "bytes": 1769306
+  },
+  {
+    "path": "experiments/experiment-openrouter-oss120b/data/finding1_deepseek_deepseek-v4-flash.jsonl",
+    "sha256": "e490cfadeaf47111b7238718168b419ce6137d0af769630c7225a23e8aa832da",
+    "bytes": 1553465
+  },
+  {
+    "path": "experiments/experiment-openrouter-oss120b/data/finding3_deepseek_deepseek-v4-flash.jsonl",
+    "sha256": "071ffa377a701e29241bb4d7099b8d54bbb53d35687181b9f7dbc8cad61c2cd1",
+    "bytes": 33643
+  },
+  {
+    "path": "experiments/experiment-openrouter-oss120b/data/finding2_deepseek_deepseek-v4-flash.jsonl",
+    "sha256": "d64103656bc778d08f93be1264363cb6f6d82f44aa34b4e508077bfa2737642c",
+    "bytes": 1325345
+  },
+  {
+    "path": "experiments/experiment-openrouter-oss120b/data/finding1_openai_gpt-5.6-luna.jsonl",
+    "sha256": "13e799d7e0bb61ca1ce7f72638d4986b116cc638aeb3a7b54d3684cfb4e54d91",
+    "bytes": 872493
+  },
+  {
+    "path": "experiments/experiment-openrouter-oss120b/data/finding3_openai_gpt-5.6-luna.jsonl",
+    "sha256": "592e8a7d54086432af8ee3c49fc1223c0c876751ed8c8ce885c345d283d48488",
+    "bytes": 11833
+  },
+  {
+    "path": "experiments/experiment-openrouter-oss120b/data/finding2_openai_gpt-5.6-luna.jsonl",
+    "sha256": "75142576b0075fad55a41a8ea45d291354083847894f62ba189d9ec56d3f093d",
+    "bytes": 937578
+  },
+  {
+    "path": "experiments/experiment-openrouter-oss120b/data/finding1_openai_gpt-oss-safeguard-20b.jsonl",
+    "sha256": "693d46a727dcf659a479755f355e916158948578d530f912a26ac39c98abef49",
+    "bytes": 2945998
+  },
+  {
+    "path": "experiments/experiment-openrouter-oss120b/data/finding3_openai_gpt-oss-safeguard-20b.jsonl",
+    "sha256": "73a9f10f04e10b49553b01594261676f8af07c9312ac0818dc5b412246ec0854",
+    "bytes": 57276
+  },
+  {
+    "path": "experiments/experiment-openrouter-oss120b/data/finding2_openai_gpt-oss-safeguard-20b.jsonl",
+    "sha256": "4010e2a5d2ca00796b177464b61813e994719bf7186d72ad2607d9e2e0e30606",
+    "bytes": 1430716
+  },
+  {
+    "path": "analysis/review/reviews.jsonl",
+    "sha256": "9712dd5c8b1d480098945c64573063b8826cf83d696b76a33e2ea4cc422857c7",
+    "bytes": 250465
+  }
+]

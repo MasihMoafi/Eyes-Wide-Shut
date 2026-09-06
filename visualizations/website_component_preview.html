@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eyes Wide Shut — Multi-Model Visualizations & Architecture Showcase</title>
+<style>
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  --border: #e2e8f0;
+  --radius: 0.75rem;
+
+  --color-safe: #16a34a;    /* Emerald Green */
+  --color-breach: #c2410c;  /* Terracotta */
+  --color-base: #334155;    /* Slate-700 */
+  --color-cot: #4338ca;     /* Deep Indigo-700 */
+  --color-vis: #0284c7;     /* Sky/Blue-600 */
+  --color-deepseek: #9333ea;/* Purple */
+  --color-120b: #2563eb;    /* Royal Blue */
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 40px 20px;
+  background: #f8fafc;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  display: flex;
+  justify-content: center;
+}
+
+.showcase-container {
+  width: 100%;
+  max-width: 900px;
+}
+
+.section-header {
+  margin: 40px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.section-tag {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: #475569;
+  background: #e2e8f0;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.chart-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 28px 22px;
+  margin: 18px 0 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.chart-title-area {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.chart-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.chart-desc {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  font-family: var(--font-mono);
+}
+
+.chart-legend {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+}
+
+/* 1. DUMBBELL */
+.dumbbell-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 10px 0 14px;
+}
+
+.dumbbell-row {
+  display: grid;
+  grid-template-columns: 145px 1fr 75px;
+  align-items: center;
+  gap: 16px;
+}
+
+.dumbbell-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.dumbbell-sub {
+  display: block;
+  font-size: 0.70rem;
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+
+.dumbbell-track-container {
+  position: relative;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.dumbbell-track-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.dumbbell-span {
+  position: absolute;
+  height: 6px;
+  background: linear-gradient(90deg, var(--color-base), var(--color-breach));
+  border-radius: 3px;
+}
+
+.dumbbell-dot {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.62rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.dumbbell-dot.nosim { background: var(--color-base); }
+.dumbbell-dot.sim { background: var(--color-breach); }
+
+.dumbbell-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-align: center;
+  background: #f1f5f9;
+  color: var(--muted-foreground);
+  border: 1px solid var(--border);
+}
+
+.dumbbell-badge.pos {
+  color: var(--color-breach);
+  background: #fff7ed;
+  border-color: rgba(194, 65, 12, 0.3);
+}
+
+/* 2. SANKEY */
+.sankey-container {
+  width: 100%;
+  height: 230px;
+}
+
+/* 4. RADAR */
+.radar-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.radar-svg {
+  width: 100%;
+  height: 250px;
+}
+
+.radar-legend-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radar-legend-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+}
+
+.radar-color-pill {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.radar-card-title {
+  font-size: 0.80rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.radar-card-desc {
+  font-size: 0.70rem;
+  color: var(--muted-foreground);
+  line-height: 1.35;
+}
+
+/* Chart footer */
+.chart-footer {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: #475569;
+}
+.footer-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-safe);
+}
+</style>
+</head>
+<body>
+
+<div class="showcase-container">
+
+  <!-- 1. DUMBBELL PLOT -->
+  <div class="section-header">
+    <h3 class="section-title">3.1 Finding 1 — Framing-Induced Action Gap</h3>
+    <span class="section-tag">Connected Dumbbell Plot</span>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-header">
+      <div class="chart-title-area">
+        <div class="chart-title">Shift in Destructive Action Invocation by Framing Persona</div>
+        <div class="chart-desc">BASELINE NO-SIMULATION (SLATE) ━━━→ SIMULATION FRAMING (ORANGE) · N=100 TRIALS / ARM</div>
+      </div>
+      <div class="chart-legend">
+        <span class="legend-item"><span class="legend-dot" style="background:var(--color-base)"></span> No Simulation</span>
+        <span class="legend-item"><span class="legend-dot" style="background:var(--color-breach)"></span> Simulation Framing</span>
+      </div>
+    </div>
+
+    <div class="dumbbell-grid">
+      <!-- gpt-oss:20b -->
+      <div class="dumbbell-row">
+        <div class="dumbbell-label">gpt-oss:20b<span class="dumbbell-sub">Paper Baseline</span></div>
+        <div class="dumbbell-track-container">
+          <div class="dumbbell-track-bg"></div>
+          <div class="dumbbell-span" style="left: 78%; width: 19%;"></div>
+          <div class="dumbbell-dot nosim" style="left: 78%;">78</div>
+          <div class="dumbbell-dot sim" style="left: 97%;">97</div>
+        </div>
+        <div class="dumbbell-badge pos">Δ: +19%</div>
+      </div>
+
+      <!-- gpt-oss:120b -->
+      <div class="dumbbell-row">
+        <div class="dumbbell-label">gpt-oss:120b<span class="dumbbell-sub">120B Open Model</span></div>
+        <div class="dumbbell-track-container">
+          <div class="dumbbell-track-bg"></div>
+          <div class="dumbbell-span" style="left: 64%; width: 22%;"></div>
+          <div class="dumbbell-dot nosim" style="left: 64%;">64</div>
+          <div class="dumbbell-dot sim" style="left: 86%;">86</div>
+        </div>
+        <div class="dumbbell-badge pos">Δ: +22%</div>
+      </div>
+
+      <!-- deepseek-v4-flash -->
+      <div class="dumbbell-row">
+        <div class="dumbbell-label">deepseek-v4-flash<span class="dumbbell-sub">API Benchmark</span></div>
+        <div class="dumbbell-track-container">
+          <div class="dumbbell-track-bg"></div>
+          <div class="dumbbell-span" style="left: 91%; width: 0%;"></div>
+          <div class="dumbbell-dot sim" style="left: 91%;">91</div>
+        </div>
+        <div class="dumbbell-badge">Δ: 0%</div>
+      </div>
+
+      <!-- gpt-5.6-luna -->
+      <div class="dumbbell-row">
+        <div class="dumbbell-label">gpt-5.6-luna<span class="dumbbell-sub">Frontier Benchmark</span></div>
+        <div class="dumbbell-track-container">
+          <div class="dumbbell-track-bg"></div>
+          <div class="dumbbell-span" style="left: 99%; width: 1%; background:#64748b;"></div>
+          <div class="dumbbell-dot nosim" style="left: 100%;">100</div>
+          <div class="dumbbell-dot sim" style="left: 99%;">99</div>
+        </div>
+        <div class="dumbbell-badge">Δ: -1%</div>
+      </div>
+    </div>
+
+    <div class="chart-footer">
+      <span class="footer-dot"></span>
+      <span><strong>Core Dynamic:</strong> Open-weight models exhibit significant framing sensitivity (+19% to +22%), whereas models with rigid tool execution priors execute near ceiling regardless of simulation framing.</span>
+    </div>
+  </div>
+
+  <!-- 2. SANKEY FLOW -->
+  <div class="section-header">
+    <h3 class="section-title">3.2 Finding 2 — Deceptive Alignment Trajectory</h3>
+    <span class="section-tag">Alluvial Multi-Turn Flow</span>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-header">
+      <div class="chart-title-area">
+        <div class="chart-title">Multi-Turn Escalation Paths: Initial Refusal → Scaffolding → Defense Divergence</div>
+        <div class="chart-desc">30 PARALLEL SESSIONS TRACED THROUGH PROGRESSIVE INTENT PHASES</div>
+      </div>
+      <div class="chart-legend">
+        <span class="legend-item"><span class="legend-dot" style="background:var(--color-breach)"></span> Open Models Stream</span>
+        <span class="legend-item"><span class="legend-dot" style="background:var(--color-safe)"></span> GPT-5.6-Luna Defense Stream</span>
+      </div>
+    </div>
+
+    <div class="sankey-container">
+      <svg viewBox="0 0 820 220" width="100%" height="100%">
+        <!-- Stage 1: Turn 1 -->
+        <rect x="30" y="20" width="150" height="180" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+        <text x="105" y="46" font-size="12" font-weight="700" text-anchor="middle" fill="#0f172a">Turn 1: Direct Ask</text>
+        <text x="105" y="64" font-size="9.5" fill="#64748b" text-anchor="middle">Explicit Dependency System</text>
+        <rect x="42" y="85" width="126" height="96" rx="6" fill="#334155"/>
+        <text x="105" y="126" font-size="11.5" font-weight="700" text-anchor="middle" fill="#ffffff">Universal Refusal</text>
+        <text x="105" y="146" font-size="9.5" text-anchor="middle" fill="#94a3b8">100% Safe (80% DeepSeek)</text>
+
+        <!-- Link 1 -> 2 -->
+        <path d="M 168 133 C 220 133, 220 133, 270 133" fill="none" stroke="#94a3b8" stroke-width="32" opacity="0.35"/>
+
+        <!-- Stage 2: Turn 2 -->
+        <rect x="270" y="20" width="150" height="180" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+        <text x="345" y="46" font-size="12" font-weight="700" text-anchor="middle" fill="#0f172a">Turn 2: Benign Reframe</text>
+        <text x="345" y="64" font-size="9.5" fill="#64748b" text-anchor="middle">Pedagogical Tutor Persona</text>
+        <rect x="282" y="85" width="126" height="96" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <text x="345" y="126" font-size="11.5" font-weight="700" text-anchor="middle" fill="#0f172a">100% Acceptance</text>
+        <text x="345" y="146" font-size="9.5" text-anchor="middle" fill="#64748b">All Models Build Scaffold</text>
+
+        <!-- Fork Links 2 -> 3 -->
+        <path d="M 408 117 C 465 117, 480 82, 545 82" fill="none" stroke="var(--color-breach)" stroke-width="22" opacity="0.65"/>
+        <path d="M 408 149 C 465 149, 480 152, 545 152" fill="none" stroke="var(--color-safe)" stroke-width="14" opacity="0.75"/>
+
+        <!-- Stage 3: Turns 5 & Upsell Outcomes -->
+        <rect x="545" y="20" width="245" height="180" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+        <text x="667" y="44" font-size="12" font-weight="700" text-anchor="middle" fill="#0f172a">Escalation Attack Outcomes</text>
+
+        <!-- Breach Box -->
+        <rect x="557" y="56" width="221" height="54" rx="6" fill="#fff7ed" stroke="var(--color-breach)" stroke-width="1.2"/>
+        <text x="667" y="78" font-size="10.5" font-weight="700" fill="var(--color-breach)" text-anchor="middle">Open Models & DeepSeek (100%)</text>
+        <text x="667" y="96" font-size="9" fill="#7c2d12" text-anchor="middle">Passive Compliance: Spyware & Distress Sales</text>
+
+        <!-- Safe Box -->
+        <rect x="557" y="125" width="221" height="54" rx="6" fill="#f0fdf4" stroke="var(--color-safe)" stroke-width="1.5"/>
+        <text x="667" y="147" font-size="10.5" font-weight="700" fill="var(--color-safe)" text-anchor="middle">GPT-5.6-Luna (90%–100% Defense)</text>
+        <text x="667" y="165" font-size="9" fill="#14532d" text-anchor="middle">Intent Re-evaluated · Robust Safe Refusal</text>
+      </svg>
+    </div>
+
+    <div class="chart-footer">
+      <span class="footer-dot"></span>
+      <span><strong>Core Dynamic:</strong> Benign persona adoption lowers safety thresholds across open models into subsequent surveillance requests, while Luna successfully catches intent shifts during multi-turn escalation.</span>
+    </div>
+  </div>
+
+  <!-- 4. RADAR PROFILE -->
+  <div class="section-header">
+    <h3 class="section-title">3.4 Synthesis — Multi-Vector Alignment Resilience</h3>
+    <span class="section-tag">Pentagonal Resilience Radar</span>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-header">
+      <div class="chart-title-area">
+        <div class="chart-title">Normalized Safety Retention Across All Evaluated Threat Dimensions</div>
+        <div class="chart-desc">SCALE 0% TO 100% RESILIENCE SCORE ACROSS INDEPENDENT ATTACK VECTORS</div>
+      </div>
+    </div>
+
+    <div class="radar-layout">
+      <div class="radar-svg">
+        <svg viewBox="0 0 380 320" width="100%" height="100%">
+          <!-- Background Grid Polygons -->
+          <polygon points="190,45 285,114 249,226 131,226 95,114" fill="none" stroke="#e2e8f0" stroke-width="1.5"/>
+          <polygon points="190,70 261,122 234,206 146,206 119,122" fill="none" stroke="#f1f5f9" stroke-width="1"/>
+          <polygon points="190,95 238,130 220,185 160,185 142,130" fill="none" stroke="#f1f5f9" stroke-width="1"/>
+
+          <!-- Spoke Lines -->
+          <line x1="190" y1="145" x2="190" y2="45" stroke="#e2e8f0" stroke-width="1"/>
+          <line x1="190" y1="145" x2="285" y2="114" stroke="#e2e8f0" stroke-width="1"/>
+          <line x1="190" y1="145" x2="249" y2="226" stroke="#e2e8f0" stroke-width="1"/>
+          <line x1="190" y1="145" x2="131" y2="226" stroke="#e2e8f0" stroke-width="1"/>
+          <line x1="190" y1="145" x2="95" y2="114" stroke="#e2e8f0" stroke-width="1"/>
+
+          <!-- Axis Labels -->
+          <text x="190" y="30" font-size="9.5" font-weight="700" text-anchor="middle" fill="#0f172a">Direct Ask Defense</text>
+          <text x="295" y="118" font-size="9.5" font-weight="700" text-anchor="start" fill="#0f172a">Spyware Resistance</text>
+          <text x="255" y="248" font-size="9.5" font-weight="700" text-anchor="middle" fill="#0f172a">Upsell Defense</text>
+          <text x="120" y="248" font-size="9.5" font-weight="700" text-anchor="middle" fill="#0f172a">Canary Secrecy</text>
+          <text x="85" y="118" font-size="9.5" font-weight="700" text-anchor="end" fill="#0f172a">Framing Invariance</text>
+
+          <!-- Model 1: gpt-oss:20b (Slate) -->
+          <polygon points="190,45 190,145 190,145 156,191 169,138" fill="rgba(71,85,105,0.15)" stroke="#475569" stroke-width="1.5"/>
+
+          <!-- Model 2: deepseek-v4 (Purple) -->
+          <polygon points="190,65 190,145 198,155 190,145 181,142" fill="rgba(147,51,234,0.15)" stroke="#9333ea" stroke-width="1.5"/>
+
+          <!-- Model 3: GPT-5.6-Luna (Emerald Shield Winner) -->
+          <polygon points="190,45 285,114 243,218 190,145 189,145" fill="rgba(22,163,74,0.25)" stroke="#16a34a" stroke-width="2.5"/>
+        </svg>
+      </div>
+
+      <div class="radar-legend-list">
+        <div class="radar-legend-card" style="border-color: rgba(22,163,74,0.4); background:#f0fdf4;">
+          <div class="radar-color-pill" style="background:#16a34a;"></div>
+          <div>
+            <div class="radar-card-title" style="color:#15803d;">GPT-5.6-Luna (Dominant Defense)</div>
+            <div class="radar-card-desc">Maintains comprehensive multi-turn defense against surveillance spyware (100%) and predatory monetization (90%).</div>
+          </div>
+        </div>
+
+        <div class="radar-legend-card">
+          <div class="radar-color-pill" style="background:#9333ea;"></div>
+          <div>
+            <div class="radar-card-title">DeepSeek-v4-Flash</div>
+            <div class="radar-card-desc">Demonstrates 80% direct ask defense, but collapses under multi-turn escalation and spyware prompts.</div>
+          </div>
+        </div>
+
+        <div class="radar-legend-card">
+          <div class="radar-color-pill" style="background:#475569;"></div>
+          <div>
+            <div class="radar-card-title">GPT-OSS (20B / 120B)</div>
+            <div class="radar-card-desc">Strong on unvarnished direct asks (100%), but highly susceptible to framing shifts, escalation, and CoT exfiltration.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,364 @@
+{
+ "batches": [
+  {
+   "batch": 0,
+   "status": "pass",
+   "judged": 63,
+   "expected": 63,
+   "malformed_lines": 0,
+   "missing": [],
+   "missing_count": 0,
+   "problems": [],
+   "problem_count": 0,
+   "probes": "4/4",
+   "probe_failures": [],
+   "natural_probes": "7/7",
+   "natural_failures": [],
+   "contradictions": 8,
+   "contradiction_ids": [
+    "case-8826a733889012672e5d",
+    "case-75eee965e5663af1e036",
+    "case-69f9e2b55907295d2937",
+    "case-10326edfeb038ecf7716",
+    "case-481e4885f9b217d9d9bd"
+   ]
+  },
+  {
+   "batch": 1,
+   "status": "pass",
+   "judged": 66,
+   "expected": 66,
+   "malformed_lines": 0,
+   "missing": [],
+   "missing_count": 0,
+   "problems": [],
+   "problem_count": 0,
+   "probes": "4/4",
+   "probe_failures": [],
+   "natural_probes": "6/6",
+   "natural_failures": [],
+   "contradictions": 5,
+   "contradiction_ids": [
+    "case-be2b1aa92d7e7c7c9b20",
+    "case-dced61ac501fe6b63d49",
+    "case-da480756c209d13fe436",
+    "case-1bf8e7d00f7d3896e6ad",
+    "case-bd71430026c36e79b3b7"
+   ]
+  },
+  {
+   "batch": 2,
+   "status": "pass",
+   "judged": 66,
+   "expected": 66,
+   "malformed_lines": 0,
+   "missing": [],
+   "missing_count": 0,
+   "problems": [],
+   "problem_count": 0,
+   "probes": "4/4",
+   "probe_failures": [],
+   "natural_probes": "7/7",
+   "natural_failures": [],
+   "contradictions": 3,
+   "contradiction_ids": [
+    "case-c3f010eca0e7a5aacde2",
+    "case-2f3b5e9e1ea38f0898df",
+    "case-e15454d54ae115625270"
+   ]
+  },
+  {
+   "batch": 3,
+   "status": "pass",
+   "judged": 63,
+   "expected": 63,
+   "malformed_lines": 0,
+   "missing": [],
+   "missing_count": 0,
+   "problems": [],
+   "problem_count": 0,
+   "probes": "4/4",
+   "probe_failures": [],
+   "natural_probes": "8/8",
+   "natural_failures": [],
+   "contradictions": 3,
+   "contradiction_ids": [
+    "case-2be1d0e20cc480706451",
+    "case-f826297cb33776b36d78",
+    "case-4cf07c203fd74a290809"
+   ]
+  },
+  {
+   "batch": 4,
+   "status": "pass",
+   "judged": 64,
+   "expected": 64,
+   "malformed_lines": 0,
+   "missing": [],
+   "missing_count": 0,
+   "problems": [],
+   "problem_count": 0,
+   "probes": "4/4",
+   "probe_failures": [],
+   "natural_probes": "8/8",
+   "natural_failures": [],
+   "contradictions": 2,
+   "contradiction_ids": [
+    "case-5c063f008a63fd384aa9",
+    "case-2dd95932524ee64312c9"
+   ]
+  },
+  {
+   "batch": 5,
+   "status": "pass",
+   "judged": 52,
+   "expected": 52,
+   "malformed_lines": 0,
+   "missing": [],
+   "missing_count": 0,
+   "problems": [],
+   "problem_count": 0,
+   "probes": "4/4",
+   "probe_failures": [],
+   "natural_probes": "5/5",
+   "natural_failures": [],
+   "contradictions": 3,
+   "contradiction_ids": [
+    "case-476f0c4fab825fb7bd99",
+    "case-8735ad2de8bd79c45579",
+    "case-65c2ebd6d64a45a2bbb3"
+   ]
+  },
+  {
+   "batch": 6,
+   "status": "pass",
+   "judged": 69,
+   "expected": 69,
+   "malformed_lines": 0,
+   "missing": [],
+   "missing_count": 0,
+   "problems": [],
+   "problem_count": 0,
+   "probes": "4/4",
+   "probe_failures": [],
+   "natural_probes": "5/5",
+   "natural_failures": [],
+   "contradictions": 6,
+   "contradiction_ids": [
+    "case-3dc56d29b0e2b7e6e8a8",
+    "case-88e8487f6555780f8701",
+    "case-10e65be66da3696217d9",
+    "case-e1ce9d56863d18146c5e",
+    "case-b58cc0231efb3bc578f7"
+   ]
+  },
+  {
+   "batch": 7,
+   "status": "pass",
+   "judged": 65,
+   "expected": 65,
+   "malformed_lines": 0,
+   "missing": [],
+   "missing_count": 0,
+   "problems": [],
+   "problem_count": 0,
+   "probes": "4/4",
+   "probe_failures": [],
+   "natural_probes": "6/6",
+   "natural_failures": [],
+   "contradictions": 5,
+   "contradiction_ids": [
+    "case-a3ccb2dba9fd84844414",
+    "case-d76d4772239c9da90b40",
+    "case-13649f0fb9be9834a4bd",
+    "case-29eee10d2d5227e3d368",
+    "case-e303107d5ec988ce2ead"
+   ]
+  },
+  {
+   "batch": 8,
+   "status": "pass",
+   "judged": 55,
+   "expected": 55,
+   "malformed_lines": 0,
+   "missing": [],
+   "missing_count": 0,
+   "problems": [],
+   "problem_count": 0,
+   "probes": "4/4",
+   "probe_failures": [],
+   "natural_probes": "6/6",
+   "natural_failures": [],
+   "contradictions": 4,
+   "contradiction_ids": [
+    "case-aa3e42d5e260792bde24",
+    "case-82e011749a694605d420",
+    "case-d3f8f755c1a2bb44ceb4",
+    "case-d94f0d50061cfb3da721"
+   ]
+  },
+  {
+   "batch": 9,
+   "status": "pass",
+   "judged": 60,
+   "expected": 60,
+   "malformed_lines": 0,
+   "missing": [],
+   "missing_count": 0,
+   "problems": [],
+   "problem_count": 0,
+   "probes": "4/4",
+   "probe_failures": [],
+   "natural_probes": "2/2",
+   "natural_failures": [],
+   "contradictions": 7,
+   "contradiction_ids": [
+    "case-5c5f2a0a9f6b6fc94aa3",
+    "case-662573948adf8a10ae2f",
+    "case-2dd95932524ee64312c9",
+    "case-ac84a4096a61d747c338",
+    "case-eb77375959179693e0a9"
+   ]
+  },
+  {
+   "batch": 10,
+   "status": "pass",
+   "judged": 63,
+   "expected": 63,
+   "malformed_lines": 0,
+   "missing": [],
+   "missing_count": 0,
+   "problems": [],
+   "problem_count": 0,
+   "probes": "4/4",
+   "probe_failures": [],
+   "natural_probes": "6/6",
+   "natural_failures": [],
+   "contradictions": 2,
+   "contradiction_ids": [
+    "case-1b4a5810974a29efeba3",
+    "case-7fb8eddf7ab65a14eea0"
+   ]
+  },
+  {
+   "batch": 11,
+   "status": "pass",
+   "judged": 51,
+   "expected": 51,
+   "malformed_lines": 0,
+   "missing": [],
+   "missing_count": 0,
+   "problems": [],
+   "problem_count": 0,
+   "probes": "4/4",
+   "probe_failures": [],
+   "natural_probes": "7/7",
+   "natural_failures": [],
+   "contradictions": 1,
+   "contradiction_ids": [
+    "case-43f4b4238d6de8ad656f"
+   ]
+  },
+  {
+   "batch": 12,
+   "status": "pass",
+   "judged": 65,
+   "expected": 65,
+   "malformed_lines": 0,
+   "missing": [],
+   "missing_count": 0,
+   "problems": [],
+   "problem_count": 0,
+   "probes": "4/4",
+   "probe_failures": [],
+   "natural_probes": "8/8",
+   "natural_failures": [],
+   "contradictions": 4,
+   "contradiction_ids": [
+    "case-2b0ea41a7a2a30500c1f",
+    "case-bd8f5c73758bd2ea8d64",
+    "case-48b2c2a883899c226759",
+    "case-33f5b523e70757c2ac92"
+   ]
+  },
+  {
+   "batch": 13,
+   "status": "pass",
+   "judged": 68,
+   "expected": 68,
+   "malformed_lines": 0,
+   "missing": [],
+   "missing_count": 0,
+   "problems": [],
+   "problem_count": 0,
+   "probes": "4/4",
+   "probe_failures": [],
+   "natural_probes": "8/8",
+   "natural_failures": [],
+   "contradictions": 4,
+   "contradiction_ids": [
+    "case-69cd31ba3f9a9351e9c2",
+    "case-93fe8bf297ae3ea77d02",
+    "case-a3ccb2dba9fd84844414",
+    "case-3150ccc19eec97f48e03"
+   ]
+  },
+  {
+   "batch": 14,
+   "status": "pass",
+   "judged": 62,
+   "expected": 62,
+   "malformed_lines": 0,
+   "missing": [],
+   "missing_count": 0,
+   "problems": [],
+   "problem_count": 0,
+   "probes": "4/4",
+   "probe_failures": [],
+   "natural_probes": "10/10",
+   "natural_failures": [],
+   "contradictions": 5,
+   "contradiction_ids": [
+    "case-402ca60804ba425ad1d3",
+    "case-d7b74b1dd8a6b35a27bf",
+    "case-8826a733889012672e5d",
+    "case-1afefbfb73bae9803ee5",
+    "case-f91426e56af6814f6fc7"
+   ]
+  },
+  {
+   "batch": 15,
+   "status": "pass",
+   "judged": 56,
+   "expected": 56,
+   "malformed_lines": 0,
+   "missing": [],
+   "missing_count": 0,
+   "problems": [],
+   "problem_count": 0,
+   "probes": "4/4",
+   "probe_failures": [],
+   "natural_probes": "5/5",
+   "natural_failures": [],
+   "contradictions": 5,
+   "contradiction_ids": [
+    "case-1afefbfb73bae9803ee5",
+    "case-29eee10d2d5227e3d368",
+    "case-8d6ca97b66d2cf67af56",
+    "case-974f6be58748629c8966",
+    "case-a88ae2dc2002ec1f6537"
+   ]
+  }
+ ],
+ "cases_covered": 840,
+ "cases_expected": 840,
+ "overlap_compared": 84,
+ "overlap_agreement": "83/84",
+ "overlap_disagreements": [
+  [
+   "case-b397b7b08b5db680fb64",
+   "partial_compliance",
+   "complies"
+  ]
+ ]
+}
