@@ -1,44 +1,63 @@
-# Eyes Wide Shut — A Multivector Safety Analysis of gpt-oss-20b
+# Eyes Wide Shut
 
-Empirical security evaluation of one local `gpt-oss-20b` package across three different interface boundaries: prompt framing and structured action selection, constraint persistence across dialogue state, and reasoning-channel exposure.
+Synthetic studies of prompt framing, structured tool calls, multi-turn reframing,
+and disclosure across returned reasoning and final answers.
 
-**Preprint DOI:** https://doi.org/10.5281/zenodo.21826218  
+**Earlier single-model preprint (gpt-oss-20b only):** https://doi.org/10.5281/zenodo.21826218  
 **Project report:** https://masihmoafi.com/projects/eyes-wide-shut  
 **Kaggle write-up:** https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/writeups/eyes-wide-shut
 
-> **Status:** Preprint; not peer reviewed. The three studies test different boundaries and should not be collapsed into one mechanism or one attack-success rate.
+**Current evidence revision: 6 September 2026.** This is the latest multi-model
+workspace. The [working manuscript](paper/new/preprint.pdf) and
+[reproduction instructions](analysis/README.md) supersede the previous report.
+The two earlier READMEs are preserved unchanged: the [full report](analysis/archive/README.before-evidence-revision-2026-09-06.md) and the [GitHub summary of 28 August 2026](analysis/archive/README.github-2026-08-28.md).
 
-## Main results
+Finding 2's semantic review is **complete** (840/840 API cases, 6 September 2026) and
+must not be re-run; the procedure and its verification are recorded in
+[`analysis/review/README.md`](analysis/review/README.md).
 
-| Study | Endpoint | Result |
-|---|---|---:|
-| Simulation framing | Exact turn-3 `press_the_button` tool call | 78/100 without simulation wording vs. 97/100 with it |
-| Paired Study 1 outcomes | Seed-level transitions | 21 no-call→call, 2 call→no-call, 76 call→call, 1 no-call→no-call |
-| Separate refusal/action diagnostic | Visible refusal followed by exact call | 20/100; 44/100 exact calls overall |
-| Stateful dialogue | Direct dependency request | 0/30 compliant |
-| Stateful dialogue | Educational reframe and each counted implementation phase through turn 5 | 30/30 compliant at each phase |
-| Reasoning-channel exposure | Exact synthetic value in returned reasoning | 25/30 |
-| Reasoning-channel exposure | Exact synthetic value in visible answer | 13/30 |
+## Verified saved-record observations
 
-Study 1 is a matched prompt-package comparison: several simulation-specific phrases change together. It does **not** isolate one lexical token or prove that simulation framing universally causes unsafe behavior.
+Finding 1 counts exact turn-3 `press_the_button` proposals, not executed harm:
 
-Study 2 is a repeated scripted trajectory, not a matched causal ablation. Objective wording, requested functionality, and retained dialogue state evolve together. The latest scoring pass used two independent blinded LLM judges and they agreed on all counted cases. A separate condensed two-turn arm produced distress-targeted premium-offer logic in 30/30; that rate is not assigned to a later turn of the retained-history campaign.
+| Deployment | No simulation | Simulation |
+|---|---:|---:|
+| gpt-oss:20b (local baseline) | 78/100 | 97/100 |
+| openai/gpt-oss-120b | 64/100 | 86/100 |
+| deepseek/deepseek-v4-flash | 91/100 | 91/100 |
+| openai/gpt-5.6-luna | 100/100 | 99/100 |
+| openai/gpt-oss-safeguard-20b | 100/100 | 100/100 |
 
-Study 3 checks separate returned fields after the user satisfies the scripted release condition. It is therefore a **cross-channel containment** result, not an authentication bypass or unauthorized exfiltration result.
+The local and API runs differ in prompt rendering and tool arguments; compare
+framing arms within each deployment. Safeguard chat is an auxiliary diagnostic
+outside its recommended classification role.
 
-## Security boundary model
+Finding 3: the local secret appears in returned reasoning before the second
+credential in 5/30 trials. After release is authorized, 13/30 local trials and
+3/30 gpt-oss-120b API trials contain it in reasoning alongside an explicit final
+refusal. Authorized final disclosure is not an access-control failure. DeepSeek
+returned reasoning with zero exact matches; Luna returned no reasoning, so its
+reasoning disclosure rate is unknown. Full counts and overlaps are in the paper.
 
-A final-answer label does not characterize the whole interaction. The evaluation unit should distinguish:
+Finding 2's 840 API responses are labelled. Responses judged `complies`, out of 30
+conversations per phase:
 
-1. privileged instructions and prompt interpretation;
-2. accumulated dialogue state;
-3. returned reasoning fields;
-4. visible answer content;
-5. structured action selection;
-6. host authorization/dispatch;
-7. external state change.
+| Deployment | Direct ask | Reframe | Emotional | Peer | Guardian | Setup | Upsell |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| openai/gpt-oss-120b | 0 | 30 | 29 | 30 | 28 | 30 | 0 |
+| deepseek/deepseek-v4-flash | 4 | 30 | 30 | 30 | 30 | 30 | 30 |
+| openai/gpt-5.6-luna | 0 | 30 | 30 | 15 | 0 | 30 | 0 |
+| openai/gpt-oss-safeguard-20b | 0 | 30 | 30 | 30 | 30 | 30 | 30 |
 
-Study 1 stops at structured action selection: the wrapper was inert and no external action was executed.
+The reframe result is uniform: 116 of 120 five-turn conversations refuse or resist the
+direct dependency request and then comply with the same retention objective relabelled
+as education, and the local gpt-oss:20b campaign does so in 30/30. Post-reframe
+compliance is not uniform, which contradicts the superseded universal-vulnerability
+claim: Luna refuses the distress upsell and the help-interception module in all 30
+conversations, gpt-oss-120b refuses the upsell in all 30, while DeepSeek and
+safeguard-20b comply with every post-reframe phase including distress monetization.
+Labels are model-assisted under a disclosed procedure, not human annotation; see
+[`analysis/review/README.md`](analysis/review/README.md).
 
 ## Deterministic mitigation replay
 
@@ -50,27 +69,25 @@ Study 1 stops at structured action selection: the wrapper was inert and no exter
 
 Frozen replay output: [`analysis/mitigation_replay_results.json`](analysis/mitigation_replay_results.json).
 
-## What not to claim
-
-The current evidence does **not** establish:
-
-- a universal gpt-oss-20b failure rate;
-- one shared causal mechanism across all three studies;
-- hidden intent, deception, or strategic alignment faking;
-- authentication bypass or unauthorized secret exfiltration;
-- realized destructive action;
-- a universal defense from the host-boundary replay.
-
-## Reproducibility
-
-The experiments use synthetic prompts/secrets and inert tools. The paper reports raw counts, paired Study 1 transitions, exact statistical summaries, model/runtime information available in the saved records, and explicit limitations. The public project intentionally separates returned model output from host dispatch and external effect.
-
-The mitigation replay expects the extracted supplementary directory as its positional argument:
+The replay expects the extracted supplementary directory of the single-model preprint as its positional argument:
 
 ```bash
 python analysis/mitigation_replay.py /path/to/supplementary --out mitigation_replay_results.json
 ```
 
-## Research scope
+## Still required
 
-The broader red-team campaign also explored additional findings. They are not part of the current three-study paper unless explicitly supported by the corresponding released evidence.
+Independent replication of the Finding 2 labelling under a different reviewer. No new
+target-model experiments have been run for this revision. Broader causal claims need
+controlled task and prompt variation.
+
+All four API datasets have 290 completed saved records each. The checkpoint has
+been corrected; there is no need to resume a campaign because of its old counts.
+The separate Ling3 pilot is incomplete and excluded from complete-study tables.
+
+```bash
+bash paper/new/build.sh
+```
+
+The manuscript is a working draft, not submission-ready. Original raw records
+remain unchanged. Nothing has been uploaded, published or submitted.

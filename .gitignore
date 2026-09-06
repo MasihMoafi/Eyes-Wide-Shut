@@ -13,3 +13,8 @@ paper/
 reports/
 submission-files/
 
+
+# Blinded-review answer keys (kept locally, never published).
+# Scoped deliberately: analysis/results/finding2-mapping.private.jsonl is NOT a key,
+# it is the case-to-model map the audit needs, and is tracked on purpose.
+analysis/review/*.private.json
