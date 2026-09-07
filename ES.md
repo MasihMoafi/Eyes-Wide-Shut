@@ -116,3 +116,17 @@ before them; highlights.txt written (all lines <=85 chars). Data-availability st
 says the deposit will be made before publication - Masih must pick the repository
 (GitHub/Zenodo) and decide whether to deposit before submission (journal prefers it).
 Competing-interest statement says none; Masih to confirm. Nothing committed or submitted.
+
+## GitHub sync prepared, 7 September 2026
+
+Masih delegated both decisions ("Decide yourself"): sync to GitHub main, and publish
+the manuscript sources. Done locally on branch `sync-main` (from origin/main a39d445):
+the six local commits replayed by cherry-pick, README conflict resolved by keeping the
+evidence-revision README and carrying over the GitHub-only content (Zenodo preprint
+DOI 10.5281/zenodo.21826218, project-report and Kaggle links, the mitigation-replay
+section); the 28 August GitHub README archived under analysis/archive/. .gitignore now
+tracks paper/new sources, generated tables/figures and highlights.txt; PDFs, logs, qa/
+renders and the superseded draft stay local. Data-availability statement now cites the
+GitHub repo. The push itself was blocked by the agent harness; Masih runs
+`git push origin sync-main:main` from this worktree. Branch `multimodel-eval` is the
+untouched rollback point.
