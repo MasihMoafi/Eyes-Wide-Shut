@@ -1,0 +1,36 @@
+\documentclass[preprint,12pt,times,authoryear]{elsarticle}
+\usepackage{amsmath,amssymb,booktabs,array,url}
+\usepackage[expansion=false]{microtype}
+\usepackage[hidelinks,hypertexnames=false]{hyperref}
+\usepackage{enumitem,float,etoolbox}
+\emergencystretch=3em
+\AtBeginEnvironment{table}{\setlength{\tabcolsep}{3pt}}
+\hypersetup{pdftitle={Eyes Wide Shut: Prompt Framing, Structured Actions, and Reasoning-Channel Disclosure},pdfauthor={Masih Moafi}}
+\input{generated/numbers}
+\renewcommand{\texttt}[1]{{\ttfamily\hyphenchar\font=`\-\relax #1}}
+\newcommand{\toolname}{\texttt{press\_the\_button}}
+\journal{Computers \& Security}
+\begin{document}
+\begin{frontmatter}
+\title{Eyes Wide Shut: Prompt Framing, Structured Actions, and Reasoning-Channel Disclosure}
+\author{Masih Moafi}
+\ead{m.moafi@el.iut.ac.ir}
+\affiliation{organization={Artificial Intelligence and Robotics, Isfahan University of Technology},city={Isfahan},country={Iran}}
+\begin{abstract}\input{abstract}\end{abstract}
+\begin{keyword}
+large language models \sep prompt framing \sep multi-turn jailbreak \sep chain-of-thought disclosure \sep tool use \sep safety evaluation
+\end{keyword}
+\end{frontmatter}
+\input{body}
+
+\section*{CRediT authorship contribution statement}
+\noindent\textbf{Masih Moafi:} Conceptualization, Methodology, Software, Investigation, Data curation, Formal analysis, Visualization, Writing -- original draft, Writing -- review \& editing.
+
+\section*{Declaration of competing interest}
+The author declares no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+
+\section*{Data availability}
+The saved model records, prompt definitions, scoring contract, audit code, SHA-256 manifest, and manuscript build described in the reproduction record are public at \url{https://github.com/MasihMoafi/Eyes-Wide-Shut}. The blinded-review answer keys are kept private; every judgment and its verbatim quotation are included.
+
+\input{backmatter}
+\end{document}

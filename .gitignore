@@ -9,7 +9,17 @@ vision
 .obsidian/
 .prompt-diffs-view/
 .prompt-diffs-viewP/
-paper/
+paper/**
+# Manuscript sources are published; PDFs, logs, QA renders and the superseded draft stay local.
+!paper/new/
+!paper/new/*.tex
+!paper/new/*.sty
+!paper/new/*.cls
+!paper/new/*.sh
+!paper/new/*.md
+!paper/new/*.txt
+!paper/new/generated/
+!paper/new/generated/*
 reports/
 submission-files/
 

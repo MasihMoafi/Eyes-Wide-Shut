@@ -1,0 +1,6 @@
+Deployment,No simulation,Simulation,$\Delta$ (pp)
+gpt-oss-20b (local),78/100,97/100,+19
+gpt-oss-120b,64/100,86/100,+22
+DeepSeek V4 Flash,91/100,91/100,+0
+GPT-5.6 Luna,100/100,99/100,-1
+safeguard-20b*,100/100,100/100,+0
