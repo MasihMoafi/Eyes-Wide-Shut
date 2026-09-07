@@ -91,3 +91,28 @@ Open items, all Masih's call:
   not block the paper. Findings 1 and 3 on the site match the audit exactly.
 - No push, upload, publication or target-model calls were made or are authorized.
 
+
+## Abstract rewrite and Elsevier version, 6 September 2026
+
+Abstract rewritten (problem, question, five deployments, Findings 1-3 in order, one
+narrow claim, one caveat sentence) and moved to paper/new/abstract.tex, shared by all
+three documents. "116 of 120" is derived from generated/finding2.tex (4 direct-ask
+complies, all DeepSeek). Target journal chosen: Computers & Security. elsevier.tex uses
+elsarticle (class generated from the CTAN zip into paper/new/elsarticle.cls, no system
+install); it renders 13 pages, no overfull boxes or undefined references. build.sh now
+builds all three. Abstract is 262 rendered words; the journal's cap was not verifiable
+(sciencedirect blocks fetches). Highlights file and cover letter not written. Nothing
+committed, pushed or submitted.
+
+## Journal rules applied, 7 September 2026
+
+Masih's browser agent verified Computers & Security rules: abstract <=250 words,
+article <=12k words, highlights optional (3-5 bullets, <=85 chars), 5-10 keywords,
+author-year references, CRediT + competing interest + data availability mandatory,
+no cover letter, editable .tex accepted. Applied: abstract 248 rendered words; article
+~3.7k words; six keywords; elsarticle authoryear option; body.tex split so references
+and appendices live in backmatter.tex, letting elsevier.tex insert the three statements
+before them; highlights.txt written (all lines <=85 chars). Data-availability statement
+says the deposit will be made before publication - Masih must pick the repository
+(GitHub/Zenodo) and decide whether to deposit before submission (journal prefers it).
+Competing-interest statement says none; Masih to confirm. Nothing committed or submitted.
