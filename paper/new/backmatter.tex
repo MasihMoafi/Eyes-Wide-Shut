@@ -1,0 +1,39 @@
+\begin{thebibliography}{9}
+\raggedright
+\bibitem[Russinovich et~al.(2024)]{crescendo} Mark Russinovich, Ahmed Salem, and Ronen Eldan. Great, Now Write an Article About That: The Crescendo Multi-Turn LLM Jailbreak Attack. 2024. \url{https://arxiv.org/abs/2404.01833}.
+\bibitem[Souly et~al.(2024)]{strongreject} Alexandra Souly et al. A StrongREJECT for Empty Jailbreaks. 2024. \url{https://arxiv.org/abs/2402.10260}.
+\bibitem[Andriushchenko et~al.(2024)]{agentharm} Maksym Andriushchenko et al. AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents. 2024. \url{https://arxiv.org/abs/2410.09024}.
+\bibitem[OpenAI(2025a)]{osscard} OpenAI. gpt-oss-120b \& gpt-oss-20b Model Card. 2025. \url{https://arxiv.org/abs/2508.10925}.
+\bibitem[OpenAI(2025b)]{ossrelease} OpenAI. Introducing gpt-oss. August 5, 2025. \url{https://openai.com/index/introducing-gpt-oss/}.
+\bibitem[OpenAI(2025c)]{safeguard} OpenAI. gpt-oss-safeguard technical report. October 29, 2025. \url{https://openai.com/index/gpt-oss-safeguard-technical-report/}.
+\end{thebibliography}
+
+\appendix
+\section{Paired seed outcomes}\label{app:pairs}
+For each matched seed number, both, one, or neither arm may return the exact call. Pairing seed IDs is bookkeeping, not a guarantee of matched random trajectories.
+\begin{table}[H]\centering\small\input{generated/finding1-pairs}
+\caption{Finding 1 call overlaps; each row totals 100.}
+\end{table}
+
+\section{Post-authorization channel overlap}\label{app:overlap}
+\begin{table}[H]\centering\small\input{generated/finding3-overlap}
+\caption{Finding 3 turn 2: mutually exclusive channel combinations. Observed rows total 30. Luna's cross-channel overlap is unknown; its final answer contains the secret in every trial.}
+\end{table}
+
+\section{Finding 2 label breakdown}\label{tab:f2-labels-section}
+Every phase not listed below was judged \texttt{complies} in all 30 conversations.
+
+\begin{table}[h]
+\centering\small\input{generated/finding2-labels}
+\caption{All five rubric labels for each deployment-phase cell containing any non-compliant judgment.}
+\label{tab:f2-labels}
+\end{table}
+
+\section{Reproduction record}
+\begingroup\raggedright
+The offline audit is \texttt{analysis/audit.py}. Its metrics, opaque Finding 2 cases, separate provenance map, and SHA-256 manifest are under \texttt{analysis/results/}. The manifest covers raw records, prompt definitions, runners, model metadata, and the scoring contract. \texttt{analysis/build\_artifacts.py} generates numerical macros, CSV/LaTeX tables, and figures. \texttt{paper/new/build.sh} rebuilds this manuscript without target-model calls. The original manuscript is preserved separately and is superseded by this working revision.
+
+Original Finding 1 inputs are the simulation and no-simulation JSONL files under \texttt{experiments/finding1/data/}. Original Finding 3 uses \texttt{finding3\_reproducible\_baseline.jsonl}. API inputs are the per-model Finding 1, 2, and 3 JSONL files under \texttt{experiments/experiment-openrouter-oss120b/data/}. Full synthetic prompts and the secret remain in hashed sources. Counts are recomputed from returned fields, not copied from the runner's cached success flags.
+
+Focused tests distinguish tool calls from visible mentions, preserve unobserved reasoning, separate pre-release and post-release observations, and reject duplicate/missing records and incomplete review coverage. Deliberately broken function matching and missing-reasoning handling were detected by failing tests. These checks validate measurement code, not scientific generality.
+\par\endgroup

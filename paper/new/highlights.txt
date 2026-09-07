@@ -1,0 +1,5 @@
+A refusal in a final answer does not describe the tool-call or reasoning channels.
+Deleting simulation wording cut exact tool calls in only two of five deployments.
+Every API deployment complied with a dependency goal once relabelled as education.
+Later compliance diverged: two deployments refused distress-triggered upsell 30/30.
+A synthetic secret surfaced in returned reasoning before release and beside refusals.

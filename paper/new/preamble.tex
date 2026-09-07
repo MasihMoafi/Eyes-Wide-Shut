@@ -1,0 +1,16 @@
+\usepackage{amsmath,amssymb,booktabs,graphicx,array,microtype,url}
+\usepackage[hidelinks,hypertexnames=false]{hyperref}
+\usepackage{enumitem,float}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@maketitle}{Paper under double-blind review}{Anonymized manuscript}{}{\PackageError{ews}{Draft title patch failed}{Inspect tmlr.sty}}
+\makeatother
+\hypersetup{pdftitle={Eyes Wide Shut: Prompt Framing, Structured Actions, and Reasoning-Channel Disclosure}}
+\input{generated/numbers}
+\lhead{Evidence revision, 6 September 2026}
+\title{Eyes Wide Shut: Prompt Framing, Structured Actions,\\and Reasoning-Channel Disclosure}
+\author{\name Masih Moafi \email m.moafi@el.iut.ac.ir \\
+        \addr Artificial Intelligence and Robotics\\
+        Isfahan University of Technology, Iran}
+\date{}
+\newcommand{\toolname}{\texttt{press\_the\_button}}
