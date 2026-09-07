@@ -16,8 +16,8 @@
   },
   {
     "path": "paper/new/body.tex",
-    "sha256": "e7e2342735db577335689231501b72b09d0d6f9c0358b8eb1691a281ec0450ac",
-    "bytes": 24682
+    "sha256": "a3ce3d25611ea4c8505513fad9ab05f0551985682c8bde9bdaa2a7c879bf6d44",
+    "bytes": 19630
   },
   {
     "path": "paper/new/preamble.tex",
@@ -26,8 +26,8 @@
   },
   {
     "path": "paper/new/build.sh",
-    "sha256": "371179ea84e409f483edc45e16d927e0ede2e0686181db564d415e93d54f9166",
-    "bytes": 526
+    "sha256": "4dcb7fd98291eebc6dc3367994d5f594e1c8a310bbcc0b792a599fddb0c31c4a",
+    "bytes": 539
   },
   {
     "path": "experiments/experiment-openrouter-oss120b/arms.py",
