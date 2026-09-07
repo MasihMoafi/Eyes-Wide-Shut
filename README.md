@@ -8,8 +8,9 @@ and disclosure across returned reasoning and final answers.
 **Kaggle write-up:** https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/writeups/eyes-wide-shut
 
 **Current evidence revision: 6 September 2026.** This is the latest multi-model
-workspace. The [working manuscript](paper/new/preprint.pdf) and
-[reproduction instructions](analysis/README.md) supersede the previous report.
+workspace. The [manuscript sources](paper/new/) and
+[reproduction instructions](analysis/README.md) supersede the previous report;
+`bash paper/new/build.sh` rebuilds the PDFs from saved data.
 The two earlier READMEs are preserved unchanged: the [full report](analysis/archive/README.before-evidence-revision-2026-09-06.md) and the [GitHub summary of 28 August 2026](analysis/archive/README.github-2026-08-28.md).
 
 Finding 2's semantic review is **complete** (840/840 API cases, 6 September 2026) and
@@ -89,5 +90,5 @@ The separate Ling3 pilot is incomplete and excluded from complete-study tables.
 bash paper/new/build.sh
 ```
 
-The manuscript is a working draft, not submission-ready. Original raw records
-remain unchanged. Nothing has been uploaded, published or submitted.
+The manuscript is prepared for journal submission and has not been submitted.
+Original raw records remain unchanged.
